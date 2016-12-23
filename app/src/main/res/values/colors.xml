@@ -6,4 +6,5 @@
 
     <color name="color_main">#2AA0E7</color>
     <color name="color_white">@android:color/white</color>
+
 </resources>
