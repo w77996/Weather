@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/color_main">
+
     <android.support.v4.widget.DrawerLayout
         android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
@@ -13,6 +14,7 @@
             android:id="@+id/swipe_refresh"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
 
             <ScrollView
                 android:id="@+id/weather_layout"
@@ -28,23 +30,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fitsSystemWindows="true">
+
                     <include layout="@layout/title" />
 
-                    <RelativeLayout
-                        xmlns:android="http://schemas.android.com/apk/res/android"
-                        android:orientation="vertical"
-                        android:background="@android:color/white"
-                        android:layout_width="fill_parent"
-                        android:layout_height="800dp">
-                        <TextView
-                            android:id="@+id/de"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fillViewport="true"
-                            android:textSize="20sp"
-                            android:text="dfas"/>
-                    </RelativeLayout>
-
+                    <include layout="@layout/main_now"/>
                     <TextView
                         android:id="@+id/d"
                         android:background="@android:color/black"
@@ -52,6 +41,7 @@
                         android:layout_height="wrap_content"
                         android:fillViewport="true"
                         android:text="dfas"/>
+
                     <TextView
                         android:id="@+id/d2"
                         android:background="@android:color/black"
