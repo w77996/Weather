@@ -1,10 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/rl"
+    android:id="@+id/main_now_weather"
     android:orientation="vertical"
-    android:background="@android:color/white"
+    android:background="@color/md_light_blue_300_color_code"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
+    <TextView
+        android:id="@+id/last_upate_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+       android:layout_marginRight="10dp"
+       android:layout_marginTop= "10dp"
+        android:textColor="@color/md_white_color_code"
+        android:text="10:00更新"
+        android:textSize="16sp"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    </LinearLayout>
+    <ImageView
+        android:layout_width="@dimen/now_weather_condition_size"
+        android:layout_height="@dimen/now_weather_condition_size"
+        android:src="@drawable/ic_default_big"
+        android:layout_above="@+id/now_weather_condition"
+        android:layout_centerHorizontal="true"
+        />
+    <TextView
+        android:id="@+id/now_weather_condition"
+        android:layout_width="@dimen/now_weather_tempeture_size"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:text="晴"
+        android:paddingBottom="10dp"
+        android:textSize="40sp"/>
+    <TextView
+        android:id="@+id/now_weather_tempeture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/now_weather_condition"
+        android:gravity="center"
+        android:text="16-120"
+        android:textSize="60sp"/>
 
 </RelativeLayout>

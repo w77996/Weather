@@ -3,9 +3,8 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:background="@drawable/background_with_shadow"
-
-    android:layout_height="60dp">
+    android:background="@color/md_light_blue_300_color_code"
+    android:layout_height="?attr/actionBarSize">
 
     <Button
         android:id="@+id/nav_button"
@@ -13,7 +12,7 @@
         android:layout_height="30dp"
         android:layout_marginLeft="10dp"
         android:layout_centerVertical="true"
-        android:background="@drawable/ic_home" />
+        android:background="@drawable/topbar_icon_side" />
 
     <TextView
         android:id="@+id/title_city"
@@ -21,14 +20,18 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:textColor="#fff"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:text="- -"/>
 
     <TextView
         android:id="@+id/title_update_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:textColor="#fff"
-        android:textSize="16sp"/>
+        android:textSize="16sp"
+        android:text="- -"/>
 
 </RelativeLayout>
