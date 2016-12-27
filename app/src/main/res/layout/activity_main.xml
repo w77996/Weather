@@ -19,7 +19,6 @@
                 android:id="@+id/weather_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-
                 android:scrollbars="none"
                 android:fillViewport="true"
                 android:overScrollMode="never">
@@ -33,21 +32,8 @@
                     <include layout="@layout/title" />
 
                     <include layout="@layout/main_now"/>
-                    <TextView
-                        android:id="@+id/d"
-                        android:background="@android:color/black"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fillViewport="true"
-                        android:text="dfas"/>
 
-                    <TextView
-                        android:id="@+id/d2"
-                        android:background="@android:color/black"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fillViewport="true"
-                        android:text="dfas"/>
+
 
                     <!--<include layout="@layout/forecast" />
 

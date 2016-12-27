@@ -6,6 +6,7 @@ import android.util.TypedValue;
 import android.view.WindowManager;
 
 import java.lang.reflect.Field;
+import java.util.logging.Logger;
 
 import weather.wu.com.weather.R;
 
@@ -71,6 +72,7 @@ public class SystemUtils {
         TypedValue typedValue = new TypedValue();
        context.getTheme().resolveAttribute(R.attr.actionBarSize, typedValue, true);
         int actionBarHeight = TypedValue.complexToDimensionPixelSize(typedValue.data, context.getResources().getDisplayMetrics());
+        
         return actionBarHeight;
     }
 }
