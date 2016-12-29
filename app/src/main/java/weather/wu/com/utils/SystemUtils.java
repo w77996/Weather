@@ -72,7 +72,6 @@ public class SystemUtils {
         TypedValue typedValue = new TypedValue();
        context.getTheme().resolveAttribute(R.attr.actionBarSize, typedValue, true);
         int actionBarHeight = TypedValue.complexToDimensionPixelSize(typedValue.data, context.getResources().getDisplayMetrics());
-        
         return actionBarHeight;
     }
 }

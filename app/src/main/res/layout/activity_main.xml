@@ -16,7 +16,7 @@
             android:layout_height="match_parent">
 
             <ScrollView
-                android:id="@+id/weather_layout"
+                android:id="@+id/weather_scrollview_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scrollbars="none"
@@ -33,6 +33,7 @@
 
                     <include layout="@layout/main_now"/>
 
+                    <include layout="@layout/main_hourlist"/>
 
 
                     <!--<include layout="@layout/forecast" />

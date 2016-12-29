@@ -35,7 +35,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
-            android:text="空气优"
+            android:text="空气--"
             android:textColor="@color/md_white_color_code" />
 
         <TextView
@@ -44,7 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/now_weather_air_quality"
             android:layout_gravity="right"
-            android:text="指数34"
+            android:text="指数--"
             android:textColor="@color/md_white_color_code" />
 
     </RelativeLayout>
@@ -62,7 +62,7 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:gravity="center"
-        android:text="晴"
+        android:text="- -"
         android:textColor="@color/md_white_color_code"
 
         android:textSize="50sp" />
@@ -80,7 +80,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="20dp"
             android:src="@drawable/temp_high" />
 
         <TextView
@@ -89,7 +89,7 @@
             android:layout_height="wrap_content"
            android:layout_alignLeft="@+id/temp_high_icon"
             android:layout_marginLeft="10dp"
-            android:text="18°"
+            android:text="- -°"
             android:textSize="19sp" />
 
         <ImageView
@@ -107,7 +107,7 @@
             android:layout_alignParentRight="true"
             android:paddingLeft="10dp"
             android:layout_marginRight="10dp"
-            android:text="18°"
+            android:text="- -°"
             android:textSize="19sp" />
     </RelativeLayout>
 
@@ -115,10 +115,10 @@
         android:id="@+id/now_weather_tempeture"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/now_weather_recyclerview"
         android:textColor="@color/md_white_color_code"
-        android:paddingLeft="10dp"
-        android:text="18"
+        android:layout_alignParentBottom="true"
+
+        android:text="- -"
         android:textSize="124sp" />
 
     <ImageView
@@ -133,9 +133,5 @@
         android:layout_toRightOf="@id/now_weather_tempeture"
         android:src="@drawable/big_temp_degree" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/now_weather_recyclerview"
-        android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:layout_alignParentBottom="true" />
+
 </RelativeLayout>
