@@ -110,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onRefresh() {
                 //HttpUtil.requestWeather("广州");
-                requestWeather("广州");
+                requestWeather("深圳");
             }
         });
     }
