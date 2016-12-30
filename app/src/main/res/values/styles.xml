@@ -16,8 +16,19 @@
         <item name="android:layout_gravity">left</item>
         <item name="android:textSize">17sp</item>
         <item name="android:layout_margin">5dp</item>
-
-
+    </style>
+    <style name="Label">
+        <item name="android:textSize">17sp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:singleLine">true</item>
+    </style>
+    <style name="Label.Shadow" parent="@style/Label">
+        <item name="android:shadowColor">#88000000</item>
+        <item name="android:shadowDx">1.0</item>
+        <item name="android:shadowDy">1.0</item>
+        <item name="android:shadowRadius">1.5</item>
     </style>
 
 </resources>

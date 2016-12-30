@@ -50,14 +50,15 @@
     </RelativeLayout>
 
     <ImageView
+        android:id="@+id/now_weather_img"
         android:layout_width="128dp"
         android:layout_height="128dp"
-        android:layout_above="@+id/now_weather_condition"
+        android:layout_above="@+id/now_weather_condition_tv"
         android:layout_centerHorizontal="true"
         android:src="@drawable/ic_default_big" />
 
     <TextView
-        android:id="@+id/now_weather_condition"
+        android:id="@+id/now_weather_condition_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
@@ -65,7 +66,7 @@
         android:text="- -"
         android:textColor="@color/md_white_color_code"
 
-        android:textSize="50sp" />
+        android:textSize="45sp" />
 
     <RelativeLayout
         android:layout_width="wrap_content"

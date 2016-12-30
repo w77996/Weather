@@ -34,8 +34,8 @@ public class Utility {
             WeatherBean weatherBean = new WeatherBean();
             JSONObject resultData = new JSONObject(response);
             int showapi_res_code = resultData.getInt("showapi_res_code");
-            weatherBean.setmShowapi_Res_Code(showapi_res_code+"");
-            Logger.e(showapi_res_code+"");
+            weatherBean.setmShowapi_Res_Code(showapi_res_code + "");
+            Logger.e(showapi_res_code + "");
 
             JSONObject showapi_res_body = resultData.getJSONObject("showapi_res_body");
 
@@ -77,8 +77,7 @@ public class Utility {
             aqiDetailBean.mPm2_5 = now_apiDetail.getInt("pm2_5") + "";
             aqiDetailBean.mPrimary_Pollutant = now_apiDetail.getString("primary_pollutant");
 
-            Logger.d("nowweather bean json" ,aqiDetailBean.toString());
-
+            Logger.d("nowweather bean json", aqiDetailBean.toString());
 
 
             //未来几天天气解析
@@ -96,7 +95,7 @@ public class Utility {
                 FutureWeatherBean futureWeatherBean = new FutureWeatherBean();
                 futureWeatherBean.mDay_Weather = futureWeather.getString("day_weather");
                 futureWeatherBean.mDay_Weather_Code = futureWeather.getString("day_weather_code");
-                futureWeatherBean.mNight_Weather =futureWeather.getString("night_weather");
+                futureWeatherBean.mNight_Weather = futureWeather.getString("night_weather");
                 futureWeatherBean.mNight_Weather_Code = futureWeather.getString("night_weather_code");
                 futureWeatherBean.mAir_Press = futureWeather.getString("air_press");
                 futureWeatherBean.mJiangShui = futureWeather.getString("jiangshui");
@@ -115,7 +114,7 @@ public class Utility {
                 //  Logger.d(mFutureWeatherBean.toString());
                 futureWeatherBeanList.add(futureWeatherBean);
             }
-            Logger.d(futureWeatherBeanList.size()+"");
+            Logger.d(futureWeatherBeanList.size() + "");
 
             cityInfoBean.mCityName_C5 = cityInfo.getString("c5");
             cityInfoBean.mPostCode_C12 = cityInfo.getString("c12");
@@ -148,7 +147,7 @@ public class Utility {
             todayWeatherBean.mNight_Wind_Direction = todayWeatherInfo.getString("night_wind_direction");
 
 
-            Logger.d("todayWeathrBean",todayWeatherBean.toString());
+            Logger.d("todayWeathrBean", todayWeatherBean.toString());
 
             JSONObject indexJsonData = todayWeatherInfo.getJSONObject("index");
             indexBean.mYhTitle = indexJsonData.getJSONObject("yh").getString("title");
@@ -216,7 +215,7 @@ public class Utility {
 
                 hourDatalist.add(hourDataBean);
             }
-            Logger.d("hourDataListSize",hourDatalist.size() + "");
+            Logger.d("hourDataListSize", hourDatalist.size() + "");
             Logger.d(hourDatalist.get(0).toString());
 
             weatherBean.setmNowWeatherBean(nowWeatherBean);
@@ -232,6 +231,36 @@ public class Utility {
             e.printStackTrace();
         }
 
+        return null;
+    }
+
+    public static String weakDayInfliter(String weekDay) {
+        switch (weekDay) {
+
+            case "1":
+                return "星期一";
+
+            case "2":
+                return "星期二";
+
+            case "3":
+                return "星期三";
+
+            case "4":
+                return "星期四";
+
+            case "5":
+                return "星期五";
+
+            case "6":
+                return "星期六";
+
+            case "7":
+                return "星期日";
+            default:
+                break;
+
+        }
         return null;
     }
 }

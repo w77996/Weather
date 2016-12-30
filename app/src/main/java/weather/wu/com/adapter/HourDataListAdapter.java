@@ -1,11 +1,15 @@
 package weather.wu.com.adapter;
 
 import android.content.Context;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
 
 import org.w3c.dom.Text;
 
@@ -15,6 +19,8 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.BindViews;
 import butterknife.ButterKnife;
+import weather.wu.com.bean.HourDataBean;
+import weather.wu.com.utils.SystemUtils;
 import weather.wu.com.weather.R;
 
 /**
@@ -23,23 +29,31 @@ import weather.wu.com.weather.R;
 public class HourDataListAdapter extends RecyclerView.Adapter<HourDataListAdapter.HourDataListViewHolder> {
 
     private  Context context;
-    private  List<String> datas =new ArrayList<>();
+    private  List<HourDataBean> datas =new ArrayList<>();
+   /* private int mDisplayHeight;
+    private int mDisplayWideth;*/
 
-    public HourDataListAdapter(Context mContext, List<String> datas) {
+    public HourDataListAdapter(Context mContext, List<HourDataBean> datas) {
         this.context = mContext;
         this.datas = datas;
+        /*this.mDisplayHeight = SystemUtils.getDisplayHeight(mContext);
+        this.mDisplayWideth = SystemUtils.getDisplayWidth(mContext);*/
     }
 
     @Override
     public HourDataListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View hourDataListItemView = View.inflate(context, R.layout.hourdatalist_item,null);
+
         return new HourDataListViewHolder(hourDataListItemView);
     }
 
     @Override
     public void onBindViewHolder(HourDataListViewHolder holder, int position) {
-            String data = datas.get(position);
-          holder.mHourDataListTemptureTime.setText(data);
+            HourDataBean hourDataBean = datas.get(position);
+            holder.mHourDataListTemptureTime.setText(hourDataBean.getmTemperature_Time());
+            Glide.with(context).load(hourDataBean.getmWeather_Pic()).into(holder.mHourDataWeatherImg);
+            holder.mHourDataTempture.setText(hourDataBean.getmTemperature());
+            holder.mHourDataWind.setText(hourDataBean.getmWind_Direction()+hourDataBean.getmWind_Power());
     }
 
     @Override

@@ -1,21 +1,25 @@
 package weather.wu.com.weather;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.orhanobut.logger.Logger;
 
 import java.io.IOException;
@@ -29,6 +33,7 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 import weather.wu.com.adapter.HourDataListAdapter;
+import weather.wu.com.bean.FutureWeatherBean;
 import weather.wu.com.bean.WeatherBean;
 import weather.wu.com.utils.HttpUtil;
 import weather.wu.com.utils.SystemUtils;
@@ -38,19 +43,55 @@ import weather.wu.com.utils.Utility;
  *
  */
 public class MainActivity extends AppCompatActivity {
+    //标题栏按钮
     @BindView(R.id.nav_button)
     Button mNavButton;
+    //下拉刷新控件
     @BindView(R.id.swipe_refresh)
     SwipeRefreshLayout mSwipeRefresh;
+    //侧滑控件
     @BindView(R.id.drawer_layout)
     DrawerLayout mDrawerLayout;
-    private int mNowWeatherHeight = -1;
+    //最后一次更新时间
+    @BindView(R.id.last_upate_text)
+    TextView mLastUpateText;
+    //空气质量
+    @BindView(R.id.now_weather_air_quality)
+    TextView mNowWeatherAirQuality;
+    //空气指数
+    @BindView(R.id.now_weather_air_index)
+    TextView mNowWeatherAirIndex;
+   ;
+    //当天最高气温
+    @BindView(R.id.now_weather_hight_tempture)
+    TextView mNowWeatherHightTempture;
+    //当天最低气温
+    @BindView(R.id.now_weather_low_tempture)
+    TextView mNowWeatherLowTempture;
+
+    //当前气温
+    @BindView(R.id.now_weather_tempeture)
+    TextView mNowWeatherTempeture;
+
+    //当天天气状态
+    @BindView(R.id.now_weather_condition_tv)
+    TextView mNowWeatherCondition;
+    //当前天气图标
+    @BindView(R.id.now_weather_img)
+    ImageView mNowWeather;
+
     @BindView(R.id.main_now_weather)
     public RelativeLayout mNowWeatherRelativeLayout;
     @BindView(R.id.weather_scrollview_layout)
     public ScrollView mScrollView;
     @BindView(R.id.hourdata_recyclerview)
     public RecyclerView mRecyclerView;
+    @BindView(R.id.forecast_layout)
+    public LinearLayout mForecastLayout;
+
+    private int mNowWeatherHeight = -1;
+    private int DisplayHeight;
+    private int DisplayWideth;
     private Context mContext = MainActivity.this;
     private HourDataListAdapter mHourDataListAdapter;
     private List<String> datas;
@@ -63,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        initData();
+        // initData();
         initView();
         mSwipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -72,38 +113,6 @@ public class MainActivity extends AppCompatActivity {
                 requestWeather("广州");
             }
         });
-
-       /*  Logger.d(HttpUtil.address);
-
-       HttpUtil.sendOkHttpRequest(a, new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-                Logger.e(e);
-            }
-
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                 String responseText = response.body().string();
-                Logger.d(responseText);
-
-            }
-        });*/
-      /*  HttpUtil.sendOkHttpRequest(a, new Callback() {
-
-            @Override
-            public void onFailure(Call call, IOException e) {
-                Logger.e(e);
-                e.printStackTrace();
-            }
-
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                Logger.json(response.toString());
-
-              //  Log.d("json",response.toString());
-                System.out.print(response.toString());
-            }
-        });*/
     }
 
     private void initData() {
@@ -121,9 +130,7 @@ public class MainActivity extends AppCompatActivity {
         // mScrollView = (ScrollView)findViewById(R.id.weather_scrollview_layout);
         mScrollView.smoothScrollTo(0, 0);
         //   mRecyclerView = (RecyclerView)findViewById(R.id.hourdata_recyclerview);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, true));
-        mRecyclerView.setAdapter(new HourDataListAdapter(mContext, datas));
-        mRecyclerView.scrollToPosition(datas.size() - 1);
+        //  mForecastLayout = (LinearLayout)findViewById(R.id.forecast_layout);
         mSwipeRefresh.setColorSchemeResources(R.color.color_main);
 
         //NowWeather主RelativeLayout中的RecycleView
@@ -145,32 +152,34 @@ public class MainActivity extends AppCompatActivity {
        Log.e("Log System.getActionBarHeight",);*/
         // mNowWeatherHeight高度=屏幕高度-标题栏高度-状态栏高度
         mNowWeatherHeight = SystemUtils.getDisplayHeight(mContext) - SystemUtils.getActionBarSize(mContext) - SystemUtils.getStatusBarHeight(mContext);
-
+        DisplayHeight = SystemUtils.getDisplayHeight(mContext);
+        DisplayWideth = SystemUtils.getDisplayWidth(mContext);
         //设置当前天气信息RelativeLayout的高度
         mNowWeatherRelativeLayout.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, mNowWeatherHeight));
     }
+
     /**
-     * 根据天气id请求城市天气信息。
+     * 根据城市名请求城市天气信息。
      */
-    public void requestWeather( String cityName) {
+    public void requestWeather(String cityName) {
         String weatherUrl = "http://route.showapi.com/9-2?showapi_appid=28198&area=" + cityName + "&showapi_sign=bd9ad7a172ee4a5a8c57618a248c63e9"
                 + "&needMoreDay=1&needIndex=1&needHourData=1&need3HourForcast=1&needAlarm=1";
         HttpUtil.sendOkHttpRequest(weatherUrl, new Callback() {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                 String responseText = response.body().string();
-                 WeatherBean weather = Utility.handleWeatherResponse(responseText);
+                String responseText = response.body().string();
+                final WeatherBean weather = Utility.handleWeatherResponse(responseText);
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                       /* if (weather != null && "ok".equals(weather.status)) {
-                           *//* SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(MainActivity.this).edit();
+                        if (weather != null && "0".equals(weather.mShowapi_Res_Code)) {
+                        /*   *//* SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(MainActivity.this).edit();
                             editor.putString("weather", responseText);
-                            editor.apply();*//*
-                           // showWeatherInfo(weather);
+                            editor.apply();*//**/
+                            showWeatherInfo(weather);
                         } else {
-                            Toast.makeText(WeatherActivity.this, "获取天气信息失败", Toast.LENGTH_SHORT).show();
-                        }*/
+                            Toast.makeText(MainActivity.this, "获取天气信息失败", Toast.LENGTH_SHORT).show();
+                        }
                         mSwipeRefresh.setRefreshing(false);
                     }
                 });
@@ -188,8 +197,39 @@ public class MainActivity extends AppCompatActivity {
                 });
             }
         });
-      //  loadBingPic();
+        //  loadBingPic();
     }
+
+    private void showWeatherInfo(WeatherBean weather) {
+        mLastUpateText.setText(weather.getmNowWeatherBean().getmTemperature_Time());
+        mNowWeatherAirQuality.setText("空气" + weather.getmAqiDetailBean().getmQuality());
+        mNowWeatherAirIndex.setText("指数" + weather.getmAqiDetailBean().getmAqi());
+        mNowWeatherHightTempture.setText(weather.getmTodayWeatherBean().getmDay_Air_Temperature()+"°");
+        mNowWeatherLowTempture.setText(weather.getmTodayWeatherBean().getmNight_Air_Temperature()+"°");
+        mNowWeatherTempeture.setText(weather.getmNowWeatherBean().getmTemperature());
+        mNowWeatherCondition.setText(weather.getmNowWeatherBean().getmWeather());
+        Glide.with(this).load(weather.getmNowWeatherBean().getmWeather_Pic()).into(mNowWeather);
+
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, true));
+        mRecyclerView.setAdapter(new HourDataListAdapter(mContext, weather.getmHourDataList()));
+        mRecyclerView.scrollToPosition(weather.getmHourDataList().size() - 1);
+        mForecastLayout.removeAllViews();
+        for (FutureWeatherBean futureWeatherBean : weather.getmFutureWeatherBeen()) {
+            View view = LayoutInflater.from(this).inflate(R.layout.forecast_item, mForecastLayout, false);
+            view.setLayoutParams(new DrawerLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, DisplayHeight / 12));
+            TextView dataText = (TextView)view.findViewById(R.id.forecast_week_tv);
+            ImageView weatherImg = (ImageView) view.findViewById(R.id.forecast_icon);
+            TextView lowTempText = (TextView)view.findViewById(R.id.forecast_low_temp_tv);
+            TextView hightTempText = (TextView)view.findViewById(R.id.forecast_high_temp_tv);
+            dataText.setText(Utility.weakDayInfliter(futureWeatherBean.getmWeekDay()));
+            Glide.with(this).load(futureWeatherBean.getmDay_Weather_Pic()).into(weatherImg);
+            lowTempText.setText(futureWeatherBean.getmDay_Air_Temperature()+"°");
+            hightTempText.setText(futureWeatherBean.getmNight_Air_Temperature()+"°");
+            mForecastLayout.addView(view);
+        }
+        mForecastLayout.setLayoutParams((new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, DisplayHeight / 2)));
+    }
+
     @OnClick(R.id.nav_button)
     public void onClick() {
         mDrawerLayout.openDrawer(GravityCompat.START);
