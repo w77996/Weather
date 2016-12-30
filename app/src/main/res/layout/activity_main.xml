@@ -35,7 +35,7 @@
 
                     <include layout="@layout/main_hourlist"/>
 
-
+                    <include layout="@layout/main_forecast"/>
                     <!--<include layout="@layout/forecast" />
 
                     <include layout="@layout/aqi" />
@@ -59,12 +59,13 @@
         </LinearLayout>
         <LinearLayout
             android:id="@+id/choose_area_fagment"
-            android:layout_width="match_parent"
+            android:layout_width="200dp"
             android:layout_height="match_parent"
             android:orientation="horizontal"
             android:background="@android:color/white"
            android:layout_gravity="end"
             >
+            <include layout="@layout/right_menu"/>
         </LinearLayout>
     </android.support.v4.widget.DrawerLayout>
 
