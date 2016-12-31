@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
+        <TextView
+            android:id="@+id/PM2.5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:textColor="@color/md_grey_900_color_code"
+            android:text="PM2.5"/>
+        <TextView
+            android:layout_below="@+id/PM2.5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:text="主要污染物"/>
+        <TextView
+            android:id="@+id/air_pm2.5_index"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/unit"
+            android:layout_centerVertical="true"
+            android:paddingTop="5dp"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:textColor="@color/md_grey_900_color_code"
+            android:text="200"/>
+        <TextView
+            android:id="@+id/unit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="μ/m³"/>
+    </RelativeLayout>
+
+</LinearLayout>
