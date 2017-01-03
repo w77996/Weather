@@ -54,10 +54,9 @@
             android:id="@+id/main_left_menu"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:background="@android:color/white"
-            android:layout_gravity="start"
-            >
+            android:layout_gravity="start" >
             <include layout="@layout/main_left_menu"/>
         </LinearLayout>
         <LinearLayout

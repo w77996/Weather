@@ -31,4 +31,5 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:25.0.1'
     compile files('libs/showapi_sdk.jar')
     compile files('libs/android-async-http-1.4.6.jar')
+    compile 'com.zaaach:citypicker:1.1'
 }

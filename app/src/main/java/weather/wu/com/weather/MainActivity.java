@@ -2,6 +2,7 @@ package weather.wu.com.weather;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -9,12 +10,14 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -22,6 +25,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.orhanobut.logger.Logger;
+import com.zaaach.citypicker.CityPickerActivity;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -44,15 +48,33 @@ import weather.wu.com.utils.Utility;
  *
  */
 public class MainActivity extends Activity {
+
+    /**主控件初始化**/
     //标题栏按钮
     @BindView(R.id.nav_button)
     Button mNavButton;
+    @BindView(R.id.title_city)
+    TextView mTextViewTileCity;
     //下拉刷新控件
     @BindView(R.id.swipe_refresh)
     SwipeRefreshLayout mSwipeRefresh;
     //侧滑控件
     @BindView(R.id.drawer_layout)
     DrawerLayout mDrawerLayout;
+    //当前天气的RelativeLayout
+    @BindView(R.id.main_now_weather)
+    public RelativeLayout mNowWeatherRelativeLayout;
+    //整体布局的ScrollView
+    @BindView(R.id.weather_scrollview_layout)
+    public ScrollView mScrollView;
+    //半小时更新的RecyclerView
+    @BindView(R.id.hourdata_recyclerview)
+    public RecyclerView mRecyclerView;
+    //未来天气的Linearlayout
+    @BindView(R.id.forecast_layout)
+    public LinearLayout mForecastLayout;
+
+    /**NowWeather 控件初始化**/
     //最后一次更新时间
     @BindView(R.id.last_upate_text)
     TextView mLastUpateText;
@@ -62,18 +84,15 @@ public class MainActivity extends Activity {
     //空气指数
     @BindView(R.id.now_weather_air_index)
     TextView mNowWeatherAirIndex;
-   ;
     //当天最高气温
     @BindView(R.id.now_weather_hight_tempture)
     TextView mNowWeatherHightTempture;
     //当天最低气温
     @BindView(R.id.now_weather_low_tempture)
     TextView mNowWeatherLowTempture;
-
     //当前气温
     @BindView(R.id.now_weather_tempeture)
     TextView mNowWeatherTempeture;
-
     //当天天气状态
     @BindView(R.id.now_weather_condition_tv)
     TextView mNowWeatherCondition;
@@ -81,14 +100,20 @@ public class MainActivity extends Activity {
     @BindView(R.id.now_weather_img)
     ImageView mNowWeather;
 
-    @BindView(R.id.main_now_weather)
-    public RelativeLayout mNowWeatherRelativeLayout;
-    @BindView(R.id.weather_scrollview_layout)
-    public ScrollView mScrollView;
-    @BindView(R.id.hourdata_recyclerview)
-    public RecyclerView mRecyclerView;
-    @BindView(R.id.forecast_layout)
-    public LinearLayout mForecastLayout;
+    /**右侧菜单控件初始化**/
+
+    /**左侧菜单控件初始化**/
+    @BindView(R.id.left_edit_city)
+    LinearLayout mLinearLayoutEditCity;
+    @BindView(R.id.left_list_city_select)
+    ListView mListViewCity;
+    /**空气质量控件初始化**/
+    @BindView(R.id.air_weather_condition)
+    TextView mAirWeatherCondition;
+
+
+
+
 
     private int mNowWeatherHeight = -1;
     private int DisplayHeight;
@@ -96,6 +121,9 @@ public class MainActivity extends Activity {
     private Context mContext = MainActivity.this;
     private HourDataListAdapter mHourDataListAdapter;
     private List<String> datas;
+
+    private static final int REQUEST_CODE_PICK_CITY = 0;
+    //启动
     //  String json;
     String a = "http://route.showapi.com/9-2?showapi_appid=28198&area=广州&showapi_sign=bd9ad7a172ee4a5a8c57618a248c63e9&needMoreDay=1&needIndex=1&needHourData=1&need3HourForcast=1&needAlarm=1";
     private List<String> listData = new ArrayList<>();
@@ -107,13 +135,7 @@ public class MainActivity extends Activity {
         ButterKnife.bind(this);
         // initData();
         initView();
-        mSwipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                //HttpUtil.requestWeather("广州");
-                requestWeather("深圳");
-            }
-        });
+
     }
 
     private void initData() {
@@ -157,6 +179,14 @@ public class MainActivity extends Activity {
         DisplayWideth = SystemUtils.getDisplayWidth(mContext);
         //设置当前天气信息RelativeLayout的高度
         mNowWeatherRelativeLayout.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, mNowWeatherHeight));
+        mSwipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                //HttpUtil.requestWeather("广州");
+                requestWeather("深圳");
+            }
+        });
+
     }
 
     /**
@@ -170,13 +200,18 @@ public class MainActivity extends Activity {
             public void onResponse(Call call, Response response) throws IOException {
                 String responseText = response.body().string();
                 final WeatherBean weather = Utility.handleWeatherResponse(responseText);
+
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+                        if(!mSwipeRefresh.isRefreshing()){
+                            mSwipeRefresh.setRefreshing(true);
+                        }
                         if (weather != null && "0".equals(weather.mShowapi_Res_Code)) {
                         /*   *//* SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(MainActivity.this).edit();
                             editor.putString("weather", responseText);
                             editor.apply();*//**/
+
                             showWeatherInfo(weather);
                         } else {
                             Toast.makeText(MainActivity.this, "获取天气信息失败", Toast.LENGTH_SHORT).show();
@@ -202,6 +237,7 @@ public class MainActivity extends Activity {
     }
 
     private void showWeatherInfo(WeatherBean weather) {
+        mTextViewTileCity.setText(weather.getmCityName());
         mLastUpateText.setText(weather.getmNowWeatherBean().getmTemperature_Time());
         mNowWeatherAirQuality.setText("空气" + weather.getmAqiDetailBean().getmQuality());
         mNowWeatherAirIndex.setText("指数" + weather.getmAqiDetailBean().getmAqi());
@@ -232,7 +268,27 @@ public class MainActivity extends Activity {
     }
 
     @OnClick(R.id.nav_button)
-    public void onClick() {
+    public void onOpenDrawerLayout() {
         mDrawerLayout.openDrawer(GravityCompat.START);
+    }
+    @OnClick(R.id.title_city)
+    public void onSelectCity() {
+
+        startActivityForResult(new Intent(MainActivity.this, CityPickerActivity.class),
+                REQUEST_CODE_PICK_CITY);
+    }
+
+    //重写onActivityResult方法
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_CODE_PICK_CITY && resultCode == RESULT_OK){
+            if (data != null){
+                String city = data.getStringExtra(CityPickerActivity.KEY_PICKED_CITY);
+                // resultTV.setText("当前选择：" + city);
+                Logger.d(city);
+                requestWeather(city);
+
+            }
+        }
     }
 }

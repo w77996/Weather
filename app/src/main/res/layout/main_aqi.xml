@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/air_linearlayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
@@ -11,6 +12,7 @@
         android:orientation="vertical"
         >
         <TextView
+            android:id="@+id/air_weather_condition"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -25,12 +27,13 @@
             android:text="空气质量"
             android:textSize="12sp" />
         <TextView
+            android:id="@+id/aqi_primary_pollutant"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
             android:textColor="@color/md_grey_800_color_code"
             android:gravity="center"
-            android:text="主要污染物:PM2.5"
+            android:text="主要污染物:     PM2.5"
             android:textSize="15sp"/>
     </LinearLayout>
 
@@ -238,7 +241,6 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_weight="1">
-
             <TextView
                 android:id="@+id/O3"
                 android:layout_width="wrap_content"
