@@ -30,20 +30,20 @@ public class HourDataListAdapter extends RecyclerView.Adapter<HourDataListAdapte
 
     private  Context context;
     private  List<HourDataBean> datas =new ArrayList<>();
-   /* private int mDisplayHeight;
-    private int mDisplayWideth;*/
+    private int mDisplayHeight;
+    private int mDisplayWideth;
 
     public HourDataListAdapter(Context mContext, List<HourDataBean> datas) {
         this.context = mContext;
         this.datas = datas;
-        /*this.mDisplayHeight = SystemUtils.getDisplayHeight(mContext);
-        this.mDisplayWideth = SystemUtils.getDisplayWidth(mContext);*/
+        this.mDisplayHeight = SystemUtils.getDisplayHeight(mContext);
+        this.mDisplayWideth = SystemUtils.getDisplayWidth(mContext);
     }
 
     @Override
     public HourDataListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View hourDataListItemView = View.inflate(context, R.layout.hourdatalist_item,null);
-
+        hourDataListItemView.setLayoutParams(new LinearLayout.LayoutParams(mDisplayWideth/5, ViewGroup.LayoutParams.MATCH_PARENT));
         return new HourDataListViewHolder(hourDataListItemView);
     }
 

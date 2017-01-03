@@ -36,6 +36,8 @@
                     <include layout="@layout/main_hourlist"/>
 
                     <include layout="@layout/main_forecast"/>
+
+                    <include layout="@layout/main_aqi"/>
                     <!--<include layout="@layout/main_forecast" />
 
                     <include layout="@layout/aqi" />
@@ -49,23 +51,24 @@
         </android.support.v4.widget.SwipeRefreshLayout>
 
         <LinearLayout
-            android:id="@+id/choose_area_fragment"
+            android:id="@+id/main_left_menu"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
-            android:background="@android:color/black"
+            android:background="@android:color/white"
             android:layout_gravity="start"
             >
+            <include layout="@layout/main_left_menu"/>
         </LinearLayout>
         <LinearLayout
-            android:id="@+id/choose_area_fagment"
-            android:layout_width="200dp"
+            android:id="@+id/main_right_menu"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
             android:background="@android:color/white"
            android:layout_gravity="end"
             >
-            <include layout="@layout/right_menu"/>
+            <include layout="@layout/main_right_menu"/>
         </LinearLayout>
     </android.support.v4.widget.DrawerLayout>
 

@@ -1,5 +1,6 @@
 package weather.wu.com.weather;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
@@ -42,7 +43,7 @@ import weather.wu.com.utils.Utility;
 /**
  *
  */
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
     //标题栏按钮
     @BindView(R.id.nav_button)
     Button mNavButton;

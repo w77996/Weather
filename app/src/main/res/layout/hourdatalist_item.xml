@@ -3,7 +3,6 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="20dp"
-
     >
     <TextView
         android:id="@+id/hourdata_tempture_time"
@@ -17,7 +16,6 @@
         android:id="@+id/hourdata_weather_img"
         android:layout_width="55dp"
         android:layout_height="55dp"
-        android:layout_weight="1"
         android:layout_gravity="center"
         android:gravity="center"
         android:src="@drawable/ic_default_big"/>
