@@ -1,81 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/main_now_weather"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:background="@color/md_light_blue_300_color_code"
-    android:orientation="vertical">
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
 
-    <TextView
-        android:id="@+id/last_upate_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp"
-        android:text="--:-- --"
-        android:textColor="@color/md_blue_grey_500_color_code"
-        android:textSize="16sp" />
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:background="@android:drawable/screen_background_light_transparent"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginTop="20dp"
+    card_view:cardCornerRadius="8dp"
+    card_view:cardElevation="8dp">
 
     <RelativeLayout
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/last_upate_text"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp"
-        android:gravity="right">
+        android:id="@+id/main_now_weather"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/last_upate_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:text="--:-- --"
+            android:textColor="@color/md_blue_grey_500_color_code"
+            android:textSize="16sp" />
+
+        <RelativeLayout
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/last_upate_text"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:gravity="right">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/now_weather_air_quality"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:text="空气--"
+                android:layout_alignParentRight="true"
+                android:textColor="@color/md_grey_900_color_code" />
+
+            <TextView
+                android:id="@+id/now_weather_air_index"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/now_weather_air_quality"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="right"
+                android:text="指数--"
+                android:textColor="@color/md_grey_900_color_code" />
+
+        </RelativeLayout>
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:id="@+id/now_weather_img"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_above="@+id/now_weather_condition_tv"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/ic_default_big" />
 
         <TextView
-            android:id="@+id/now_weather_air_quality"
+            android:id="@+id/now_weather_condition_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:text="空气--"
-            android:textColor="@color/md_white_color_code" />
-
-        <TextView
-            android:id="@+id/now_weather_air_index"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/now_weather_air_quality"
-            android:layout_gravity="right"
-            android:text="指数--"
-            android:textColor="@color/md_white_color_code" />
-
-    </RelativeLayout>
-
-    <ImageView
-        android:id="@+id/now_weather_img"
-        android:layout_width="128dp"
-        android:layout_height="128dp"
-        android:layout_above="@+id/now_weather_condition_tv"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/ic_default_big" />
-
-    <TextView
-        android:id="@+id/now_weather_condition_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:gravity="center"
-        android:text="- -"
-        android:textColor="@color/md_white_color_code"
-
-        android:textSize="45sp" />
-
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="- -"
+            android:textColor="@color/md_grey_900_color_code"
+            android:textSize="30sp" />
 
 
         <ImageView
             android:id="@+id/temp_high_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
             android:layout_above="@+id/now_weather_tempeture"
+            android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:layout_marginLeft="20dp"
             android:paddingTop="5dp"
@@ -85,7 +99,7 @@
             android:id="@+id/now_weather_hight_tempture"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-           android:layout_alignLeft="@+id/temp_high_icon"
+            android:layout_alignLeft="@+id/temp_high_icon"
             android:layout_alignTop="@+id/temp_high_icon"
             android:layout_marginLeft="10dp"
             android:text="- -°"
@@ -95,9 +109,9 @@
             android:id="@+id/temp_low_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_above="@+id/now_weather_tempeture"
             android:layout_centerVertical="true"
             android:layout_toLeftOf="@+id/degree_icon"
-            android:layout_above="@+id/now_weather_tempeture"
             android:paddingTop="5dp"
             android:src="@drawable/temp_low" />
 
@@ -105,35 +119,37 @@
             android:id="@+id/now_weather_low_tempture"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/temp_low_icon"
             android:layout_alignTop="@+id/temp_low_icon"
-            android:paddingLeft="10dp"
             android:layout_marginRight="10dp"
+            android:layout_toRightOf="@+id/temp_low_icon"
+            android:paddingLeft="10dp"
+            android:textColor="@color/md_grey_900_color_code"
             android:text="- -°"
             android:textSize="19sp" />
 
 
-    <TextView
-        android:id="@+id/now_weather_tempeture"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/md_white_color_code"
-        android:layout_alignParentBottom="true"
-        android:layout_marginLeft="10dp"
-        android:text="- -"
-        android:textSize="120sp" />
+        <TextView
+            android:id="@+id/now_weather_tempeture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="10dp"
+            android:text="- -"
+            android:textColor="@color/md_grey_900_color_code"
+            android:textSize="100sp" />
 
-    <ImageView
-        android:id="@+id/degree_icon"
-        android:layout_width="26dp"
-        android:layout_height="26dp"
-        android:layout_alignTop="@id/now_weather_tempeture"
-        android:layout_marginBottom="10.0dip"
-        android:layout_marginLeft="5.0dip"
-        android:layout_marginRight="14.0dip"
-        android:layout_marginTop="30.0dip"
-        android:layout_toRightOf="@id/now_weather_tempeture"
-        android:src="@drawable/big_temp_degree" />
+        <ImageView
+            android:id="@+id/degree_icon"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_alignTop="@id/now_weather_tempeture"
+            android:layout_marginBottom="10.0dip"
+            android:layout_marginLeft="5.0dip"
+            android:layout_marginRight="14.0dip"
+            android:layout_marginTop="30.0dip"
+            android:layout_toRightOf="@id/now_weather_tempeture"
+            android:src="@drawable/big_temp_degree" />
 
 
-</RelativeLayout>
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

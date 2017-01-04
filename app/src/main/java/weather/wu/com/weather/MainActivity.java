@@ -1,6 +1,7 @@
 package weather.wu.com.weather;
 
 import android.app.Activity;
+import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,13 +9,16 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -37,10 +41,13 @@ import butterknife.OnClick;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
+import weather.wu.com.adapter.CityListAdapter;
 import weather.wu.com.adapter.HourDataListAdapter;
 import weather.wu.com.bean.FutureWeatherBean;
 import weather.wu.com.bean.WeatherBean;
 import weather.wu.com.utils.HttpUtil;
+import weather.wu.com.utils.SharedPreferencesUtils;
+import weather.wu.com.utils.SpUtils;
 import weather.wu.com.utils.SystemUtils;
 import weather.wu.com.utils.Utility;
 
@@ -73,6 +80,13 @@ public class MainActivity extends Activity {
     //未来天气的Linearlayout
     @BindView(R.id.forecast_layout)
     public LinearLayout mForecastLayout;
+    //背景的图片
+    @BindView(R.id.back_pic_img)
+    public ImageView mImageViewBack;
+    @BindView(R.id.main_left_menu)
+    public LinearLayout mLinearLayoutLeftMenu;
+    @BindView(R.id.main_right_menu)
+    public LinearLayout mLinearLayoutRightMenu;
 
     /**NowWeather 控件初始化**/
     //最后一次更新时间
@@ -121,31 +135,33 @@ public class MainActivity extends Activity {
     private Context mContext = MainActivity.this;
     private HourDataListAdapter mHourDataListAdapter;
     private List<String> datas;
-
+    public CityListAdapter mCityListAdapter;
     private static final int REQUEST_CODE_PICK_CITY = 0;
     //启动
     //  String json;
     String a = "http://route.showapi.com/9-2?showapi_appid=28198&area=广州&showapi_sign=bd9ad7a172ee4a5a8c57618a248c63e9&needMoreDay=1&needIndex=1&needHourData=1&need3HourForcast=1&needAlarm=1";
     private List<String> listData = new ArrayList<>();
-
+    private List<String> mListCity = new ArrayList<>();
+    SharedPreferencesUtils sharedPreferencesUtils;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        // initData();
+         initData();
         initView();
-
     }
 
     private void initData() {
-        datas = new ArrayList<String>();
-        for (int i = 0; i < 20; i++) {
-            datas.add("ccc" + i);
-        }
+        mListCity.add("深圳");
     }
 
     private void initView() {
+
+      /*  if(! SpUtils.getBoolean(getApplicationContext(),"first_start",true)){
+            startActivity(new Intent(this,CityPickerActivity.class));
+            //sharedPreferencesUtils.put("first_start",true);
+        }*/
         //  = SystemUtils.getDisplayHeight(getActivity());
         // Logger.d("hello");
         //NowWeather主RelativeLayout
@@ -178,14 +194,20 @@ public class MainActivity extends Activity {
         DisplayHeight = SystemUtils.getDisplayHeight(mContext);
         DisplayWideth = SystemUtils.getDisplayWidth(mContext);
         //设置当前天气信息RelativeLayout的高度
-        mNowWeatherRelativeLayout.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, mNowWeatherHeight));
-        mSwipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+        mNowWeatherRelativeLayout.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, mNowWeatherHeight));
+        mImageViewBack.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT,mNowWeatherHeight/2));
+        mCityListAdapter = new  CityListAdapter(MainActivity.this,mListCity);
+      //  mLinearLayoutLeftMenu.setLayoutParams(new DrawerLayout.LayoutParams(DisplayWideth/2, DrawerLayout.LayoutParams.MATCH_PARENT));
+        mListViewCity.setAdapter(mCityListAdapter);
+        mListViewCity.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onRefresh() {
-                //HttpUtil.requestWeather("广州");
-                requestWeather("深圳");
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                mDrawerLayout.closeDrawer(GravityCompat.START);
+                requestWeather(mListCity.get(position));
+
             }
         });
+
 
     }
 
@@ -195,6 +217,7 @@ public class MainActivity extends Activity {
     public void requestWeather(String cityName) {
         String weatherUrl = "http://route.showapi.com/9-2?showapi_appid=28198&area=" + cityName + "&showapi_sign=bd9ad7a172ee4a5a8c57618a248c63e9"
                 + "&needMoreDay=1&needIndex=1&needHourData=1&need3HourForcast=1&needAlarm=1";
+        mScrollView.smoothScrollTo(0, 0);
         HttpUtil.sendOkHttpRequest(weatherUrl, new Callback() {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
@@ -283,8 +306,13 @@ public class MainActivity extends Activity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_CODE_PICK_CITY && resultCode == RESULT_OK){
             if (data != null){
+             /*   if(SpUtils.getBoolean(getApplicationContext(),"first_start",true)){
+                    sharedPreferencesUtils.put("first_start",false);
+                }*/
                 String city = data.getStringExtra(CityPickerActivity.KEY_PICKED_CITY);
                 // resultTV.setText("当前选择：" + city);
+                mListCity.add(city);
+                mCityListAdapter.notifyDataSetChanged();
                 Logger.d(city);
                 requestWeather(city);
 

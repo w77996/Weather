@@ -12,7 +12,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_weight">1</item>
         <item name="android:textColor">@color/md_blue_grey_400_color_code</item>
-        <item name="android:gravity">left|center_horizontal</item>
+        <item name="android:gravity">left|center_horizontal|center</item>
         <item name="android:layout_gravity">left</item>
         <item name="android:textSize">17sp</item>
         <item name="android:layout_margin">5dp</item>
