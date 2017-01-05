@@ -1,6 +1,8 @@
 package weather.wu.com.bean;
 
 
+import org.litepal.crud.DataSupport;
+
 /**
  * Created by 吴海辉 on 2016/12/1.
  *  "aqiDetail":{
@@ -17,7 +19,7 @@ package weather.wu.com.bean;
  "o3_8h":66,
  "primary_pollutant":""
  */
-public class AqiDetailBean  {
+public class AqiDetailBean  extends DataSupport{
         public String mAqi;
         public String mCo;
         public String mSo2;

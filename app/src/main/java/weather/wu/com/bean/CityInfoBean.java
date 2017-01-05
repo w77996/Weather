@@ -1,6 +1,7 @@
 package weather.wu.com.bean;
 
 
+import org.litepal.crud.DataSupport;
 
 /**
  * Created by 吴海辉 on 2016/12/1.
@@ -25,7 +26,7 @@ package weather.wu.com.bean;
          "c15": "43"
  },
  */
-public class CityInfoBean  {
+public class CityInfoBean   extends DataSupport {
     public String mCityName_C5;//城市名
     public String mPostCode_C12;//邮编
     public String mLongitude;

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <litepal>
+    <dbname value="weather" ></dbname>
+
+    <version value="1" ></version>
+
+    <list>
+        <mapping class="weather.wu.com.bean.AqiDetailBean"></mapping>
+        <mapping class="weather.wu.com.bean.CityInfoBean"></mapping>
+        <mapping class="weather.wu.com.bean.FutureWeatherBean"></mapping>
+        <mapping class="weather.wu.com.bean.HourDataBean"></mapping>
+        <mapping class="weather.wu.com.bean.IndexBean"></mapping>
+        <mapping class="weather.wu.com.bean.NowWeatherBean"></mapping>
+        <mapping class="weather.wu.com.bean.TodayWeatherBean"></mapping>
+        <mapping class="weather.wu.com.bean.WeatherBean"></mapping>
+
+
+
+    </list>
+</litepal>

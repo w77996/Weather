@@ -3,6 +3,7 @@
     package="weather.wu.com.weather">
 
     <application
+        android:name="weather.wu.com.WeatherApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"

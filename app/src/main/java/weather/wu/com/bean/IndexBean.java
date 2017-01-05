@@ -1,6 +1,7 @@
 package weather.wu.com.bean;
 
 
+import org.litepal.crud.DataSupport;
 
 /**
  * Created by 吴海辉 on 2016/12/2.
@@ -100,7 +101,7 @@ package weather.wu.com.bean;
  }
  },
  */
-public class IndexBean  {
+public class IndexBean   extends DataSupport {
     public String mCityName;
     public String mYhTitle;
     public String mYhDesc;

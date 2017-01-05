@@ -1,6 +1,7 @@
 package weather.wu.com.bean;
 
 
+import org.litepal.crud.DataSupport;
 
 /**
  * Created by Administrator on 2016/12/2.
@@ -29,7 +30,7 @@ package weather.wu.com.bean;
                  "night_wind_direction":"无持续风向"
                  },
  */
-public class TodayWeatherBean  {
+public class TodayWeatherBean   extends DataSupport {
     public String mDay_Weather;
     public String mDay_Weather_Code;
     public String mDay_Weather_Pic;

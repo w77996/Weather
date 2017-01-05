@@ -33,6 +33,7 @@ public class Utility {
             List<HourDataBean> hourDatalist = new ArrayList<HourDataBean>();
             WeatherBean weatherBean = new WeatherBean();
             JSONObject resultData = new JSONObject(response);
+
             int showapi_res_code = resultData.getInt("showapi_res_code");
             weatherBean.setmShowapi_Res_Code(showapi_res_code + "");
             Logger.e(showapi_res_code + "");
@@ -61,7 +62,7 @@ public class Utility {
             nowWeatherBean.mWeather_Pic = nowData.getString("weather_pic");
             nowWeatherBean.mWeather = nowData.getString("weather");
             nowWeatherBean.mTemperature = nowData.getString("temperature");
-            //   mNowWeatherBean.save();
+            nowWeatherBean.save();
             // parseAqiDetailJsonData(now_apiDetail);
             Logger.d("nowweather bean json", nowWeatherBean.toString());
 
@@ -79,7 +80,7 @@ public class Utility {
 
             Logger.d("nowweather bean json", aqiDetailBean.toString());
 
-
+            aqiDetailBean.save();
             //未来几天天气解析
             JSONObject f1 = showapi_res_body.getJSONObject("f1");
             JSONObject f2 = showapi_res_body.getJSONObject("f2");
@@ -113,7 +114,9 @@ public class Utility {
                 futureWeatherBean.mDay = futureWeather.getString("day");
                 //  Logger.d(mFutureWeatherBean.toString());
                 futureWeatherBeanList.add(futureWeatherBean);
+                futureWeatherBean.save();
             }
+           // weatherBean.mFutureWeatherBeen = futureWeatherBeanList;
             Logger.d(futureWeatherBeanList.size() + "");
 
             cityInfoBean.mCityName_C5 = cityInfo.getString("c5");
@@ -124,6 +127,7 @@ public class Utility {
             cityInfoBean.mLongitude = cityInfo.getDouble("longitude") + "";
             cityInfoBean.mRadarCode_C16 = cityInfo.getString("c16") + "";
             weatherBean.setmCityName(cityInfoBean.getmCityName_C5());
+            cityInfoBean.save();
             Logger.d("citiInfo", cityInfoBean.toString());
 
             todayWeatherBean.mDay_Weather = todayWeatherInfo.getString("day_weather");
@@ -146,7 +150,7 @@ public class Utility {
             todayWeatherBean.mNight_Weather_Pic = todayWeatherInfo.getString("night_weather_pic");
             todayWeatherBean.mNight_Wind_Direction = todayWeatherInfo.getString("night_wind_direction");
 
-
+            todayWeatherBean.save();
             Logger.d("todayWeathrBean", todayWeatherBean.toString());
 
             JSONObject indexJsonData = todayWeatherInfo.getJSONObject("index");
@@ -198,7 +202,7 @@ public class Utility {
             indexBean.mPkTitle = indexJsonData.getJSONObject("pk").getString("title");
             indexBean.mPkDesc = indexJsonData.getJSONObject("pk").getString("desc");
 
-
+            indexBean.save();
             //  mWeatherBean.mTodayWeatherBean = todayWeatherBean;
             Logger.d("todayWeatherBean", indexBean.toString());
 
@@ -214,6 +218,7 @@ public class Utility {
                 hourDataBean.mWind_Power = hourDataJson.getString("wind_power");
 
                 hourDatalist.add(hourDataBean);
+                hourDataBean.save();
             }
             Logger.d("hourDataListSize", hourDatalist.size() + "");
             Logger.d(hourDatalist.get(0).toString());
@@ -225,7 +230,7 @@ public class Utility {
             weatherBean.setmFutureWeatherBeen(futureWeatherBeanList);
             weatherBean.setmTodayWeatherBean(todayWeatherBean);
             weatherBean.setmHourDataList(hourDatalist);
-
+            weatherBean.save();
             return weatherBean;
         } catch (JSONException e) {
             e.printStackTrace();

@@ -64,7 +64,7 @@
             android:layout_gravity="start" >
             <include layout="@layout/main_left_menu"/>
         </LinearLayout>
-        <LinearLayout
+       <!-- <LinearLayout
             android:id="@+id/main_right_menu"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -73,7 +73,7 @@
            android:layout_gravity="end"
             >
             <include layout="@layout/main_right_menu"/>
-        </LinearLayout>
+        </LinearLayout>-->
     </android.support.v4.widget.DrawerLayout>
 
 

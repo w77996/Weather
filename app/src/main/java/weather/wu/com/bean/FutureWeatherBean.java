@@ -1,6 +1,7 @@
 package weather.wu.com.bean;
 
 
+import org.litepal.crud.DataSupport;
 
 /**
  * Created by Administrator on 2016/12/2.
@@ -27,7 +28,7 @@ package weather.wu.com.bean;
  "night_weather_pic":"http://app1.showapi.com/weather/icon/night/01.png",
  "night_wind_direction":"无持续风向"
  */
-public class FutureWeatherBean  {
+public class FutureWeatherBean   extends DataSupport {
 
     public String mDay_Weather;
     public String mDay_Weather_Code;

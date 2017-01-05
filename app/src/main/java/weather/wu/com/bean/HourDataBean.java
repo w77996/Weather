@@ -1,5 +1,7 @@
 package weather.wu.com.bean;
 
+import org.litepal.crud.DataSupport;
+
 /**
          * Created by 吴海辉 on 2016/12/29.
          * "aqiDetail":{
@@ -27,7 +29,7 @@ package weather.wu.com.bean;
          "temperature":"11"
          },
  */
-public class HourDataBean {
+public class HourDataBean  extends DataSupport {
     public String mWind_Direction;
     public String mTemperature_Time;
     public String mWeather_Pic;

@@ -1,6 +1,7 @@
 package weather.wu.com.bean;
 
 
+import org.litepal.crud.DataSupport;
 
 /**
  * Created by 吴海辉 on 2016/12/1.
@@ -31,7 +32,7 @@ package weather.wu.com.bean;
  "temperature":"8"
  },
  */
-public class NowWeatherBean  {
+public class NowWeatherBean  extends DataSupport {
 
     public String mWeather_Code;
     public String mWind_Direction;

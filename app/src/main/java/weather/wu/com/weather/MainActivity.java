@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -28,8 +29,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
+import com.jeremyfeinstein.slidingmenu.lib.app.SlidingActivity;
 import com.orhanobut.logger.Logger;
 import com.zaaach.citypicker.CityPickerActivity;
+
+import org.litepal.tablemanager.Connector;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -54,7 +59,7 @@ import weather.wu.com.utils.Utility;
 /**
  *
  */
-public class MainActivity extends Activity {
+public class MainActivity extends SlidingActivity {
 
     /**主控件初始化**/
     //标题栏按钮
@@ -85,8 +90,8 @@ public class MainActivity extends Activity {
     public ImageView mImageViewBack;
     @BindView(R.id.main_left_menu)
     public LinearLayout mLinearLayoutLeftMenu;
-    @BindView(R.id.main_right_menu)
-    public LinearLayout mLinearLayoutRightMenu;
+    /*@BindView(R.id.main_right_menu)
+    public LinearLayout mLinearLayoutRightMenu;*/
 
     /**NowWeather 控件初始化**/
     //最后一次更新时间
@@ -144,11 +149,13 @@ public class MainActivity extends Activity {
     private List<String> mListCity = new ArrayList<>();
     SharedPreferencesUtils sharedPreferencesUtils;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-         initData();
+
+        SQLiteDatabase db = Connector.getDatabase();
+        initData();
         initView();
     }
 
@@ -167,6 +174,11 @@ public class MainActivity extends Activity {
         //NowWeather主RelativeLayout
         //   mNowWeatherRelativeLayout = (RelativeLayout)findViewById(R.id.main_now_weather);
         // mScrollView = (ScrollView)findViewById(R.id.weather_scrollview_layout);
+
+        SlidingMenu mRightMenu = getSlidingMenu();
+        setBehindContentView(R.layout.main_right_menu);
+        mRightMenu.setMode(SlidingMenu.RIGHT);
+
         mScrollView.smoothScrollTo(0, 0);
         //   mRecyclerView = (RecyclerView)findViewById(R.id.hourdata_recyclerview);
         //  mForecastLayout = (LinearLayout)findViewById(R.id.forecast_layout);
