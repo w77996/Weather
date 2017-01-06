@@ -48,6 +48,18 @@ public class FutureWeatherBean   extends DataSupport {
     public String mDay_Wind_Direction;
     public String mNight_Wind_Direction;
     public String mDay;
+    public WeatherBean mWeatherBan;
+
+
+    public WeatherBean getmWeatherBan() {
+        return mWeatherBan;
+    }
+
+    public void setmWeatherBan(WeatherBean mWeatherBan) {
+        this.mWeatherBan = mWeatherBan;
+    }
+
+
 
     public String getmDay_Weather() {
         return mDay_Weather;

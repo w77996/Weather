@@ -35,7 +35,16 @@ public class HourDataBean  extends DataSupport {
     public String mWeather_Pic;
     public String mTemperature;
     public String mWind_Power;
+    public  WeatherBean mWeatherBan;
 
+    public WeatherBean getmWeatherBan() {
+
+        return mWeatherBan;
+    }
+
+    public void setmWeatherBan(WeatherBean mWeatherBan) {
+        this.mWeatherBan = mWeatherBan;
+    }
     public String getmWind_Direction() {
         return mWind_Direction;
     }

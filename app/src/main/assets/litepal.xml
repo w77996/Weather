@@ -2,7 +2,7 @@
     <litepal>
     <dbname value="weather" ></dbname>
 
-    <version value="1" ></version>
+    <version value="2" ></version>
 
     <list>
         <mapping class="weather.wu.com.bean.AqiDetailBean"></mapping>

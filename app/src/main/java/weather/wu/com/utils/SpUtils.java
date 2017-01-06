@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
  */
 public class SpUtils {
     public static SharedPreferences sp;
+    public static String FIRST_START = "first_start";
     public static void putBoolean(Context context, String key, boolean value){
         if(sp==null){
             sp=context.getSharedPreferences("config",Context.MODE_PRIVATE);

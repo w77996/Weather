@@ -10,10 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
         <activity
             android:name="com.zaaach.citypicker.CityPickerActivity"
@@ -23,7 +20,10 @@
         <meta-data android:name="com.amap.api.v2.apikey"
             android:value="11136045834c5e98a06de9ac7af0b4ac"/>
         <activity android:name="weather.wu.com.activity.GudieActivity">
-
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
     <uses-permission android:name="android.permission.INTERNET" />

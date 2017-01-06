@@ -41,6 +41,9 @@ public class GudieActivity extends FragmentActivity implements ViewPager.OnPageC
             startActivity(new Intent(this,MainActivity.class));
             finish();
         }*/
+       /* if(!SpUtils.getBoolean(getApplication(),SpUtils.FIRST_START,true)){
+            startActivity(new Intent(GudieActivity.this,MainActivity.class));
+        }*/
 
 
         mAdapter = new GuideFragmentAdapter(getSupportFragmentManager());
@@ -62,18 +65,18 @@ public class GudieActivity extends FragmentActivity implements ViewPager.OnPageC
 
     @Override
     public void onPageSelected(int position) {
-            if(position!=4){
+           /* if(position!=4){
                 mBtnEnter.setVisibility(View.GONE);
-            }
+            }*/
     }
 
     @Override
     public void onPageScrollStateChanged(int state) {
 
     }
-    @OnClick(R.id.guide_btn)
+ /*   @OnClick(R.id.guide_btn)
     public void onEnter(View v){
         startActivity(new Intent(GudieActivity.this, MainActivity.class));
         finish();
-    }
+    }*/
 }

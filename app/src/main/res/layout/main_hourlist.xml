@@ -7,8 +7,6 @@
     android:clickable="true"
     android:foreground="?android:attr/selectableItemBackground"
     android:layout_marginTop="10dp"
-
-
     card_view:cardElevation="8dp">
 <android.support.v7.widget.RecyclerView
     android:id="@+id/hourdata_recyclerview"

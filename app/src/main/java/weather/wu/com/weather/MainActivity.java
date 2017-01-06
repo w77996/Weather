@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -29,11 +31,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.jeremyfeinstein.slidingmenu.lib.app.SlidingActivity;
 import com.orhanobut.logger.Logger;
 import com.zaaach.citypicker.CityPickerActivity;
 
+import org.litepal.crud.DataSupport;
 import org.litepal.tablemanager.Connector;
 
 import java.io.IOException;
@@ -131,9 +135,6 @@ public class MainActivity extends SlidingActivity {
     TextView mAirWeatherCondition;
 
 
-
-
-
     private int mNowWeatherHeight = -1;
     private int DisplayHeight;
     private int DisplayWideth;
@@ -142,20 +143,34 @@ public class MainActivity extends SlidingActivity {
     private List<String> datas;
     public CityListAdapter mCityListAdapter;
     private static final int REQUEST_CODE_PICK_CITY = 0;
+    public SQLiteDatabase db;
+    public DBThread mDBThread;
+    private static  Handler mHandler =new Handler(){
+        @Override
+        //当有消息发送出来的时候就执行Handler的这个方法
+        public void handleMessage(Message msg){
+            super.handleMessage(msg);
+            //只要执行到这里就关闭对话框
+            //pd.dismiss();
+        }
+    };
     //启动
     //  String json;
     String a = "http://route.showapi.com/9-2?showapi_appid=28198&area=广州&showapi_sign=bd9ad7a172ee4a5a8c57618a248c63e9&needMoreDay=1&needIndex=1&needHourData=1&need3HourForcast=1&needAlarm=1";
     private List<String> listData = new ArrayList<>();
     private List<String> mListCity = new ArrayList<>();
     SharedPreferencesUtils sharedPreferencesUtils;
+    private DBThread mThread;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        SQLiteDatabase db = Connector.getDatabase();
-        initData();
+         db = Connector.getDatabase();
+       /* mDBThread = new DBThread();
+        mDBThread.start();*/
+      //  initData();
         initView();
     }
 
@@ -165,10 +180,12 @@ public class MainActivity extends SlidingActivity {
 
     private void initView() {
 
-      /*  if(! SpUtils.getBoolean(getApplicationContext(),"first_start",true)){
-            startActivity(new Intent(this,CityPickerActivity.class));
+
+        if(SpUtils.getBoolean(getApplicationContext(),SpUtils.FIRST_START,true)){
+            startActivityForResult(new Intent(MainActivity.this, CityPickerActivity.class),
+                    REQUEST_CODE_PICK_CITY);
             //sharedPreferencesUtils.put("first_start",true);
-        }*/
+        }
         //  = SystemUtils.getDisplayHeight(getActivity());
         // Logger.d("hello");
         //NowWeather主RelativeLayout
@@ -178,7 +195,9 @@ public class MainActivity extends SlidingActivity {
         SlidingMenu mRightMenu = getSlidingMenu();
         setBehindContentView(R.layout.main_right_menu);
         mRightMenu.setMode(SlidingMenu.RIGHT);
-
+        mRightMenu.setBehindOffsetRes(R.dimen.slidingmenu_offset);
+        // 设置渐入渐出效果的值
+        mRightMenu.setFadeDegree(0.35f);
         mScrollView.smoothScrollTo(0, 0);
         //   mRecyclerView = (RecyclerView)findViewById(R.id.hourdata_recyclerview);
         //  mForecastLayout = (LinearLayout)findViewById(R.id.forecast_layout);
@@ -208,9 +227,9 @@ public class MainActivity extends SlidingActivity {
         //设置当前天气信息RelativeLayout的高度
         mNowWeatherRelativeLayout.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, mNowWeatherHeight));
         mImageViewBack.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT,mNowWeatherHeight/2));
-        mCityListAdapter = new  CityListAdapter(MainActivity.this,mListCity);
+
       //  mLinearLayoutLeftMenu.setLayoutParams(new DrawerLayout.LayoutParams(DisplayWideth/2, DrawerLayout.LayoutParams.MATCH_PARENT));
-        mListViewCity.setAdapter(mCityListAdapter);
+
         mListViewCity.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -280,7 +299,7 @@ public class MainActivity extends SlidingActivity {
         mNowWeatherLowTempture.setText(weather.getmTodayWeatherBean().getmNight_Air_Temperature()+"°");
         mNowWeatherTempeture.setText(weather.getmNowWeatherBean().getmTemperature());
         mNowWeatherCondition.setText(weather.getmNowWeatherBean().getmWeather());
-        Glide.with(this).load(weather.getmNowWeatherBean().getmWeather_Pic()).into(mNowWeather);
+        Glide.with(this).load(weather.getmNowWeatherBean().getmWeather_Pic()).diskCacheStrategy(DiskCacheStrategy.ALL).into(mNowWeather);
 
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, true));
         mRecyclerView.setAdapter(new HourDataListAdapter(mContext, weather.getmHourDataList()));
@@ -313,14 +332,31 @@ public class MainActivity extends SlidingActivity {
                 REQUEST_CODE_PICK_CITY);
     }
 
+    /**
+     * 开启线程对数据库进行操作
+     */
+    private static class DBThread extends Thread {
+        @Override
+        public void run() {
+            WeatherBean weatherBean = DataSupport.findFirst(WeatherBean.class);
+            if(weatherBean!=null){
+
+            }
+
+            mHandler.sendEmptyMessage(0);
+        }
+    }
     //重写onActivityResult方法
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_CODE_PICK_CITY && resultCode == RESULT_OK){
             if (data != null){
-             /*   if(SpUtils.getBoolean(getApplicationContext(),"first_start",true)){
-                    sharedPreferencesUtils.put("first_start",false);
-                }*/
+                if(SpUtils.getBoolean(getApplicationContext(),SpUtils.FIRST_START,true)){
+                    SpUtils.putBoolean(getApplicationContext(),SpUtils.FIRST_START,false);
+                }
+                Logger.d(SpUtils.getBoolean(getApplicationContext(),SpUtils.FIRST_START,true)+"");
+                mCityListAdapter = new  CityListAdapter(MainActivity.this,mListCity);
+                mListViewCity.setAdapter(mCityListAdapter);
                 String city = data.getStringExtra(CityPickerActivity.KEY_PICKED_CITY);
                 // resultTV.setText("当前选择：" + city);
                 mListCity.add(city);
