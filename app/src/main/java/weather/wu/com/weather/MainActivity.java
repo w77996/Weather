@@ -53,6 +53,7 @@ import okhttp3.Response;
 import weather.wu.com.adapter.CityListAdapter;
 import weather.wu.com.adapter.HourDataListAdapter;
 import weather.wu.com.bean.FutureWeatherBean;
+import weather.wu.com.bean.HourDataBean;
 import weather.wu.com.bean.WeatherBean;
 import weather.wu.com.utils.HttpUtil;
 import weather.wu.com.utils.SharedPreferencesUtils;
@@ -145,6 +146,8 @@ public class MainActivity extends SlidingActivity {
     private static final int REQUEST_CODE_PICK_CITY = 0;
     public SQLiteDatabase db;
     public DBThread mDBThread;
+    private List<FutureWeatherBean> fff = new ArrayList<FutureWeatherBean>();
+    private List<HourDataBean> hhh = new ArrayList<HourDataBean>();
     private static  Handler mHandler =new Handler(){
         @Override
         //当有消息发送出来的时候就执行Handler的这个方法
@@ -202,7 +205,16 @@ public class MainActivity extends SlidingActivity {
         //   mRecyclerView = (RecyclerView)findViewById(R.id.hourdata_recyclerview);
         //  mForecastLayout = (LinearLayout)findViewById(R.id.forecast_layout);
         mSwipeRefresh.setColorSchemeResources(R.color.color_main);
+        mSwipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                WeatherBean wList =  DataSupport.where("cityname = ?", "深圳").findFirst(WeatherBean.class);
+                fff = wList.getmFutureWeatherBeen();
 
+                Logger.d("深圳",fff.get(0).toString());
+
+            }
+        });
         //NowWeather主RelativeLayout中的RecycleView
         // mRecyclerView = (RecyclerView)findViewById(R.id.now_weather_recyclerview);
         //获取屏幕高度
@@ -342,7 +354,6 @@ public class MainActivity extends SlidingActivity {
             if(weatherBean!=null){
 
             }
-
             mHandler.sendEmptyMessage(0);
         }
     }
@@ -363,7 +374,7 @@ public class MainActivity extends SlidingActivity {
                 mCityListAdapter.notifyDataSetChanged();
                 Logger.d(city);
                 requestWeather(city);
-
+               // WeatherBean weatherBean = DataSupport.find(WeatherBean.class,);
             }
         }
     }
