@@ -255,6 +255,7 @@ public class MainActivity extends SlidingActivity {
         mNowWeatherHeight = SystemUtils.getDisplayHeight(mContext) - SystemUtils.getActionBarSize(mContext) - SystemUtils.getStatusBarHeight(mContext);
         DisplayHeight = SystemUtils.getDisplayHeight(mContext);
         DisplayWideth = SystemUtils.getDisplayWidth(mContext);
+        Logger.d(DisplayHeight+"  "+DisplayWideth);
         //设置当前天气信息RelativeLayout的高度
         mNowWeatherRelativeLayout.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, mNowWeatherHeight));
         mImageViewBack.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT,mNowWeatherHeight/2));
