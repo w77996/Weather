@@ -30,7 +30,7 @@ import org.litepal.crud.DataSupport;
                  "night_wind_direction":"无持续风向"
                  },
  */
-public class TodayWeatherBean   extends DataSupport {
+public class TodayWeatherBean  {
     public String mDay_Weather;
     public String mDay_Weather_Code;
     public String mDay_Weather_Pic;

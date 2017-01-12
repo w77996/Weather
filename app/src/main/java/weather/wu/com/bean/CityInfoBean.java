@@ -26,7 +26,7 @@ import org.litepal.crud.DataSupport;
          "c15": "43"
  },
  */
-public class CityInfoBean   extends DataSupport {
+public class CityInfoBean    {
     public String mCityName_C5;//城市名
     public String mPostCode_C12;//邮编
     public String mLongitude;

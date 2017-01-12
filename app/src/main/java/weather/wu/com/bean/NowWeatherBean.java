@@ -32,7 +32,7 @@ import org.litepal.crud.DataSupport;
  "temperature":"8"
  },
  */
-public class NowWeatherBean  extends DataSupport {
+public class NowWeatherBean  {
 
     public String mWeather_Code;
     public String mWind_Direction;

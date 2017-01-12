@@ -29,22 +29,13 @@ import org.litepal.crud.DataSupport;
          "temperature":"11"
          },
  */
-public class HourDataBean  extends DataSupport {
+public class HourDataBean   {
     public String mWind_Direction;
     public String mTemperature_Time;
     public String mWeather_Pic;
     public String mTemperature;
     public String mWind_Power;
-    public  WeatherBean mWeatherBan;
 
-    public WeatherBean getmWeatherBan() {
-
-        return mWeatherBan;
-    }
-
-    public void setmWeatherBan(WeatherBean mWeatherBan) {
-        this.mWeatherBan = mWeatherBan;
-    }
     public String getmWind_Direction() {
         return mWind_Direction;
     }

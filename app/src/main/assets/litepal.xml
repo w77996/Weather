@@ -5,16 +5,7 @@
     <version value="2" ></version>
 
     <list>
-        <mapping class="weather.wu.com.bean.AqiDetailBean"></mapping>
-        <mapping class="weather.wu.com.bean.CityInfoBean"></mapping>
-        <mapping class="weather.wu.com.bean.FutureWeatherBean"></mapping>
-        <mapping class="weather.wu.com.bean.HourDataBean"></mapping>
-        <mapping class="weather.wu.com.bean.IndexBean"></mapping>
-        <mapping class="weather.wu.com.bean.NowWeatherBean"></mapping>
-        <mapping class="weather.wu.com.bean.TodayWeatherBean"></mapping>
-        <mapping class="weather.wu.com.bean.WeatherBean"></mapping>
-
-
+        <mapping class="weather.wu.com.db.WeatherDB"></mapping>
 
     </list>
 </litepal>

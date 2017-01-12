@@ -19,7 +19,7 @@ import org.litepal.crud.DataSupport;
  "o3_8h":66,
  "primary_pollutant":""
  */
-public class AqiDetailBean  extends DataSupport{
+public class AqiDetailBean{
         public String mAqi;
         public String mCo;
         public String mSo2;

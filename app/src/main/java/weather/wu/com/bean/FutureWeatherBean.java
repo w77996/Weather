@@ -28,7 +28,7 @@ import org.litepal.crud.DataSupport;
  "night_weather_pic":"http://app1.showapi.com/weather/icon/night/01.png",
  "night_wind_direction":"无持续风向"
  */
-public class FutureWeatherBean   extends DataSupport {
+public class FutureWeatherBean    {
 
     public String mDay_Weather;
     public String mDay_Weather_Code;
@@ -48,16 +48,7 @@ public class FutureWeatherBean   extends DataSupport {
     public String mDay_Wind_Direction;
     public String mNight_Wind_Direction;
     public String mDay;
-    public WeatherBean mWeatherBan;
 
-
-    public WeatherBean getmWeatherBan() {
-        return mWeatherBan;
-    }
-
-    public void setmWeatherBan(WeatherBean mWeatherBan) {
-        this.mWeatherBan = mWeatherBan;
-    }
 
 
 

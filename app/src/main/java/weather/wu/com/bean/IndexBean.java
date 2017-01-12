@@ -101,7 +101,7 @@ import org.litepal.crud.DataSupport;
  }
  },
  */
-public class IndexBean   extends DataSupport {
+public class IndexBean  {
     public String mCityName;
     public String mYhTitle;
     public String mYhDesc;

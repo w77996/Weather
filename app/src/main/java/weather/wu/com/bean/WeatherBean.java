@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by Administrator on 2016/12/7.
  */
-public class WeatherBean   extends DataSupport {
+public class WeatherBean   {
     public String mCityName;
     public String mShowapi_Res_Code;
     public AqiDetailBean mAqiDetailBean;
