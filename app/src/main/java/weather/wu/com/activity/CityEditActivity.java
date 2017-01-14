@@ -50,8 +50,6 @@ public class CityEditActivity extends Activity {
             int type = msg.what;
             switch (type){
                 case 1:
-
-
                     mCityList = (List<CityEditBean>) msg.obj;
                     Logger.d(mCityList.size()+"");
                     mCityEditListAdapter = new CityEditListAdapter(CityEditActivity.this,mCityList);
@@ -105,6 +103,7 @@ public class CityEditActivity extends Activity {
                         0x3F, 0x25)));
                 // set item width
                 deleteItem.setWidth(90);
+
                 // set a icon
                 deleteItem.setIcon(R.drawable.ic_default_big);
                 // add to menu
@@ -120,10 +119,15 @@ public class CityEditActivity extends Activity {
                     case 0:
                         // open
                         Toast.makeText(getApplicationContext(), position + " menu click", Toast.LENGTH_SHORT).show();
-                        CityRmoveThread cityRmoveThread = new CityRmoveThread(mCityList.get(position).getmCityName());
-                        cityRmoveThread.start();
-                        mCityList.remove(position);
-                        mCityEditListAdapter.notifyDataSetChanged();
+                        if(mCityList.size()>1){
+                            CityRmoveThread cityRmoveThread = new CityRmoveThread(mCityList.get(position).getmCityName());
+                            cityRmoveThread.start();
+                            mCityList.remove(position);
+                            mCityEditListAdapter.notifyDataSetChanged();
+                        }else{
+                            Toast.makeText(getApplicationContext(), position + " 亲，删除了你看啥？", Toast.LENGTH_SHORT).show();
+                        }
+
                         break;
                 }
                 // false : 会关闭菜单; true ：不会关闭菜单

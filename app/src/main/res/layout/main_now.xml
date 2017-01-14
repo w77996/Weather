@@ -7,11 +7,11 @@
     android:clickable="true"
     android:foreground="?android:attr/selectableItemBackground"
     android:background="@android:drawable/screen_background_light_transparent"
-    android:layout_marginLeft="10dp"
-    android:layout_marginRight="10dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
     android:layout_marginTop="20dp"
-    card_view:cardCornerRadius="4dp"
-    card_view:cardElevation="4dp">
+    card_view:cardCornerRadius="3dp"
+    card_view:cardElevation="2dp">
 
     <RelativeLayout
         android:id="@+id/main_now_weather"
@@ -62,9 +62,7 @@
                 android:layout_gravity="right"
                 android:text="指数--"
                 android:textColor="@color/md_grey_900_color_code" />
-
         </RelativeLayout>
-
         <ImageView
             android:id="@+id/now_weather_img"
             android:layout_width="120dp"
@@ -72,7 +70,6 @@
             android:layout_above="@+id/now_weather_condition_tv"
             android:layout_centerHorizontal="true"
             android:src="@drawable/ic_default_big" />
-
         <TextView
             android:id="@+id/now_weather_condition_tv"
             android:layout_width="wrap_content"
@@ -82,8 +79,6 @@
             android:text="- -"
             android:textColor="@color/md_grey_900_color_code"
             android:textSize="30sp" />
-
-
         <ImageView
             android:id="@+id/temp_high_icon"
             android:layout_width="wrap_content"
@@ -94,7 +89,6 @@
             android:layout_marginLeft="20dp"
             android:paddingTop="5dp"
             android:src="@drawable/temp_high" />
-
         <TextView
             android:id="@+id/now_weather_hight_tempture"
             android:layout_width="wrap_content"
@@ -104,7 +98,6 @@
             android:layout_marginLeft="10dp"
             android:text="- -°"
             android:textSize="19sp" />
-
         <ImageView
             android:id="@+id/temp_low_icon"
             android:layout_width="wrap_content"
@@ -114,7 +107,6 @@
             android:layout_toLeftOf="@+id/degree_icon"
             android:paddingTop="5dp"
             android:src="@drawable/temp_low" />
-
         <TextView
             android:id="@+id/now_weather_low_tempture"
             android:layout_width="wrap_content"
@@ -126,8 +118,6 @@
             android:textColor="@color/md_grey_900_color_code"
             android:text="- -°"
             android:textSize="19sp" />
-
-
         <TextView
             android:id="@+id/now_weather_tempeture"
             android:layout_width="wrap_content"
@@ -135,10 +125,9 @@
             android:layout_alignParentBottom="true"
             android:layout_marginLeft="10dp"
             android:layout_marginBottom="8dp"
-            android:text="- -"
+            android:text="23"
             android:textColor="@color/md_grey_900_color_code"
             android:textSize="100sp" />
-
         <ImageView
             android:id="@+id/degree_icon"
             android:layout_width="26dp"

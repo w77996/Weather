@@ -152,7 +152,7 @@ public class MainActivity extends SlidingActivity {
     //  String json;
     String a = "http://route.showapi.com/9-2?showapi_appid=28198&area=广州&showapi_sign=bd9ad7a172ee4a5a8c57618a248c63e9&needMoreDay=1&needIndex=1&needHourData=1&need3HourForcast=1&needAlarm=1";
     private List<String> listData = new ArrayList<>();
-    private static List<String> mListCity = new ArrayList<String>();
+    private static List<String> mLeftCityListMenu  = new ArrayList<String>();
     SharedPreferencesUtils sharedPreferencesUtils;
     private DBThread mThread;
     private Handler mHandler =new Handler(){
@@ -163,6 +163,7 @@ public class MainActivity extends SlidingActivity {
             int type = msg.what;
             switch (type){
                 case 1:
+                    mCityListAdapter.notifyDataSetChanged();
                     requestWeather(mCurrentCity);
                   /*  List<WeatherDB> weatherDBs= (List<WeatherDB>) msg.obj;
                     for(WeatherDB weatherDB:weatherDBs){
@@ -186,7 +187,7 @@ public class MainActivity extends SlidingActivity {
     }
 
     private void initData() {
-        mListCity.add("深圳");
+         mLeftCityListMenu.add("深圳");
     }
 
     private void initView() {
@@ -200,7 +201,7 @@ public class MainActivity extends SlidingActivity {
             mDBThread = new DBThread();
             mDBThread.start();
 
-            mCityListAdapter = new CityLeftMenuListAdapter(MainActivity.this,mListCity);
+            mCityListAdapter = new CityLeftMenuListAdapter(MainActivity.this, mLeftCityListMenu);
             mListViewCity.setAdapter(mCityListAdapter);
             mCityListAdapter.notifyDataSetChanged();
 
@@ -263,7 +264,7 @@ public class MainActivity extends SlidingActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 mDrawerLayout.closeDrawer(GravityCompat.START);
-                mCurrentCity =mListCity.get(position);
+                mCurrentCity = mLeftCityListMenu.get(position);
                 requestWeather(mCurrentCity);
             }
         });
@@ -298,12 +299,10 @@ public class MainActivity extends SlidingActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-
                         if (weather != null && "0".equals(weather.mShowapi_Res_Code)) {
                         /*   *//* SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(MainActivity.this).edit();
                             editor.putString("weather", responseText);
                             editor.apply();*//**/
-
                             showWeatherInfo(weather);
                         } else {
                             Toast.makeText(MainActivity.this, "获取天气信息失败", Toast.LENGTH_SHORT).show();
@@ -381,7 +380,6 @@ public class MainActivity extends SlidingActivity {
     @OnClick(R.id.left_edit_city)
     public void onEditCity(){
         Intent intent = new Intent(MainActivity.this, CityEditActivity.class);
-
         /*intent.putStringArrayListExtra("city", (ArrayList<String>) mListCity);*/
         mDrawerLayout.closeDrawer(GravityCompat.START);
         startActivityForResult(intent,
@@ -397,10 +395,11 @@ public class MainActivity extends SlidingActivity {
             List<WeatherDB> weatherDB = DataSupport.findAll(WeatherDB.class);
             if(weatherDB!=null) {
                 for (WeatherDB wb : weatherDB) {
-                    mListCity.add(wb.getmCityName());
+                     mLeftCityListMenu.add(wb.getmCityName());
                     Logger.d(wb.getmCityName());
                 }
-                mCurrentCity = mListCity.get(0).toString();
+
+                mCurrentCity =  mLeftCityListMenu.get(0).toString();
                 Message message = Message.obtain();
                 message.obj = mCurrentCity;
                 message.what=1;
@@ -429,12 +428,12 @@ public class MainActivity extends SlidingActivity {
                     SpUtils.putBoolean(getApplicationContext(),SpUtils.FIRST_START,false);
                 }
                 Logger.d(SpUtils.getBoolean(getApplicationContext(),SpUtils.FIRST_START,true)+"");
-                mCityListAdapter = new CityLeftMenuListAdapter(MainActivity.this,mListCity);
+                mCityListAdapter = new CityLeftMenuListAdapter(MainActivity.this, mLeftCityListMenu);
                 mListViewCity.setAdapter(mCityListAdapter);
                 String city = data.getStringExtra(CityPickerActivity.KEY_PICKED_CITY);
                 // resultTV.setText("当前选择：" + city);
-                if(!mListCity.contains(city)){
-                    mListCity.add(city);
+                if(! mLeftCityListMenu.contains(city)){
+                     mLeftCityListMenu.add(city);
                     mCityListAdapter.notifyDataSetChanged();
                     mCurrentCity  = city;
                     requestWeather(mCurrentCity);
@@ -444,7 +443,7 @@ public class MainActivity extends SlidingActivity {
             }
         }else if(requestCode == REQUEST_CODE_EDIT_CITY){
             Logger.d("CityEditActivity");
-            mListCity.clear();
+             mLeftCityListMenu.clear();
             DBThread dbThread = new DBThread();
             dbThread.start();
         }

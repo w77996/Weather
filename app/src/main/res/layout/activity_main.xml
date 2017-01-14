@@ -43,6 +43,8 @@
                     <include layout="@layout/main_forecast"/>
 
                     <include layout="@layout/main_aqi"/>
+
+                    <include layout="@layout/main_index"/>
                     <!--<include layout="@layout/main_forecast" />
 
                     <include layout="@layout/aqi" />
