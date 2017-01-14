@@ -17,12 +17,12 @@ import weather.wu.com.weather.R;
 /**
  * Created by Administrator on 2017/1/4.
  */
-public class CityListAdapter extends BaseAdapter {
+public class CityLeftMenuListAdapter extends BaseAdapter {
 
     private  Context context;
     private  List<String> listdata = new ArrayList<>();
 
-    public CityListAdapter(Context context, List<String> listdata){
+    public CityLeftMenuListAdapter(Context context, List<String> listdata){
         this.context = context;
         this.listdata =listdata;
     }

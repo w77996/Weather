@@ -1,8 +1,5 @@
 package weather.wu.com.weather;
 
-import android.app.Activity;
-import android.app.ListActivity;
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
@@ -12,11 +9,8 @@ import android.os.Message;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,7 +45,8 @@ import butterknife.OnClick;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
-import weather.wu.com.adapter.CityListAdapter;
+import weather.wu.com.activity.CityEditActivity;
+import weather.wu.com.adapter.CityLeftMenuListAdapter;
 import weather.wu.com.adapter.HourDataListAdapter;
 import weather.wu.com.bean.FutureWeatherBean;
 import weather.wu.com.bean.HourDataBean;
@@ -144,8 +139,9 @@ public class MainActivity extends SlidingActivity {
     private Context mContext = MainActivity.this;
     private HourDataListAdapter mHourDataListAdapter;
     private List<String> datas;
-    public static CityListAdapter mCityListAdapter;
+    public static CityLeftMenuListAdapter mCityListAdapter;
     private static final int REQUEST_CODE_PICK_CITY = 0;
+    private static final int REQUEST_CODE_EDIT_CITY =1;
     public SQLiteDatabase db;
     public DBThread mDBThread;
     private List<FutureWeatherBean> fff = new ArrayList<FutureWeatherBean>();
@@ -156,10 +152,10 @@ public class MainActivity extends SlidingActivity {
     //  String json;
     String a = "http://route.showapi.com/9-2?showapi_appid=28198&area=广州&showapi_sign=bd9ad7a172ee4a5a8c57618a248c63e9&needMoreDay=1&needIndex=1&needHourData=1&need3HourForcast=1&needAlarm=1";
     private List<String> listData = new ArrayList<>();
-    private static List<String> mListCity = new ArrayList<>();
+    private static List<String> mListCity = new ArrayList<String>();
     SharedPreferencesUtils sharedPreferencesUtils;
     private DBThread mThread;
-    private static  Handler mHandler =new Handler(){
+    private Handler mHandler =new Handler(){
         @Override
         //当有消息发送出来的时候就执行Handler的这个方法
         public void handleMessage(Message msg){
@@ -167,7 +163,7 @@ public class MainActivity extends SlidingActivity {
             int type = msg.what;
             switch (type){
                 case 1:
-
+                    requestWeather(mCurrentCity);
                   /*  List<WeatherDB> weatherDBs= (List<WeatherDB>) msg.obj;
                     for(WeatherDB weatherDB:weatherDBs){
                         mListCity.add(weatherDB.getmCityName());
@@ -203,7 +199,8 @@ public class MainActivity extends SlidingActivity {
         }else{
             mDBThread = new DBThread();
             mDBThread.start();
-            mCityListAdapter = new  CityListAdapter(MainActivity.this,mListCity);
+
+            mCityListAdapter = new CityLeftMenuListAdapter(MainActivity.this,mListCity);
             mListViewCity.setAdapter(mCityListAdapter);
             mCityListAdapter.notifyDataSetChanged();
 
@@ -274,10 +271,13 @@ public class MainActivity extends SlidingActivity {
     /**
      * 根据城市名请求城市天气信息。
      */
-    public void requestWeather(final String cityName) {
+    public synchronized void requestWeather(final String cityName) {
         String weatherUrl = "http://route.showapi.com/9-2?showapi_appid=28198&area=" + cityName + "&showapi_sign=bd9ad7a172ee4a5a8c57618a248c63e9"
                 + "&needMoreDay=1&needIndex=1&needHourData=1&need3HourForcast=1&needAlarm=1";
         mScrollView.smoothScrollTo(0, 0);
+        if(!mSwipeRefresh.isRefreshing()){
+            mSwipeRefresh.setRefreshing(true);
+        }
         HttpUtil.sendOkHttpRequest(weatherUrl, new Callback() {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
@@ -298,9 +298,7 @@ public class MainActivity extends SlidingActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        if(!mSwipeRefresh.isRefreshing()){
-                            mSwipeRefresh.setRefreshing(true);
-                        }
+
                         if (weather != null && "0".equals(weather.mShowapi_Res_Code)) {
                         /*   *//* SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(MainActivity.this).edit();
                             editor.putString("weather", responseText);
@@ -319,20 +317,27 @@ public class MainActivity extends SlidingActivity {
                 Logger.e(e);
                 WeatherDB weatherDB  =new WeatherDB();
                 WeatherDB weatherData= DataSupport.where("mCityName = ?", cityName).findFirst(WeatherDB.class);
-                final WeatherBean weather = Utility.handleWeatherResponse(weatherData.getmJsonData());
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        showWeatherInfo(weather);
-                        Toast.makeText(MainActivity.this, "获取天气信息失败", Toast.LENGTH_SHORT).show();
-                        mSwipeRefresh.setRefreshing(false);
-                    }
-                });
+                if(weatherData!=null){
+                    final WeatherBean weather = Utility.handleWeatherResponse(weatherData.getmJsonData());
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            showWeatherInfo(weather);
+                            Toast.makeText(MainActivity.this, "获取天气信息失败", Toast.LENGTH_SHORT).show();
+                            mSwipeRefresh.setRefreshing(false);
+                        }
+                    });
+                }
+
             }
         });
         //  loadBingPic();
     }
 
+    /**
+     * 将数据显示到UI上
+     * @param weather
+     */
     private void showWeatherInfo(WeatherBean weather) {
         mTextViewTileCity.setText(weather.getmCityName());
         mLastUpateText.setText(weather.getmNowWeatherBean().getmTemperature_Time());
@@ -373,6 +378,15 @@ public class MainActivity extends SlidingActivity {
         startActivityForResult(new Intent(MainActivity.this, CityPickerActivity.class),
                 REQUEST_CODE_PICK_CITY);
     }
+    @OnClick(R.id.left_edit_city)
+    public void onEditCity(){
+        Intent intent = new Intent(MainActivity.this, CityEditActivity.class);
+
+        /*intent.putStringArrayListExtra("city", (ArrayList<String>) mListCity);*/
+        mDrawerLayout.closeDrawer(GravityCompat.START);
+        startActivityForResult(intent,
+                REQUEST_CODE_EDIT_CITY);
+    }
 
     /**
      * 开启线程对数据库进行操作
@@ -384,9 +398,14 @@ public class MainActivity extends SlidingActivity {
             if(weatherDB!=null) {
                 for (WeatherDB wb : weatherDB) {
                     mListCity.add(wb.getmCityName());
+                    Logger.d(wb.getmCityName());
                 }
                 mCurrentCity = mListCity.get(0).toString();
-                requestWeather(mCurrentCity);
+                Message message = Message.obtain();
+                message.obj = mCurrentCity;
+                message.what=1;
+                mHandler.sendMessage(message);
+               // requestWeather(mCurrentCity);
                // mCityListAdapter.notifyDataSetChanged();
              /* Message message = Message.obtain();
                 message.obj = weatherDB;
@@ -399,6 +418,7 @@ public class MainActivity extends SlidingActivity {
             }*/
             }
         }
+
     }
     //重写onActivityResult方法
     @Override
@@ -409,7 +429,7 @@ public class MainActivity extends SlidingActivity {
                     SpUtils.putBoolean(getApplicationContext(),SpUtils.FIRST_START,false);
                 }
                 Logger.d(SpUtils.getBoolean(getApplicationContext(),SpUtils.FIRST_START,true)+"");
-                mCityListAdapter = new  CityListAdapter(MainActivity.this,mListCity);
+                mCityListAdapter = new CityLeftMenuListAdapter(MainActivity.this,mListCity);
                 mListViewCity.setAdapter(mCityListAdapter);
                 String city = data.getStringExtra(CityPickerActivity.KEY_PICKED_CITY);
                 // resultTV.setText("当前选择：" + city);
@@ -420,9 +440,21 @@ public class MainActivity extends SlidingActivity {
                     requestWeather(mCurrentCity);
                 }
                 Logger.d(city);
-
                // WeatherBean weatherBean = DataSupport.find(WeatherBean.class,);
             }
+        }else if(requestCode == REQUEST_CODE_EDIT_CITY){
+            Logger.d("CityEditActivity");
+            mListCity.clear();
+            DBThread dbThread = new DBThread();
+            dbThread.start();
         }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+       /* if(mDBThread.isAlive()){
+            mDBThread.stop();
+        }*/
     }
 }

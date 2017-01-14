@@ -10,6 +10,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/SlidingMenulibrary" />
+            <option value="$PROJECT_DIR$/SwipeMenuListViewLibrary" />
             <option value="$PROJECT_DIR$/ViewPagerIndecatorLibrary" />
             <option value="$PROJECT_DIR$/app" />
           </set>
@@ -18,6 +19,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/SlidingMenulibrary" />
+            <option value="$PROJECT_DIR$/SwipeMenuListViewLibrary" />
             <option value="$PROJECT_DIR$/ViewPagerIndecatorLibrary" />
             <option value="$PROJECT_DIR$/app" />
           </set>

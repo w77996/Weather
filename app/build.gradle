@@ -36,4 +36,5 @@ dependencies {
     compile 'com.zaaach:citypicker:1.1'
     compile project(':ViewPagerIndecatorLibrary')
     compile project(':SlidingMenulibrary')
+    compile project(':SwipeMenuListViewLibrary')
 }

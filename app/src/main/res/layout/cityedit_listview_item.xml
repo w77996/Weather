@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_margin="5dp"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+    <TextView
+        android:id="@+id/cityedit_listview_item_cityname"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textSize="23sp"
+        android:textColor="@color/md_grey_900_color_code"
+        android:text="city"/>
+    <ImageView
+        android:id="@+id/cityedit_listview_item_img"
+        android:layout_width="30dp"
+        android:layout_weight="1"
+        android:layout_height="30dp"
+        android:src="@drawable/ic_default_big"/>
+    <TextView
+        android:id="@+id/cityedit_listview_item_temp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:textSize="25sp"
+        android:textColor="@color/md_grey_500_color_code"
+        android:text="city"/>
+    </LinearLayout>
+</android.support.v7.widget.CardView>

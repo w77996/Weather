@@ -10,8 +10,8 @@
     android:layout_marginLeft="10dp"
     android:layout_marginRight="10dp"
     android:layout_marginTop="20dp"
-    card_view:cardCornerRadius="8dp"
-    card_view:cardElevation="8dp">
+    card_view:cardCornerRadius="4dp"
+    card_view:cardElevation="4dp">
 
     <RelativeLayout
         android:id="@+id/main_now_weather"

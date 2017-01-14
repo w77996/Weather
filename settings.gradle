@@ -1,2 +1,2 @@
-include ':app', 'SlidingMenulibrary'
+include ':app', 'SlidingMenulibrary','SwipeMenuListViewLibrary'
 include ':ViewPagerIndecatorLibrary'
