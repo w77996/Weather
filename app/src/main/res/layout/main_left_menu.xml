@@ -30,9 +30,12 @@
             <ImageView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
+                android:layout_weight="1"
+                android:layout_gravity="center"
                 android:src="@drawable/left_edit_city" />
             <TextView
                 android:layout_width="wrap_content"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="编辑城市"

@@ -88,8 +88,8 @@ public class MainActivity extends SlidingActivity {
     @BindView(R.id.forecast_layout)
     public LinearLayout mForecastLayout;
     //背景的图片
-    @BindView(R.id.back_pic_img)
-    public ImageView mImageViewBack;
+  /*  @BindView(R.id.back_pic_img)
+    public ImageView mImageViewBack;*/
     @BindView(R.id.main_left_menu)
     public LinearLayout mLinearLayoutLeftMenu;
     /*@BindView(R.id.main_right_menu)
@@ -225,6 +225,7 @@ public class MainActivity extends SlidingActivity {
         //   mRecyclerView = (RecyclerView)findViewById(R.id.hourdata_recyclerview);
         //  mForecastLayout = (LinearLayout)findViewById(R.id.forecast_layout);
         mSwipeRefresh.setColorSchemeResources(R.color.color_main);
+
         mSwipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -256,7 +257,7 @@ public class MainActivity extends SlidingActivity {
         Logger.d(DisplayHeight+"  "+DisplayWideth);
         //设置当前天气信息RelativeLayout的高度
         mNowWeatherRelativeLayout.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, mNowWeatherHeight));
-        mImageViewBack.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT,mNowWeatherHeight/2));
+       // mImageViewBack.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT,mNowWeatherHeight/2));
 
       //  mLinearLayoutLeftMenu.setLayoutParams(new DrawerLayout.LayoutParams(DisplayWideth/2, DrawerLayout.LayoutParams.MATCH_PARENT));
 
@@ -268,6 +269,9 @@ public class MainActivity extends SlidingActivity {
                 requestWeather(mCurrentCity);
             }
         });
+    }
+    public static void launch(Context context) {
+        context.startActivity(new Intent(context, MainActivity.class));
     }
     /**
      * 根据城市名请求城市天气信息。

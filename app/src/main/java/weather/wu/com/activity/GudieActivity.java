@@ -45,7 +45,7 @@ public class GudieActivity extends FragmentActivity implements ViewPager.OnPageC
             startActivity(new Intent(GudieActivity.this,MainActivity.class));
         }*/
         if(!SpUtils.getBoolean(getApplicationContext(),SpUtils.FIRST_START,true)){
-            startActivity(new Intent(GudieActivity.this, MainActivity.class));
+            startActivity(new Intent(GudieActivity.this, SplashActivity.class));
             finish();
             //sharedPreferencesUtils.put("first_start",true);
         }

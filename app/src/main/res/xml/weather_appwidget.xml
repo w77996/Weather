@@ -1,0 +1,20 @@
+<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+    android:minWidth="180dp"
+    android:minHeight="180dp"
+    android:previewImage="@drawable/ic_default_big"
+    android:initialLayout="@layout/appwidget_typeone"
+    android:resizeMode="horizontal|vertical"
+    android:widgetCategory="home_screen|keyguard">
+
+    <!--
+    android:minWidth : 最小宽度
+    android:minHeight ： 最小高度
+    android:updatePeriodMillis ： 更新widget的时间间隔(ms)，"86400000"为1个小时
+    android:previewImage ： 预览图片
+    android:initialLayout ： 加载到桌面时对应的布局文件
+    android:resizeMode ： widget可以被拉伸的方向。horizontal表示可以水平拉伸，vertical表示可以竖直拉伸
+    android:widgetCategory ： widget可以被显示的位置。home_screen表示可以将widget添加到桌面，keyguard表示widget可以被添加到锁屏界面。
+    android:initialKeyguardLayout ： 加载到锁屏界面时对应的布局文件
+     -->
+
+</appwidget-provider>
