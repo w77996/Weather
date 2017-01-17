@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
+    xmlns:app="http://schemas.android.com/apk/res-auto">
   <!--  <ImageView
         android:id="@+id/back_pic_img"
         android:layout_width="match_parent"
@@ -14,7 +13,6 @@
         android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
         <android.support.v4.widget.SwipeRefreshLayout
             android:id="@+id/swipe_refresh"
             android:layout_width="match_parent"
@@ -50,7 +48,16 @@
                     <include layout="@layout/aqi" />
 
                     <include layout="@layout/suggestion" />&ndash;&gt;-->
-
+                    <android.support.design.widget.FloatingActionButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right|bottom"
+                        android:src="@drawable/ic_default_big"
+                        app:backgroundTint="#ff87ffeb"
+                        app:rippleColor="#33728dff"
+                        app:elevation="6dp"
+                        app:pressedTranslationZ="12dp"
+                        />
                 </LinearLayout>
 
             </ScrollView>

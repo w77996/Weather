@@ -34,6 +34,7 @@ import com.zaaach.citypicker.CityPickerActivity;
 
 import org.litepal.crud.DataSupport;
 import org.litepal.tablemanager.Connector;
+import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -131,7 +132,20 @@ public class MainActivity extends SlidingActivity {
     /**空气质量控件初始化**/
     @BindView(R.id.air_weather_condition)
     TextView mAirWeatherCondition;
-
+    @BindView(R.id.air_pm2_5_index)
+    TextView mAirPm25Index;
+    @BindView(R.id.air_co_index)
+    TextView mAirCoIndex;
+    @BindView(R.id.air_pm10_index)
+    TextView mAirPm10Index;
+    @BindView(R.id.air_so2_index)
+    TextView mAirSo2Index;
+    @BindView(R.id.air_o3_index)
+    TextView mAirO3Index;
+    @BindView(R.id.air_no2_index)
+    TextView mAirNo2Index;
+    @BindView(R.id.aqi_primary_pollutant)
+    TextView mAqiPrimaryPollutiant;
 
     private int mNowWeatherHeight = -1;
     private int DisplayHeight;
@@ -181,9 +195,7 @@ public class MainActivity extends SlidingActivity {
         ButterKnife.bind(this);
         initView();
          db = Connector.getDatabase();
-
       //  initData();
-
     }
 
     private void initData() {
@@ -331,7 +343,6 @@ public class MainActivity extends SlidingActivity {
                         }
                     });
                 }
-
             }
         });
         //  loadBingPic();
@@ -343,7 +354,7 @@ public class MainActivity extends SlidingActivity {
      */
     private void showWeatherInfo(WeatherBean weather) {
         mTextViewTileCity.setText(weather.getmCityName());
-        mLastUpateText.setText(weather.getmNowWeatherBean().getmTemperature_Time());
+        mLastUpateText.setText(weather.getmNowWeatherBean().getmTemperature_Time()+"更新");
         mNowWeatherAirQuality.setText("空气" + weather.getmAqiDetailBean().getmQuality());
         mNowWeatherAirIndex.setText("指数" + weather.getmAqiDetailBean().getmAqi());
         mNowWeatherHightTempture.setText(weather.getmTodayWeatherBean().getmDay_Air_Temperature()+"°");
@@ -370,6 +381,22 @@ public class MainActivity extends SlidingActivity {
             mForecastLayout.addView(view);
         }
         mForecastLayout.setLayoutParams((new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, DisplayHeight / 2)));
+
+        //空气质量UI更新
+        mAirWeatherCondition.setText(weather.getmAqiDetailBean().mQuality);
+        mAirPm25Index.setText(weather.getmAqiDetailBean().getmPm2_5());
+        mAirCoIndex.setText(weather.getmAqiDetailBean().getmCo());
+        mAirNo2Index.setText(weather.getmAqiDetailBean().getmNo2());
+        mAirO3Index.setText(weather.getmAqiDetailBean().getmO3());
+        mAirPm10Index.setText(weather.getmAqiDetailBean().getmPm10());
+      //  if(weather.getmAqiDetailBean().getmPrimary_Pollutant()!=null&&!"".equals(weather.getmAqiDetailBean().getmPrimary_Pollutant())){
+            mAqiPrimaryPollutiant.setText("主要污染物：    "+weather.getmAqiDetailBean().getmPrimary_Pollutant());
+       /* }else{
+            mAqiPrimaryPollutiant.setVisibility(View.GONE);
+        }*/
+
+        mAirSo2Index.setText(weather.getmAqiDetailBean().getmSo2());
+
     }
 
     @OnClick(R.id.nav_button)

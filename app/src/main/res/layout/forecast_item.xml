@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         android:layout_weight="2"
         android:gravity="center"
-        android:textColor="#00aacc"
+        android:textColor="@color/md_grey_900_color_code"
         android:text="---"
         />
     <ImageView
@@ -28,7 +28,7 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:gravity="center"
-        android:textColor="#00aacc"
+        android:textColor="@color/md_grey_900_color_code"
         android:text="--°"
         />
 
@@ -39,7 +39,7 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:gravity="center"
-        android:textColor="#00aacc"
+        android:textColor="@color/md_grey_900_color_code"
         android:text="--°"
         />
 </LinearLayout>
