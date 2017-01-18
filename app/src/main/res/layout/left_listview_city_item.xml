@@ -10,7 +10,7 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_weight="1"
-        android:layout_marginLeft="15dp"
+
         android:src="@drawable/left_location_city" />
 
     <TextView

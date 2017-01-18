@@ -233,6 +233,7 @@ public class Utility {
             weatherBean.setmFutureWeatherBeen(futureWeatherBeanList);
             weatherBean.setmTodayWeatherBean(todayWeatherBean);
             weatherBean.setmHourDataList(hourDatalist);
+            weatherBean.setIndexBean(indexBean);
             return weatherBean;
         } catch (JSONException e) {
             e.printStackTrace();

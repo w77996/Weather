@@ -109,7 +109,6 @@ public class CityEditActivity extends Activity {
                 // add to menu
                 menu.addMenuItem(deleteItem);
             }
-
         };
         mCityEditListview.setMenuCreator(creator);
         mCityEditListview.setOnMenuItemClickListener(new SwipeMenuListView.OnMenuItemClickListener() {

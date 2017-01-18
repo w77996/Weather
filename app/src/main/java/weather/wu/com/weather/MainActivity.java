@@ -147,6 +147,26 @@ public class MainActivity extends SlidingActivity {
     @BindView(R.id.aqi_primary_pollutant)
     TextView mAqiPrimaryPollutiant;
 
+    /**生活指数控件初始化**/
+    @BindView(R.id.index_cloth_brief)
+    TextView mIndexClothBrief;
+    @BindView(R.id.index_cloth_txt)
+    TextView mIndexClothTxt;
+    @BindView(R.id.index_flu_brief)
+    TextView mIndexFluBrief;
+    @BindView(R.id.index_flu_txt)
+    TextView mIndexFluTxt;
+    @BindView(R.id.index_sport_brief)
+    TextView mIndexSportBrief;
+    @BindView(R.id.index_sport_txt)
+    TextView mIndexSportTxt;
+    @BindView(R.id.index_travel_brief)
+    TextView mIndexTravelBrief;
+    @BindView(R.id.index_travel_txt)
+    TextView mIndexTravelTxt;
+
+
+
     private int mNowWeatherHeight = -1;
     private int DisplayHeight;
     private int DisplayWideth;
@@ -381,7 +401,6 @@ public class MainActivity extends SlidingActivity {
             mForecastLayout.addView(view);
         }
         mForecastLayout.setLayoutParams((new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, DisplayHeight / 2)));
-
         //空气质量UI更新
         mAirWeatherCondition.setText(weather.getmAqiDetailBean().mQuality);
         mAirPm25Index.setText(weather.getmAqiDetailBean().getmPm2_5());
@@ -396,7 +415,15 @@ public class MainActivity extends SlidingActivity {
         }*/
 
         mAirSo2Index.setText(weather.getmAqiDetailBean().getmSo2());
-
+        //生活指数UI更新
+        mIndexClothBrief.setText("穿衣指数："+weather.getIndexBean().getmClothesTitle());
+        mIndexClothTxt.setText(weather.getIndexBean().getmClothesDesc());
+        mIndexFluBrief.setText("感冒指数："+weather.getIndexBean().getmColdTitle());
+        mIndexFluTxt.setText(weather.getIndexBean().getmColdDesc());
+        mIndexSportBrief.setText("运动指数："+weather.getIndexBean().getmSportsTitle());
+        mIndexSportTxt.setText(weather.getIndexBean().getmSportsDesc());
+        mIndexTravelBrief.setText("旅游指数："+weather.getIndexBean().getmTravelTitle());
+        mIndexTravelTxt.setText(weather.getIndexBean().getmTravelDesc());
     }
 
     @OnClick(R.id.nav_button)
@@ -416,7 +443,6 @@ public class MainActivity extends SlidingActivity {
         startActivityForResult(intent,
                 REQUEST_CODE_EDIT_CITY);
     }
-
     /**
      * 开启线程对数据库进行操作
      */
@@ -429,7 +455,6 @@ public class MainActivity extends SlidingActivity {
                      mLeftCityListMenu.add(wb.getmCityName());
                     Logger.d(wb.getmCityName());
                 }
-
                 mCurrentCity =  mLeftCityListMenu.get(0).toString();
                 Message message = Message.obtain();
                 message.obj = mCurrentCity;
@@ -479,7 +504,6 @@ public class MainActivity extends SlidingActivity {
             dbThread.start();
         }
     }
-
     @Override
     protected void onPause() {
         super.onPause();

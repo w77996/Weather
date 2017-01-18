@@ -4,14 +4,13 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:background="@color/color_white"
-    android:layout_margin="5dp"
-    android:layout_height="wrap_content">
+    android:layout_height="50dp">
     <LinearLayout
         android:orientation="horizontal"
         android:gravity="center"
         android:background="@color/color_white"
         android:layout_width="match_parent"
-        android:layout_height="50dp">
+        android:layout_height="55dp">
     <TextView
         android:id="@+id/cityedit_listview_item_cityname"
         android:layout_width="0dp"

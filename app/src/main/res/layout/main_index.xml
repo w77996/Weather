@@ -26,6 +26,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
+                android:src="@drawable/index_cloth"
                 />
 
             <LinearLayout
@@ -35,14 +36,14 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/cloth_brief"
+                    android:id="@+id/index_cloth_brief"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="穿衣指数---"/>
 
                 <TextView
                     android:textSize="12sp"
-                    android:id="@+id/cloth_txt"
+                    android:id="@+id/index_cloth_txt"
                     android:layout_marginTop="2dp"
                     android:textColor="#969696"
                     android:layout_width="wrap_content"
@@ -60,6 +61,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
+                android:src="@drawable/index_sport"
                 />
 
             <LinearLayout
@@ -69,14 +71,14 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/sport_brief"
+                    android:id="@+id/index_sport_brief"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="运动指数---"/>
 
                 <TextView
                     android:textSize="12sp"
-                    android:id="@+id/sport_txt"
+                    android:id="@+id/index_sport_txt"
                     android:layout_marginTop="2dp"
                     android:textColor="#969696"
                     android:layout_width="wrap_content"
@@ -95,6 +97,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
+                android:src="@drawable/index_travel"
                 />
 
             <LinearLayout
@@ -104,14 +107,14 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/travel_brief"
+                    android:id="@+id/index_travel_brief"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="旅游指数---"/>
 
                 <TextView
                     android:textSize="12sp"
-                    android:id="@+id/travel_txt"
+                    android:id="@+id/index_travel_txt"
                     android:layout_marginTop="2dp"
                     android:textColor="#969696"
                     android:layout_width="wrap_content"
@@ -126,10 +129,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <ImageView
+              <ImageView
                 android:layout_gravity="center_vertical"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
+                  android:src="@drawable/index_flu"
                 />
             <LinearLayout
                 android:layout_marginStart="64dp"
@@ -138,13 +142,13 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/flu_brief"
+                    android:id="@+id/index_flu_brief"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="感冒指数---"/>
                 <TextView
                     android:textSize="12sp"
-                    android:id="@+id/flu_txt"
+                    android:id="@+id/index_flu_txt"
                     android:layout_marginTop="2dp"
                     android:textColor="#969696"
                     android:layout_width="wrap_content"
