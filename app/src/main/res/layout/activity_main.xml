@@ -2,6 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     xmlns:app="http://schemas.android.com/apk/res-auto">
   <!--  <ImageView
         android:id="@+id/back_pic_img"
@@ -9,14 +10,21 @@
         android:layout_height="match_parent"
         android:src="@drawable/day"
         android:scaleType="fitXY" />-->
+
     <android.support.v4.widget.DrawerLayout
         android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
         <android.support.v4.widget.SwipeRefreshLayout
             android:id="@+id/swipe_refresh"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            >
+
+
+
 
             <ScrollView
                 android:id="@+id/weather_scrollview_layout"
@@ -31,9 +39,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fitsSystemWindows="true">
-
                     <include layout="@layout/title" />
-
                     <include layout="@layout/main_now"/>
 
                     <include layout="@layout/main_hourlist"/>
@@ -48,7 +54,7 @@
                     <include layout="@layout/aqi" />
 
                     <include layout="@layout/suggestion" />&ndash;&gt;-->
-                    <android.support.design.widget.FloatingActionButton
+                   <!-- <android.support.design.widget.FloatingActionButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="right|bottom"
@@ -57,7 +63,7 @@
                         app:rippleColor="#33728dff"
                         app:elevation="6dp"
                         app:pressedTranslationZ="12dp"
-                        />
+                        />-->
                 </LinearLayout>
 
             </ScrollView>
@@ -69,6 +75,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
+            android:clickable="true"
             android:background="@android:color/white"
             android:layout_gravity="start" >
             <include layout="@layout/main_left_menu"/>

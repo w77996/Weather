@@ -66,6 +66,8 @@ public class MainActivity extends SlidingActivity {
 
     /**主控件初始化**/
     //标题栏按钮
+            @BindView(R.id.main_title)
+            LinearLayout mTitleLayout ;
     @BindView(R.id.nav_button)
     Button mNavButton;
     @BindView(R.id.title_city)
@@ -246,7 +248,9 @@ public class MainActivity extends SlidingActivity {
         //NowWeather主RelativeLayout
         //   mNowWeatherRelativeLayout = (RelativeLayout)findViewById(R.id.main_now_weather);
         // mScrollView = (ScrollView)findViewById(R.id.weather_scrollview_layout);
+        mSwipeRefresh.setProgressViewOffset(false,100,200);
 
+        //mTitleLayout.bringToFront();
         SlidingMenu mRightMenu = getSlidingMenu();
         setBehindContentView(R.layout.main_right_menu);
         mRightMenu.setMode(SlidingMenu.RIGHT);
@@ -261,7 +265,6 @@ public class MainActivity extends SlidingActivity {
         mSwipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-
                 requestWeather(mCurrentCity);
             }
         });

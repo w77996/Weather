@@ -39,7 +39,7 @@ import weather.wu.com.weather.R;
 public class CityEditActivity extends Activity {
     List<CityEditBean> mCityList =new ArrayList<>();
     // @BindView(R.id.cityedit_listview)
-    SwipeMenuListView mCityEditListview;
+   ListView mCityEditListview;
     CityEditListAdapter mCityEditListAdapter;
     private static final int REQUEST_CODE_EDIT_CITY =1;
     private android.os.Handler mHandler =new android.os.Handler(){
@@ -77,8 +77,9 @@ public class CityEditActivity extends Activity {
         Logger.d(mCityList.size() + "");*/
         CityDisPlayThread cityDisPlayThread = new CityDisPlayThread();
         cityDisPlayThread.start();
-        mCityEditListview = (SwipeMenuListView) findViewById(R.id.cityedit_listview);
-        SwipeMenuCreator creator = new SwipeMenuCreator() {
+        mCityEditListview = (ListView) findViewById(R.id.cityedit_listview);
+        /* mCityEditListview.setSwipeDirection(SwipeMenuListView.DIRECTION_RIGHT);
+       SwipeMenuCreator creator = new SwipeMenuCreator() {
             @Override
             public void create(SwipeMenu menu) {
                 // create "open" item
@@ -99,10 +100,9 @@ public class CityEditActivity extends Activity {
                 SwipeMenuItem deleteItem = new SwipeMenuItem(
                         getApplicationContext());
                 // set item background
-                deleteItem.setBackground(new ColorDrawable(Color.rgb(0xF9,
-                        0x3F, 0x25)));
+
                 // set item width
-                deleteItem.setWidth(90);
+                deleteItem.setWidth(R.dimen.side_letter_bar_width);
 
                 // set a icon
                 deleteItem.setIcon(R.drawable.ic_default_big);
@@ -132,9 +132,9 @@ public class CityEditActivity extends Activity {
                 // false : 会关闭菜单; true ：不会关闭菜单
                 return false;
             }
-        });
+        });*/
 // set SwipeListener
-        mCityEditListview.setOnSwipeListener(new SwipeMenuListView.OnSwipeListener() {
+      /*  mCityEditListview.setOnSwipeListener(new SwipeMenuListView.OnSwipeListener() {
             @Override
             public void onSwipeStart(int position) {
                 // swipe start
@@ -143,14 +143,14 @@ public class CityEditActivity extends Activity {
             public void onSwipeEnd(int position) {
                 // swipe end
             }
-        });
-        mCityEditListview.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+        });*/
+      /*  mCityEditListview.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(getApplicationContext(), position + " long click", Toast.LENGTH_SHORT).show();
                 return false;
             }
-        });
+        });*/
        /* mCityEditListAdapter = new CityEditListAdapter(CityEditActivity.this, mCityList);
         mCityEditListview.setAdapter(mCityEditListAdapter);*/
     }

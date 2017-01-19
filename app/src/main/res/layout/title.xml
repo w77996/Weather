@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-
+<LinearLayout
+    android:id="@+id/main_title"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-
+    android:background="@color/md_blue_800_color_code"
+    android:elevation="8dp"
     android:layout_height="?attr/actionBarSize">
 
     <Button
@@ -42,3 +47,4 @@
         android:text="- -"/>
 
 </RelativeLayout>
+</LinearLayout>

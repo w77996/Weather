@@ -11,7 +11,7 @@
         android:layout_height="30dp"
         android:layout_weight="1"
 
-        android:src="@drawable/left_location_city" />
+        android:src="@drawable/icon_location" />
 
     <TextView
         android:id="@+id/left_city_name"

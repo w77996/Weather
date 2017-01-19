@@ -10,7 +10,7 @@
         android:gravity="center"
         android:background="@color/color_white"
         android:layout_width="match_parent"
-        android:layout_height="55dp">
+        android:layout_height="50dp">
     <TextView
         android:id="@+id/cityedit_listview_item_cityname"
         android:layout_width="0dp"
