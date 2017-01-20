@@ -20,6 +20,7 @@ public class SlidingActivity extends Activity implements SlidingActivityBase {
 		super.onCreate(savedInstanceState);
 		mHelper = new SlidingActivityHelper(this);
 		mHelper.onCreate(savedInstanceState);
+
 	}
 
 	/* (non-Javadoc)

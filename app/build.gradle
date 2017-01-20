@@ -39,4 +39,5 @@ dependencies {
     compile project(':SlidingMenulibrary')
     compile project(':SwipeMenuListViewLibrary')
     compile 'com.android.support:gridlayout-v7:25.0.1'
+    compile 'com.melnykov:floatingactionbutton:1.3.0'
 }

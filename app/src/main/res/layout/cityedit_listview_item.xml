@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="match_parent"
@@ -35,4 +35,4 @@
         android:textColor="@color/md_grey_500_color_code"
         android:text="city"/>
     </LinearLayout>
-</android.support.v7.widget.CardView>
+</LinearLayout>

@@ -142,8 +142,8 @@ public class Utility {
             todayWeatherBean.mNight_Wind_Power = todayWeatherInfo.getString("night_wind_power");
             todayWeatherBean.mDay_Wind_Power = todayWeatherInfo.getString("day_wind_power");
             todayWeatherBean.mDay_Weather_Code = todayWeatherInfo.getString("day_weather_code");
-            todayWeatherBean.mSun_Begin = todayWeatherInfo.getString("sun_begin_end");
-            todayWeatherBean.mSun_End = todayWeatherInfo.getString("sun_begin_end");
+            todayWeatherBean.mSun_Begin = todayWeatherInfo.getString("sun_begin_end").substring(0,5);
+            todayWeatherBean.mSun_End = todayWeatherInfo.getString("sun_begin_end").substring(6,11);
             todayWeatherBean.mZiWaiXian = todayWeatherInfo.getString("ziwaixian");
             todayWeatherBean.mDay_Weather_Pic = todayWeatherInfo.getString("day_weather_pic");
             todayWeatherBean.mWeekDay = todayWeatherInfo.getString("weekday");

@@ -21,6 +21,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,12 +30,12 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.jeremyfeinstein.slidingmenu.lib.app.SlidingActivity;
+import com.melnykov.fab.FloatingActionButton;
 import com.orhanobut.logger.Logger;
 import com.zaaach.citypicker.CityPickerActivity;
 
 import org.litepal.crud.DataSupport;
 import org.litepal.tablemanager.Connector;
-import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -72,6 +73,8 @@ public class MainActivity extends SlidingActivity {
     Button mNavButton;
     @BindView(R.id.title_city)
     TextView mTextViewTileCity;
+   /* @BindView(R.id.weather_scrollview_layout)
+    ScrollView scrollView;*/
     //下拉刷新控件
     @BindView(R.id.swipe_refresh)
     SwipeRefreshLayout mSwipeRefresh;
@@ -131,6 +134,51 @@ public class MainActivity extends SlidingActivity {
     LinearLayout mLinearLayoutEditCity;
     @BindView(R.id.left_list_city_select)
     ListView mListViewCity;
+    /**右侧菜单控件初始化**/
+    //今日天气状态
+   /* @BindView(R.id.right_today_weather)
+    TextView mRightTodayWeatherText;
+    //气压
+    @BindView(R.id.right_air_press)
+    TextView mRightAirPressText;
+    //降水概率
+    @BindView(R.id.right_rain)
+    TextView mRightRainText;
+    //天气图标
+    @BindView(R.id.right_today_weather_img)
+    ImageView mRightTodayWeatherImg;
+    //白天天气
+    @BindView(R.id.right_day_weather)
+    TextView mRightDayWeatherText;
+    //夜晚天气
+    @BindView(R.id.right_night_weather)
+    TextView mRightNightWeatherText;
+    //白天气温
+    @BindView(R.id.right_day_temp)
+    TextView mRightDayTempText;
+    //夜晚气温
+    @BindView(R.id.right_night_temp)
+    TextView mRightNightTempText;
+    //日出时间
+    @BindView(R.id.right_sunbegin)
+    TextView mRightSunBeginText;
+    //日落时间
+    @BindView(R.id.right_sunend)
+    TextView mRightSunEnd;
+    //白天风力
+    @BindView(R.id.right_day_wind)
+    TextView mRightDayWind;
+    //夜晚风力
+    @BindView(R.id.right_night_wind)
+    TextView mRightNightWind;
+    //白天风向
+    @BindView(R.id.right_day_wind_diretion)
+    TextView mRightDayWindDiretion;
+    //夜晚风向
+    @BindView(R.id.right_night_wind_diretion)
+    TextView mRightNightWindDiretion;*/
+
+
     /**空气质量控件初始化**/
     @BindView(R.id.air_weather_condition)
     TextView mAirWeatherCondition;
@@ -168,6 +216,42 @@ public class MainActivity extends SlidingActivity {
     TextView mIndexTravelTxt;
 
 
+    //今日天气状态
+    TextView mRightTodayWeatherText;
+    //气压
+    TextView mRightAirPressText;
+    //降水概率
+    TextView mRightRainText;
+    TextView mRightUv;
+    //天气图标
+    ImageView mRightTodayWeatherImg;
+    //白天天气
+    TextView mRightDayWeatherText;
+    //夜晚天气
+    TextView mRightNightWeatherText;
+    //白天气温
+    TextView mRightDayTempText;
+    //夜晚气温
+    TextView mRightNightTempText;
+    //日出时间
+    TextView mRightSunBeginText;
+    //日落时间
+    TextView mRightSunEnd;
+    //白天风力
+    TextView mRightDayWind;
+    //夜晚风力
+    TextView mRightNightWind;
+    //白天风向
+    TextView mRightDayWindDiretion;
+    //夜晚风向
+    TextView mRightNightWindDiretion;
+
+    TextView mRightCityNameText;
+    TextView mRightAreaCodeText;
+    TextView mRightAreaNumText;
+    TextView mRightAltitudeText;
+    TextView mRightLatitudeText;
+    TextView mRightLongtitudeText;
 
     private int mNowWeatherHeight = -1;
     private int DisplayHeight;
@@ -186,7 +270,7 @@ public class MainActivity extends SlidingActivity {
 
     //启动
     //  String json;
-    String a = "http://route.showapi.com/9-2?showapi_appid=28198&area=广州&showapi_sign=bd9ad7a172ee4a5a8c57618a248c63e9&needMoreDay=1&needIndex=1&needHourData=1&need3HourForcast=1&needAlarm=1";
+   // String a = "http://route.showapi.com/9-2?showapi_appid=28198&area=广州&showapi_sign=bd9ad7a172ee4a5a8c57618a248c63e9&needMoreDay=1&needIndex=1&needHourData=1&need3HourForcast=1&needAlarm=1";
     private List<String> listData = new ArrayList<>();
     private static List<String> mLeftCityListMenu  = new ArrayList<String>();
     SharedPreferencesUtils sharedPreferencesUtils;
@@ -225,8 +309,6 @@ public class MainActivity extends SlidingActivity {
     }
 
     private void initView() {
-
-
         if(SpUtils.getBoolean(getApplicationContext(),SpUtils.FIRST_START,true)){
             startActivityForResult(new Intent(MainActivity.this, CityPickerActivity.class),
                     REQUEST_CODE_PICK_CITY);
@@ -234,14 +316,11 @@ public class MainActivity extends SlidingActivity {
         }else{
             mDBThread = new DBThread();
             mDBThread.start();
-
             mCityListAdapter = new CityLeftMenuListAdapter(MainActivity.this, mLeftCityListMenu);
             mListViewCity.setAdapter(mCityListAdapter);
             mCityListAdapter.notifyDataSetChanged();
-
            // requestWeather(mCurrentCity);
             //mCurrentCity = mListCity.get(mListCity.size()).toString();
-
         }
         //  = SystemUtils.getDisplayHeight(getActivity());
         // Logger.d("hello");
@@ -257,6 +336,32 @@ public class MainActivity extends SlidingActivity {
         mRightMenu.setBehindOffsetRes(R.dimen.slidingmenu_offset);
         // 设置渐入渐出效果的值
         mRightMenu.setFadeDegree(0.35f);
+        mRightTodayWeatherImg = (ImageView)findViewById(R.id.right_today_weather_img);
+        mRightTodayWeatherText = (TextView)findViewById(R.id.right_today_weather);
+        mRightAirPressText =(TextView)findViewById(R.id.right_air_press) ;
+        mRightRainText = (TextView)findViewById(R.id.right_rain) ;
+        mRightDayWeatherText = (TextView)findViewById(R.id.right_day_weather) ;
+        mRightNightWeatherText = (TextView)findViewById(R.id.right_night_weather) ;
+        mRightSunBeginText = (TextView)findViewById(R.id.right_sunbegin) ;
+        mRightSunEnd = (TextView)findViewById(R.id.right_sunend) ;
+        mRightNightWind = (TextView)findViewById(R.id.right_night_wind) ;
+        mRightDayWind = (TextView)findViewById(R.id.right_day_wind) ;
+        mRightDayWindDiretion = (TextView)findViewById(R.id.right_day_wind_diretion) ;
+        mRightNightWindDiretion = (TextView)findViewById(R.id.right_night_wind_diretion) ;
+        mRightDayTempText = (TextView)findViewById(R.id.right_day_temp) ;
+        mRightNightTempText = (TextView)findViewById(R.id.right_night_temp) ;
+        mRightNightWindDiretion = (TextView)findViewById(R.id.right_night_wind_diretion) ;
+        mRightUv = (TextView)findViewById(R.id.right_uv);
+
+        mRightCityNameText = (TextView)findViewById(R.id.right_menu_cityname);
+        mRightAreaCodeText = (TextView)findViewById(R.id.right_menu_areacode);
+        mRightAltitudeText = (TextView)findViewById(R.id.right_menu_altitude);
+        mRightLongtitudeText =(TextView)findViewById(R.id.right_menu_longtitude);
+        mRightAreaNumText =(TextView)findViewById(R.id.right_menu_postcode);
+        mRightLatitudeText =(TextView)findViewById(R.id.right_menu_latitude);
+       /* FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.attachToScrollView(mScrollView);
+        fab.setColorPressed(0xffb71c1c);*/
         mScrollView.smoothScrollTo(0, 0);
         //   mRecyclerView = (RecyclerView)findViewById(R.id.hourdata_recyclerview);
         //  mForecastLayout = (LinearLayout)findViewById(R.id.forecast_layout);
@@ -427,6 +532,29 @@ public class MainActivity extends SlidingActivity {
         mIndexSportTxt.setText(weather.getIndexBean().getmSportsDesc());
         mIndexTravelBrief.setText("旅游指数："+weather.getIndexBean().getmTravelTitle());
         mIndexTravelTxt.setText(weather.getIndexBean().getmTravelDesc());
+
+        mRightTodayWeatherText.setText(weather.getmTodayWeatherBean().getmDay_Weather());
+        mRightAirPressText.setText("气压"+weather.getmTodayWeatherBean().getmAir_Press());
+        mRightRainText.setText("降水概率"+weather.getmTodayWeatherBean().getmJiangShui());
+        Glide.with(this).load(weather.getmTodayWeatherBean().getmDay_Weather_Pic()).into(mRightTodayWeatherImg);
+        mRightDayWeatherText.setText(weather.getmTodayWeatherBean().getmDay_Weather());
+        mRightNightWeatherText.setText(weather.getmTodayWeatherBean().getmNight_Weather());
+        mRightDayWind.setText(weather.getmTodayWeatherBean().getmDay_Wind_Power());
+        mRightNightWind.setText(weather.getmTodayWeatherBean().getmNight_Wind_Power());
+        mRightDayTempText.setText(weather.getmTodayWeatherBean().getmDay_Air_Temperature()+"°");
+        mRightNightTempText.setText(weather.getmTodayWeatherBean().getmNight_Air_Temperature()+"°");
+        mRightDayWindDiretion.setText(weather.getmTodayWeatherBean().getmDay_Wind_Direction());
+        mRightNightWindDiretion.setText(weather.getmTodayWeatherBean().getmNight_Wind_Direction());
+        mRightSunBeginText.setText(weather.getmTodayWeatherBean().getmSun_Begin());
+        mRightSunEnd.setText(weather.getmTodayWeatherBean().getmSun_End());
+        mRightUv.setText("紫外线"+weather.getmTodayWeatherBean().getmZiWaiXian());
+
+        mRightCityNameText.setText("城市名："+weather.getmCityInfoBean().getmCityName_C5());
+        mRightAreaNumText.setText("邮编："+weather.getmCityInfoBean().getmAreaCode_C11());
+        mRightLatitudeText.setText("经度："+weather.getmCityInfoBean().getmLatitude());
+        mRightLongtitudeText.setText("纬度："+weather.getmCityInfoBean().getmLongitude());
+        mRightAreaCodeText.setText("区号："+weather.getmCityInfoBean().getmPostCode_C12());
+        mRightAltitudeText.setText("海拔："+weather.getmCityInfoBean().getmAltitude_C15()+"米");
     }
 
     @OnClick(R.id.nav_button)
