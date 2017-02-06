@@ -3,15 +3,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:clickable="true"
+    android:fitsSystemWindows="true"
+    android:clipToPadding="true"
     android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <TextView
+        <ImageView
             android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:background="@drawable/header_back"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="城市管理" />
+
+            android:text="城市管理"
+            android:textSize="20sp"
+            android:drawableLeft="@drawable/icon_city"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,7 +35,8 @@
         <ListView
             android:id="@+id/left_list_city_select"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:divider="#00000000">
 
         </ListView>
 
@@ -51,7 +65,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="编辑城市"
-            android:textSize="20sp"/>
+            android:textSize="17sp"/>
     </LinearLayout>
         <LinearLayout
             android:id="@+id/left_add_city"
@@ -73,7 +87,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="添加城市"
-                android:textSize="20sp"/>
+                android:textSize="17sp"/>
         </LinearLayout>
     </LinearLayout>
     <LinearLayout
@@ -84,17 +98,23 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="其他" />
+            android:text="其他"
+            android:textSize="18sp"/>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2">
+        android:layout_weight="2"
+        android:gravity="center">
     <TextView
         android:id="@+id/left_more"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="更多"/>
+
+        android:text="更多"
+        android:textSize="18sp"
+        android:drawableLeft="@drawable/icon_left_about"/>
+
     </LinearLayout>
 </LinearLayout>

@@ -219,7 +219,7 @@ public class CityEditActivity extends Activity {
             super.run();
             WeatherDB weatherDB = DataSupport.select("id")
                     .where("mCityName = ?", cityName).findFirst(WeatherDB.class);
-            Logger.d(weatherDB.toString());
+//            Logger.d(weatherDB.toString());
             if(weatherDB!=null){
                 DataSupport.delete(WeatherDB.class, weatherDB.getId());
             }

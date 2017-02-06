@@ -1,8 +1,11 @@
 package weather.wu.com.weather;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -14,6 +17,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.FrameLayout;
@@ -299,10 +303,19 @@ public class MainActivity extends SlidingActivity {
             //pd.dismiss();
         }
     };
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+       /* SystemBarTintManager tintManager = new SystemBarTintManager(this);
+        // enable status bar tint
+        tintManager.setStatusBarTintEnabled(true);
+        // enable navigation bar tint
+        tintManager.setNavigationBarTintEnabled(true);*/
+      // initWindow();
+
         setContentView(R.layout.activity_main);
+
         ButterKnife.bind(this);
         initView();
          db = Connector.getDatabase();
@@ -312,7 +325,15 @@ public class MainActivity extends SlidingActivity {
     private void initData() {
          mLeftCityListMenu.add("深圳");
     }
-
+   @TargetApi(19)
+    private void initWindow() {
+        if (Build.VERSION.SDK_INT >= 21) {
+            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                    |View.SYSTEM_UI_LAYOUT_FLAGS|View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                    |View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION);
+            getWindow().getDecorView().setFitsSystemWindows(true);
+        }
+    }
     private void initView() {
         if(SpUtils.getBoolean(getApplicationContext(),SpUtils.FIRST_START,true)){
             startActivityForResult(new Intent(MainActivity.this, CityPickerActivity.class),
@@ -332,7 +353,7 @@ public class MainActivity extends SlidingActivity {
         //NowWeather主RelativeLayout
         //   mNowWeatherRelativeLayout = (RelativeLayout)findViewById(R.id.main_now_weather);
         // mScrollView = (ScrollView)findViewById(R.id.weather_scrollview_layout);
-        mSwipeRefresh.setProgressViewOffset(false,100,200);
+
 
         //mTitleLayout.bringToFront();
         SlidingMenu mRightMenu = getSlidingMenu();
@@ -376,8 +397,14 @@ public class MainActivity extends SlidingActivity {
             @Override
             public void onRefresh() {
                 requestWeather(mCurrentCity);
+
             }
         });
+        mSwipeRefresh.setColorSchemeResources(android.R.color.holo_blue_bright,
+                android.R.color.holo_green_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_red_light);
+        mSwipeRefresh.setProgressViewOffset(true,100,200);
         //NowWeather主RelativeLayout中的RecycleView
         // mRecyclerView = (RecyclerView)findViewById(R.id.now_weather_recyclerview);
         //获取屏幕高度
@@ -421,12 +448,14 @@ public class MainActivity extends SlidingActivity {
     /**
      * 根据城市名请求城市天气信息。
      */
-    public synchronized void requestWeather(final String cityName) {
+    public  void requestWeather(final String cityName) {
         String weatherUrl = "http://route.showapi.com/9-2?showapi_appid=28198&area=" + cityName + "&showapi_sign=bd9ad7a172ee4a5a8c57618a248c63e9"
                 + "&needMoreDay=1&needIndex=1&needHourData=1&need3HourForcast=1&needAlarm=1";
         mScrollView.smoothScrollTo(0, 0);
-        if(!mSwipeRefresh.isRefreshing()){
+       if(!mSwipeRefresh.isRefreshing()){
             mSwipeRefresh.setRefreshing(true);
+
+           // mSwipeRefresh.setProgressViewOffset(false,100,300);
         }
         HttpUtil.sendOkHttpRequest(weatherUrl, new Callback() {
             @Override
@@ -480,7 +509,6 @@ public class MainActivity extends SlidingActivity {
         });
         //  loadBingPic();
     }
-
     /**
      * 将数据显示到UI上
      * @param weather
@@ -555,10 +583,10 @@ public class MainActivity extends SlidingActivity {
         mRightUv.setText("紫外线"+weather.getmTodayWeatherBean().getmZiWaiXian());
 
         mRightCityNameText.setText("城市名："+weather.getmCityInfoBean().getmCityName_C5());
-        mRightAreaNumText.setText("邮编："+weather.getmCityInfoBean().getmAreaCode_C11());
+        mRightAreaNumText.setText("邮编："+weather.getmCityInfoBean().getmPostCode_C12());
         mRightLatitudeText.setText("经度："+weather.getmCityInfoBean().getmLatitude());
         mRightLongtitudeText.setText("纬度："+weather.getmCityInfoBean().getmLongitude());
-        mRightAreaCodeText.setText("区号："+weather.getmCityInfoBean().getmPostCode_C12());
+        mRightAreaCodeText.setText("区号："+weather.getmCityInfoBean().getmAreaCode_C11());
         mRightAltitudeText.setText("海拔："+weather.getmCityInfoBean().getmAltitude_C15()+"米");
     }
 

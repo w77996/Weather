@@ -133,7 +133,7 @@
                     android:layout_toLeftOf="@+id/unit"
                     android:paddingTop="5dp"
                     android:text="200"
-                    android:textColor="@color/md_blue_grey_700_color_code"
+                    android:textColor="@color/md_blue_grey_900_color_code"
                     android:textSize="13sp"
                     android:textStyle="bold" />
 
@@ -162,7 +162,7 @@
                     android:id="@+id/CO"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="co"
+                    android:text="Co"
                     android:textColor="@color/md_grey_900_color_code"
                     android:textSize="13sp"
                     android:textStyle="bold" />
@@ -171,7 +171,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/CO"
-                    android:text="主要污染物"
+                    android:text="一氧化碳"
                     android:textSize="10sp" />
 
                 <TextView
@@ -215,7 +215,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/SO2"
-                    android:text="主要污染物"
+                    android:text="二氧化硫"
                     android:textSize="10sp" />
 
                 <TextView
@@ -265,7 +265,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/O3"
-                android:text="主要污染物"
+                android:text="臭氧"
                 android:textSize="10sp" />
 
             <TextView
@@ -309,7 +309,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/NO2"
-                android:text="主要污染物"
+                android:text="二氧化氮"
                 android:textSize="10sp" />
 
             <TextView
