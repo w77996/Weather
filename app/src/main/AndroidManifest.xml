@@ -30,10 +30,10 @@
         </activity>
         <activity android:name="weather.wu.com.activity.CityEditActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-      />
+            android:configChanges="orientation|keyboardHidden|screenSize"/>
         <activity android:name="weather.wu.com.activity.SplashActivity"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
+        <activity android:name="weather.wu.com.activity.AboutActivity"/>
         <!--<receiver android:name="weather.wu.com.widget.WeatherAppWidget">
             <meta-data android:name="android.appwidget.provider"
             android:resource="@xml/weather_appwidget"></meta-data>

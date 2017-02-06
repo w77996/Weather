@@ -319,4 +319,5 @@
     <color name="md_blue_grey_700_color_code">#455a64</color>
     <color name="md_blue_grey_800_color_code">#37474f</color>
     <color name="md_blue_grey_900_color_code">#263238</color>
+    <color name="defaultTextColor">#6f6f6f</color>
 </resources>

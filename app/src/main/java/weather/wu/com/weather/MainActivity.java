@@ -36,6 +36,7 @@ import com.zaaach.citypicker.CityPickerActivity;
 
 import org.litepal.crud.DataSupport;
 import org.litepal.tablemanager.Connector;
+import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -47,6 +48,7 @@ import butterknife.OnClick;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
+import weather.wu.com.activity.AboutActivity;
 import weather.wu.com.activity.CityEditActivity;
 import weather.wu.com.adapter.CityLeftMenuListAdapter;
 import weather.wu.com.adapter.HourDataListAdapter;
@@ -215,6 +217,8 @@ public class MainActivity extends SlidingActivity {
     @BindView(R.id.index_travel_txt)
     TextView mIndexTravelTxt;
 
+    @BindView(R.id.left_more)
+    TextView mMoreTxt;
 
     //今日天气状态
     TextView mRightTodayWeatherText;
@@ -573,6 +577,11 @@ public class MainActivity extends SlidingActivity {
         mDrawerLayout.closeDrawer(GravityCompat.START);
         startActivityForResult(intent,
                 REQUEST_CODE_EDIT_CITY);
+    }
+    @OnClick(R.id.left_more)
+    public void onMore()
+    {
+        startActivity(new Intent(this, AboutActivity.class));
     }
     /**
      * 开启线程对数据库进行操作
