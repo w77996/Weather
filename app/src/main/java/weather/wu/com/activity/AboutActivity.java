@@ -88,7 +88,7 @@ public class AboutActivity extends Activity {
                 Intent sharingIntent = new Intent(Intent.ACTION_SEND);
                 sharingIntent.setType("text/plain");
                 sharingIntent.putExtra(Intent.EXTRA_SUBJECT, "Subject Here");
-               // sharingIntent.putExtra(Intent.EXTRA_TEXT, getString(R.string.share_txt));
+                //sharingIntent.putExtra(Intent.EXTRA_TEXT, getString(R.string.share_txt));
                // startActivity(Intent.createChooser(sharingIntent, getString(R.string.share_app)));
                 break;
             case R.id.bt_bug:

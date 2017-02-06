@@ -136,6 +136,8 @@ public class MainActivity extends SlidingActivity {
     LinearLayout mLinearLayoutEditCity;
     @BindView(R.id.left_list_city_select)
     ListView mListViewCity;
+    @BindView(R.id.left_add_city)
+    LinearLayout mLinearLayoutAddCity;
     /**右侧菜单控件初始化**/
     //今日天气状态
    /* @BindView(R.id.right_today_weather)
@@ -271,7 +273,6 @@ public class MainActivity extends SlidingActivity {
     private List<FutureWeatherBean> fff = new ArrayList<FutureWeatherBean>();
     private List<HourDataBean> hhh = new ArrayList<HourDataBean>();
     public static String mCurrentCity;
-
     //启动
     //  String json;
    // String a = "http://route.showapi.com/9-2?showapi_appid=28198&area=广州&showapi_sign=bd9ad7a172ee4a5a8c57618a248c63e9&needMoreDay=1&needIndex=1&needHourData=1&need3HourForcast=1&needAlarm=1";
@@ -565,7 +566,7 @@ public class MainActivity extends SlidingActivity {
     public void onOpenDrawerLayout() {
         mDrawerLayout.openDrawer(GravityCompat.START);
     }
-    @OnClick(R.id.title_city)
+    @OnClick(R.id.left_add_city)
     public void onSelectCity() {
         startActivityForResult(new Intent(MainActivity.this, CityPickerActivity.class),
                 REQUEST_CODE_PICK_CITY);
@@ -575,8 +576,7 @@ public class MainActivity extends SlidingActivity {
         Intent intent = new Intent(MainActivity.this, CityEditActivity.class);
         /*intent.putStringArrayListExtra("city", (ArrayList<String>) mListCity);*/
         mDrawerLayout.closeDrawer(GravityCompat.START);
-        startActivityForResult(intent,
-                REQUEST_CODE_EDIT_CITY);
+        startActivityForResult(intent, REQUEST_CODE_EDIT_CITY);
     }
     @OnClick(R.id.left_more)
     public void onMore()

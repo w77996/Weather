@@ -141,7 +141,6 @@ public class CityEditActivity extends Activity {
                         }else{
                             Toast.makeText(getApplicationContext(), position + " 亲，删除了你看啥？", Toast.LENGTH_SHORT).show();
                         }
-
                         break;
                 }
                 // false : 会关闭菜单; true ：不会关闭菜单
