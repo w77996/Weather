@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">Weather</string>
-    <string name="aboutContent">weathershifdsaf</string>
+    <string name="aboutContent">2016年11月23开始建立项目，Weather作为一款MD风格的生活APP具备天气APP的基本功能，其丰富的天气信息数据是最大的亮点</string>
+    <string name="share_txt">weather</string>
+    <string name="share_app">分享</string>
+    <string name="app_html">https://github.com/w77996/Weather</string>
+    <string name="alipay">dd</string>
+    <string name="can_not_find_version_name">找不到版本号</string>
+    <string name="bugTableUrl">https://www.wenjuan.com/s/q6riuy/</string>
+    <string name="open_source">• RxJava: github.com/ReactiveX/RxJava\\n• RxAndroid: github.com/ReactiveX/RxAndroid\\n• Retrofit: github.com/square/retrofit\\n• Glide: github.com/bumptech/glide\\n• YujunZhu 设计师提供多城市卡片设计\\n• 和风天气提供数据支持\\n• 高德定位提供位置定位服务</string>
 </resources>

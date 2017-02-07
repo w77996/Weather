@@ -1,6 +1,10 @@
 package weather.wu.com.utils;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
@@ -21,6 +25,7 @@ import weather.wu.com.bean.IndexBean;
 import weather.wu.com.bean.NowWeatherBean;
 import weather.wu.com.bean.TodayWeatherBean;
 import weather.wu.com.bean.WeatherBean;
+import weather.wu.com.weather.R;
 
 /**
  * Created by 吴海辉 on 2016/12/30.
@@ -273,5 +278,42 @@ public class Utility {
             }
         }
         return false;
+    }
+    public static void copyToClipboard(String info, Context context) {
+        ClipboardManager manager = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
+        ClipData clipData = ClipData.newPlainText("msg", info);
+        manager.setPrimaryClip(clipData);
+       // ToastUtil.showShort(String.format("[%s] 已经复制到剪切板啦( •̀ .̫ •́ )✧", info));
+    }
+
+    /**
+     * 获取版本号
+     *
+     * @return 当前应用的版本号
+     */
+
+    public static String getVersion(Context context) {
+        try {
+            PackageManager manager = context.getPackageManager();
+            PackageInfo info = manager.getPackageInfo(context.getPackageName(), 0);
+            return info.versionName;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return context.getString(R.string.can_not_find_version_name);
+        }
+    }
+
+    /**
+     * @return 版本号
+     */
+    public static int getVersionCode(Context context) {
+        try {
+            PackageManager manager = context.getPackageManager();
+            PackageInfo info = manager.getPackageInfo(context.getPackageName(), 0);
+            return info.versionCode;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        }
     }
 }

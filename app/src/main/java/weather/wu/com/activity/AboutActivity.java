@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,6 +19,7 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import weather.wu.com.utils.Utility;
 import weather.wu.com.weather.R;
 
 public class AboutActivity extends Activity {
@@ -52,10 +54,10 @@ public class AboutActivity extends Activity {
     }
 
     private void initView() {
-       // setSupportActionBar(mToolbar);
-      /*  ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) actionBar.setDisplayHomeAsUpEnabled(true);*/
-     //   mTvVersion.setText(String.format("当前版本: %s (Build %s)", Util.getVersion(this), Util.getVersionCode(this)));
+        //setSupportActionBar(mToolbar);
+      // ActionBar actionBar = getSupportActionBar();
+       // if (actionBar != null) actionBar.setDisplayHomeAsUpEnabled(true);
+        mTvVersion.setText(String.format("当前版本: %s (Build %s)", Utility.getVersion(this), Utility.getVersionCode(this)));
         mToolbarLayout.setTitleEnabled(false);
         // TODO: 2016/12/4 这里有个 bug
         mToolbarLayout.setTitle(getString(R.string.app_name));
@@ -76,23 +78,23 @@ public class AboutActivity extends Activity {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.bt_code:
-               // goToHtml(getString(R.string.app_html));
+                goToHtml(getString(R.string.app_html));
                 break;
             case R.id.bt_blog:
-                goToHtml("http://imxie.cc");
+                goToHtml("http://blog.csdn.net/w77996?viewmode=contents");
                 break;
             case R.id.bt_pay:
-              //  Util.copyToClipboard(getString(R.string.alipay), this);
+                Utility.copyToClipboard(getString(R.string.alipay), this);
                 break;
             case R.id.bt_share:
                 Intent sharingIntent = new Intent(Intent.ACTION_SEND);
                 sharingIntent.setType("text/plain");
                 sharingIntent.putExtra(Intent.EXTRA_SUBJECT, "Subject Here");
-                //sharingIntent.putExtra(Intent.EXTRA_TEXT, getString(R.string.share_txt));
-               // startActivity(Intent.createChooser(sharingIntent, getString(R.string.share_app)));
+                sharingIntent.putExtra(Intent.EXTRA_TEXT, getString(R.string.share_txt));
+                startActivity(Intent.createChooser(sharingIntent, getString(R.string.share_app)));
                 break;
             case R.id.bt_bug:
-              //  goToHtml(getString(R.string.bugTableUrl));
+                goToHtml(getString(R.string.bugTableUrl));
                 break;
             case R.id.bt_update:
               //  CheckVersion.checkVersion(this, true);

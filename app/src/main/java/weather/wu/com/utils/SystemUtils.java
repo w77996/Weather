@@ -1,5 +1,7 @@
 package weather.wu.com.utils;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
@@ -73,5 +75,12 @@ public class SystemUtils {
        context.getTheme().resolveAttribute(R.attr.actionBarSize, typedValue, true);
         int actionBarHeight = TypedValue.complexToDimensionPixelSize(typedValue.data, context.getResources().getDisplayMetrics());
         return actionBarHeight;
+    }
+
+    public static void copyToClipboard(String info, Context context) {
+        ClipboardManager manager = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
+        ClipData clipData = ClipData.newPlainText("msg", info);
+        manager.setPrimaryClip(clipData);
+       // ToastUtil.showShort(String.format("[%s] 已经复制到剪切板啦( •̀ .̫ •́ )✧", info));
     }
 }
