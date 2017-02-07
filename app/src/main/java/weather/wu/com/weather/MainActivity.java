@@ -601,9 +601,10 @@ public class MainActivity extends SlidingActivity {
     }
     @OnClick(R.id.left_edit_city)
     public void onEditCity(){
+        mDrawerLayout.closeDrawer(GravityCompat.START);
         Intent intent = new Intent(MainActivity.this, CityEditActivity.class);
         /*intent.putStringArrayListExtra("city", (ArrayList<String>) mListCity);*/
-        mDrawerLayout.closeDrawer(GravityCompat.START);
+
         startActivityForResult(intent, REQUEST_CODE_EDIT_CITY);
     }
     @OnClick(R.id.left_more)

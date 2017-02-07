@@ -29,6 +29,8 @@
             </intent-filter>
         </activity>
         <activity android:name="weather.wu.com.activity.CityEditActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"
+
             android:configChanges="orientation|keyboardHidden|screenSize"/>
         <activity android:name="weather.wu.com.activity.SplashActivity"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
