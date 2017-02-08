@@ -123,14 +123,14 @@
             android:orientation="horizontal"
             android:gravity="center">
         <ImageView
-            android:id="@+id/left_city_location"
+
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_weight="0.7"
             android:src="@drawable/icon_left_about" />
 
         <TextView
-            android:id="@+id/left_city_name"
+            android:id="@+id/left_more"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="2"

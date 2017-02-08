@@ -344,7 +344,7 @@ public class MainActivity extends SlidingActivity {
             mDBThread.start();
             mCityListAdapter = new CityLeftMenuListAdapter(MainActivity.this, mLeftCityListMenu);
             mListViewCity.setAdapter(mCityListAdapter);
-            mCityListAdapter.notifyDataSetChanged();
+             mCityListAdapter.notifyDataSetChanged();
            // requestWeather(mCurrentCity);
             //mCurrentCity = mListCity.get(mListCity.size()).toString();
         }
@@ -353,7 +353,6 @@ public class MainActivity extends SlidingActivity {
         //NowWeather主RelativeLayout
         //   mNowWeatherRelativeLayout = (RelativeLayout)findViewById(R.id.main_now_weather);
         // mScrollView = (ScrollView)findViewById(R.id.weather_scrollview_layout);
-
 
         //mTitleLayout.bringToFront();
         SlidingMenu mRightMenu = getSlidingMenu();
@@ -492,7 +491,7 @@ public class MainActivity extends SlidingActivity {
             @Override
             public void onFailure(Call call, IOException e) {
                 Logger.e(e);
-                WeatherDB weatherDB  =new WeatherDB();
+               // WeatherDB weatherDB  =new WeatherDB();
                 WeatherDB weatherData= DataSupport.where("mCityName = ?", cityName).findFirst(WeatherDB.class);
                 if(weatherData!=null){
                     final WeatherBean weather = Utility.handleWeatherResponse(weatherData.getmJsonData());
@@ -624,11 +623,14 @@ public class MainActivity extends SlidingActivity {
                      mLeftCityListMenu.add(wb.getmCityName());
                     Logger.d(wb.getmCityName());
                 }
-                mCurrentCity =  mLeftCityListMenu.get(0).toString();
-                Message message = Message.obtain();
-                message.obj = mCurrentCity;
-                message.what=1;
-                mHandler.sendMessage(message);
+                if(mCurrentCity==null){
+                    mCurrentCity =  mLeftCityListMenu.get(0).toString();
+                    Message message = Message.obtain();
+                    message.obj = mCurrentCity;
+                    message.what=1;
+                    mHandler.sendMessage(message);
+                }
+
                // requestWeather(mCurrentCity);
                // mCityListAdapter.notifyDataSetChanged();
              /* Message message = Message.obtain();
@@ -649,6 +651,9 @@ public class MainActivity extends SlidingActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_CODE_PICK_CITY && resultCode == RESULT_OK){
             if (data != null){
+                if(SpUtils.getBoolean(getApplicationContext(),SpUtils.FIRST_START,true)&&Utility.isNetworkConnected(this)){
+
+                }
                 if(SpUtils.getBoolean(getApplicationContext(),SpUtils.FIRST_START,true)){
                     SpUtils.putBoolean(getApplicationContext(),SpUtils.FIRST_START,false);
                 }
