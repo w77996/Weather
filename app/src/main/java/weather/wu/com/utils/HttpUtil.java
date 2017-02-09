@@ -275,8 +275,6 @@ public class HttpUtil {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
-
     }
 
     private static void parseNowJsonData(JSONObject nowData) {
