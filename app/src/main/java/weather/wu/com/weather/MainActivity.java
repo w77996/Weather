@@ -334,7 +334,12 @@ public class MainActivity extends SlidingActivity {
             getWindow().getDecorView().setFitsSystemWindows(true);
         }
     }
+
+    /**
+     * 初始化视图
+     */
     private void initView() {
+        //如果是第一次加载应用则直接打开城市选择，否者开启线程读取数据库，更新左侧菜单城市列表
         if(SpUtils.getBoolean(getApplicationContext(),SpUtils.FIRST_START,true)){
             startActivityForResult(new Intent(MainActivity.this, CityPickerActivity.class),
                     REQUEST_CODE_PICK_CITY);
@@ -355,12 +360,14 @@ public class MainActivity extends SlidingActivity {
         // mScrollView = (ScrollView)findViewById(R.id.weather_scrollview_layout);
 
         //mTitleLayout.bringToFront();
+        //SlidingMenu右侧滑出，遮盖110dp
         SlidingMenu mRightMenu = getSlidingMenu();
         setBehindContentView(R.layout.main_right_menu);
         mRightMenu.setMode(SlidingMenu.RIGHT);
         mRightMenu.setBehindOffsetRes(R.dimen.slidingmenu_offset);
         // 设置渐入渐出效果的值
         mRightMenu.setFadeDegree(0.35f);
+        //右侧控件初始化
         mRightTodayWeatherImg = (ImageView)findViewById(R.id.right_today_weather_img);
         mRightTodayWeatherText = (TextView)findViewById(R.id.right_today_weather);
         mRightAirPressText =(TextView)findViewById(R.id.right_air_press) ;
@@ -390,8 +397,9 @@ public class MainActivity extends SlidingActivity {
         mScrollView.smoothScrollTo(0, 0);
         //   mRecyclerView = (RecyclerView)findViewById(R.id.hourdata_recyclerview);
         //  mForecastLayout = (LinearLayout)findViewById(R.id.forecast_layout);
-        mSwipeRefresh.setColorSchemeResources(R.color.color_main);
 
+       // mSwipeRefresh.setColorSchemeResources(R.color.color_main);
+        //下拉刷新控件
         mSwipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -403,6 +411,7 @@ public class MainActivity extends SlidingActivity {
                 android.R.color.holo_green_light,
                 android.R.color.holo_orange_light,
                 android.R.color.holo_red_light);
+        //控件拉动是放大放小，起始位置，结束位置
         mSwipeRefresh.setProgressViewOffset(true,100,200);
         //NowWeather主RelativeLayout中的RecycleView
         // mRecyclerView = (RecyclerView)findViewById(R.id.now_weather_recyclerview);
@@ -429,7 +438,6 @@ public class MainActivity extends SlidingActivity {
         //设置当前天气信息RelativeLayout的高度
         mNowWeatherRelativeLayout.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, mNowWeatherHeight));
        // mImageViewBack.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT,mNowWeatherHeight/2));
-
       //  mLinearLayoutLeftMenu.setLayoutParams(new DrawerLayout.LayoutParams(DisplayWideth/2, DrawerLayout.LayoutParams.MATCH_PARENT));
 
         mListViewCity.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -464,6 +472,7 @@ public class MainActivity extends SlidingActivity {
                  WeatherDB weatherDB  =new WeatherDB();
                 WeatherDB weatherData= DataSupport.where("mCityName = ?", cityName).findFirst(WeatherDB.class);
            // if(Utility.isNetworkConnected(MainActivity.this)){
+                //从数据库获取城市，如果数据库不为空并且网络获取的数据返回成功，更新数据库，如果数据库为空，则添加新城市
                 if(weatherData!=null&&"0".equals(weather.mShowapi_Res_Code)){
                     weatherDB.setmJsonData(responseText);
                     weatherDB.update(weatherData.id);
@@ -473,6 +482,7 @@ public class MainActivity extends SlidingActivity {
                     weatherDB.save();
                 }
           //  }
+                //主线程更新UI
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
