@@ -60,6 +60,7 @@ import weather.wu.com.bean.FutureWeatherBean;
 import weather.wu.com.bean.HourDataBean;
 import weather.wu.com.bean.WeatherBean;
 import weather.wu.com.db.WeatherDB;
+import weather.wu.com.utils.DoubleClickExit;
 import weather.wu.com.utils.HttpUtil;
 import weather.wu.com.utils.SharedPreferencesUtils;
 import weather.wu.com.utils.SpUtils;
@@ -636,6 +637,7 @@ public class MainActivity extends SlidingActivity {
         public void run() {
             List<WeatherDB> weatherDB = DataSupport.findAll(WeatherDB.class);
             if(weatherDB!=null) {
+                mLeftCityListMenu.clear();
                 for (WeatherDB wb : weatherDB) {
                      mLeftCityListMenu.add(wb.getmCityName());
                     Logger.d(wb.getmCityName());
@@ -702,6 +704,16 @@ public class MainActivity extends SlidingActivity {
             mDBThread.stop();
         }*/
 
+    }
+    @Override
+    public void onBackPressed(){
+        if(mDrawerLayout.isDrawerOpen(GravityCompat.START)){
+            mDrawerLayout.closeDrawer(GravityCompat.START);
+        }else if(!DoubleClickExit.check()){
+            Toast.makeText(getApplicationContext(),"再按一次退出",Toast.LENGTH_SHORT).show();
+        }else{
+            finish();
+        }
     }
 
 }
