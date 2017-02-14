@@ -7,7 +7,7 @@ import android.os.Message;
 
 import java.lang.ref.WeakReference;
 
-import weather.wu.com.weather.MainActivity;
+import weather.wu.com.weather.WeatherActivity;
 import weather.wu.com.weather.R;
 
 /**
@@ -38,7 +38,7 @@ public class SplashActivity extends Activity {
         public void handleMessage(Message msg) {
             SplashActivity activity = mWeakReference.get();
             if (activity != null) {
-                MainActivity.launch(activity);
+                WeatherActivity.launch(activity);
                 activity.finish();
             }
         }

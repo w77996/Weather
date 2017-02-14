@@ -3,13 +3,12 @@ package weather.wu.com.fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import weather.wu.com.weather.MainActivity;
+import weather.wu.com.weather.WeatherActivity;
 import weather.wu.com.weather.R;
 
 public  class TestFragment extends Fragment {
@@ -48,7 +47,7 @@ public  class TestFragment extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(), MainActivity.class));
+                startActivity(new Intent(getActivity(), WeatherActivity.class));
             }
         });
         return view;

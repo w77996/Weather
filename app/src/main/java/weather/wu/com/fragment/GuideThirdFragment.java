@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import weather.wu.com.weather.MainActivity;
+import weather.wu.com.weather.WeatherActivity;
 
 /**
  * Created by Administrator on 2017/1/6.
@@ -29,7 +29,7 @@ public class GuideThirdFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                getActivity().startActivity(new Intent(getActivity(),MainActivity.class));
+                getActivity().startActivity(new Intent(getActivity(),WeatherActivity.class));
                 getActivity().finish();
             }
         });

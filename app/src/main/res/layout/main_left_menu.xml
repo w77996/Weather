@@ -94,13 +94,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <TextView
+        <View
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
+            android:layout_height="2px"
+            android:background="@color/md_grey_500_color_code"
             android:layout_marginBottom="8dp"
-            android:text="其他"
-            android:textSize="18sp"/>
+            />
     </LinearLayout>
 
     <LinearLayout
@@ -124,19 +123,19 @@
             android:gravity="center">
         <ImageView
 
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="17dp"
+            android:layout_height="17dp"
             android:layout_weight="0.7"
             android:src="@drawable/icon_left_about" />
 
         <TextView
-            android:id="@+id/left_more"
+            android:id="@+id/left_about"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:layout_gravity="center"
             android:text="更多"
-            android:textSize="20sp" />
+            android:textSize="17sp" />
             </LinearLayout>
     </LinearLayout>
 </LinearLayout>

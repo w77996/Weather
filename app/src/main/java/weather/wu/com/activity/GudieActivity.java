@@ -1,24 +1,17 @@
 package weather.wu.com.activity;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
-import android.view.View;
 import android.widget.Button;
 
 import com.viewpagerindicator.CirclePageIndicator;
 import com.viewpagerindicator.PageIndicator;
 
 import butterknife.BindView;
-import butterknife.BindViews;
-import butterknife.OnClick;
 import weather.wu.com.adapter.GuideFragmentAdapter;
-import weather.wu.com.utils.SharedPreferencesUtils;
 import weather.wu.com.utils.SpUtils;
-import weather.wu.com.weather.MainActivity;
 import weather.wu.com.weather.R;
 
 public class GudieActivity extends FragmentActivity implements ViewPager.OnPageChangeListener{
@@ -37,11 +30,11 @@ public class GudieActivity extends FragmentActivity implements ViewPager.OnPageC
       //  SharedPreferencesUtils sharedPreferencesUtils = new SharedPreferencesUtils(this);
      /*   if(!SpUtils.getBoolean(getApplication(),"first_start",true)){
 
-            startActivity(new Intent(this,MainActivity.class));
+            startActivity(new Intent(this,WeatherActivity.class));
             finish();
         }*/
        /* if(!SpUtils.getBoolean(getApplication(),SpUtils.FIRST_START,true)){
-            startActivity(new Intent(GudieActivity.this,MainActivity.class));
+            startActivity(new Intent(GudieActivity.this,WeatherActivity.class));
         }*/
         if(!SpUtils.getBoolean(getApplicationContext(),SpUtils.FIRST_START,true)){
             startActivity(new Intent(GudieActivity.this, SplashActivity.class));
@@ -79,7 +72,7 @@ public class GudieActivity extends FragmentActivity implements ViewPager.OnPageC
     }
  /*   @OnClick(R.id.guide_btn)
     public void onEnter(View v){
-        startActivity(new Intent(GudieActivity.this, MainActivity.class));
+        startActivity(new Intent(GudieActivity.this, WeatherActivity.class));
         finish();
     }*/
 }
