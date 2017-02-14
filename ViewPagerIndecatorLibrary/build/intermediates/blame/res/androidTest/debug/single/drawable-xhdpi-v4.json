@@ -4,12 +4,36 @@
         "source": "D:\\AndroidProject\\Weather\\ViewPagerIndecatorLibrary\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\vpi__tab_selected_focused_holo.9.png"
     },
     {
+        "merged": "E:\\GitDownLoad\\Weather1.0\\ViewPagerIndecatorLibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\vpi__tab_selected_holo.9.png",
+        "source": "E:\\GitDownLoad\\Weather1.0\\ViewPagerIndecatorLibrary\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\vpi__tab_selected_holo.9.png"
+    },
+    {
+        "merged": "E:\\GitDownLoad\\Weather1.0\\ViewPagerIndecatorLibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\vpi__tab_unselected_focused_holo.9.png",
+        "source": "E:\\GitDownLoad\\Weather1.0\\ViewPagerIndecatorLibrary\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\vpi__tab_unselected_focused_holo.9.png"
+    },
+    {
+        "merged": "E:\\GitDownLoad\\Weather1.0\\ViewPagerIndecatorLibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\vpi__tab_selected_focused_holo.9.png",
+        "source": "E:\\GitDownLoad\\Weather1.0\\ViewPagerIndecatorLibrary\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\vpi__tab_selected_focused_holo.9.png"
+    },
+    {
         "merged": "D:\\AndroidProject\\Weather\\ViewPagerIndecatorLibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\vpi__tab_selected_holo.9.png",
         "source": "D:\\AndroidProject\\Weather\\ViewPagerIndecatorLibrary\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\vpi__tab_selected_holo.9.png"
     },
     {
+        "merged": "E:\\GitDownLoad\\Weather1.0\\ViewPagerIndecatorLibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\vpi__tab_unselected_holo.9.png",
+        "source": "E:\\GitDownLoad\\Weather1.0\\ViewPagerIndecatorLibrary\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\vpi__tab_unselected_holo.9.png"
+    },
+    {
         "merged": "D:\\AndroidProject\\Weather\\ViewPagerIndecatorLibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\vpi__tab_unselected_pressed_holo.9.png",
         "source": "D:\\AndroidProject\\Weather\\ViewPagerIndecatorLibrary\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\vpi__tab_unselected_pressed_holo.9.png"
+    },
+    {
+        "merged": "E:\\GitDownLoad\\Weather1.0\\ViewPagerIndecatorLibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\vpi__tab_unselected_pressed_holo.9.png",
+        "source": "E:\\GitDownLoad\\Weather1.0\\ViewPagerIndecatorLibrary\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\vpi__tab_unselected_pressed_holo.9.png"
+    },
+    {
+        "merged": "E:\\GitDownLoad\\Weather1.0\\ViewPagerIndecatorLibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\vpi__tab_selected_pressed_holo.9.png",
+        "source": "E:\\GitDownLoad\\Weather1.0\\ViewPagerIndecatorLibrary\\build\\intermediates\\bundles\\debug\\res\\drawable-xhdpi-v4\\vpi__tab_selected_pressed_holo.9.png"
     },
     {
         "merged": "D:\\AndroidProject\\Weather\\ViewPagerIndecatorLibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4\\vpi__tab_unselected_holo.9.png",

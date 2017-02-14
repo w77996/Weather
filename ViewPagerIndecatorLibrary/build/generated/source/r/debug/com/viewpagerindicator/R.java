@@ -298,19 +298,19 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static int vpi__light_theme=0x7f040012;
     }
     public static final class dimen {
-        public static int default_circle_indicator_radius=0x7f060000;
-        public static int default_circle_indicator_stroke_width=0x7f060001;
-        public static int default_line_indicator_gap_width=0x7f060002;
-        public static int default_line_indicator_line_width=0x7f060003;
-        public static int default_line_indicator_stroke_width=0x7f060004;
-        public static int default_title_indicator_clip_padding=0x7f060005;
-        public static int default_title_indicator_footer_indicator_height=0x7f060006;
-        public static int default_title_indicator_footer_indicator_underline_padding=0x7f060007;
-        public static int default_title_indicator_footer_line_height=0x7f060008;
-        public static int default_title_indicator_footer_padding=0x7f060009;
-        public static int default_title_indicator_text_size=0x7f06000a;
-        public static int default_title_indicator_title_padding=0x7f06000b;
-        public static int default_title_indicator_top_padding=0x7f06000c;
+        public static int default_circle_indicator_radius=0x7f050000;
+        public static int default_circle_indicator_stroke_width=0x7f050001;
+        public static int default_line_indicator_gap_width=0x7f050002;
+        public static int default_line_indicator_line_width=0x7f050003;
+        public static int default_line_indicator_stroke_width=0x7f050004;
+        public static int default_title_indicator_clip_padding=0x7f050005;
+        public static int default_title_indicator_footer_indicator_height=0x7f050006;
+        public static int default_title_indicator_footer_indicator_underline_padding=0x7f050007;
+        public static int default_title_indicator_footer_line_height=0x7f050008;
+        public static int default_title_indicator_footer_padding=0x7f050009;
+        public static int default_title_indicator_text_size=0x7f05000a;
+        public static int default_title_indicator_title_padding=0x7f05000b;
+        public static int default_title_indicator_top_padding=0x7f05000c;
     }
     public static final class drawable {
         public static int vpi__tab_indicator=0x7f020000;
@@ -322,25 +322,25 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static int vpi__tab_unselected_pressed_holo=0x7f020006;
     }
     public static final class id {
-        public static int bottom=0x7f050003;
-        public static int none=0x7f050000;
-        public static int top=0x7f050004;
-        public static int triangle=0x7f050001;
-        public static int underline=0x7f050002;
+        public static int bottom=0x7f080003;
+        public static int none=0x7f080000;
+        public static int top=0x7f080004;
+        public static int triangle=0x7f080001;
+        public static int underline=0x7f080002;
     }
     public static final class integer {
-        public static int default_circle_indicator_orientation=0x7f070000;
-        public static int default_title_indicator_footer_indicator_style=0x7f070001;
-        public static int default_title_indicator_line_position=0x7f070002;
-        public static int default_underline_indicator_fade_delay=0x7f070003;
-        public static int default_underline_indicator_fade_length=0x7f070004;
+        public static int default_circle_indicator_orientation=0x7f060000;
+        public static int default_title_indicator_footer_indicator_style=0x7f060001;
+        public static int default_title_indicator_line_position=0x7f060002;
+        public static int default_underline_indicator_fade_delay=0x7f060003;
+        public static int default_underline_indicator_fade_length=0x7f060004;
     }
     public static final class style {
-        public static int TextAppearance_TabPageIndicator=0x7f080000;
-        public static int Theme_PageIndicatorDefaults=0x7f080001;
-        public static int Widget=0x7f080002;
-        public static int Widget_IconPageIndicator=0x7f080003;
-        public static int Widget_TabPageIndicator=0x7f080004;
+        public static int TextAppearance_TabPageIndicator=0x7f070000;
+        public static int Theme_PageIndicatorDefaults=0x7f070001;
+        public static int Widget=0x7f070002;
+        public static int Widget_IconPageIndicator=0x7f070003;
+        public static int Widget_TabPageIndicator=0x7f070004;
     }
     public static final class styleable {
         /** Attributes that can be used with a CirclePageIndicator.
@@ -379,13 +379,13 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
           attribute's value can be found in the {@link #CirclePageIndicator} array.
           @attr name android:background
         */
-        public static final int CirclePageIndicator_android_background = 1;
+        public static int CirclePageIndicator_android_background = 1;
         /**
           <p>This symbol is the offset where the {@link android.R.attr#orientation}
           attribute's value can be found in the {@link #CirclePageIndicator} array.
           @attr name android:orientation
         */
-        public static final int CirclePageIndicator_android_orientation = 0;
+        public static int CirclePageIndicator_android_orientation = 0;
         /**
           <p>This symbol is the offset where the {@link com.viewpagerindicator.R.attr#centered}
           attribute's value can be found in the {@link #CirclePageIndicator} array.
@@ -399,7 +399,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name com.viewpagerindicator:centered
         */
-        public static final int CirclePageIndicator_centered = 2;
+        public static int CirclePageIndicator_centered = 2;
         /**
           <p>This symbol is the offset where the {@link com.viewpagerindicator.R.attr#fillColor}
           attribute's value can be found in the {@link #CirclePageIndicator} array.
@@ -414,7 +414,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name com.viewpagerindicator:fillColor
         */
-        public static final int CirclePageIndicator_fillColor = 4;
+        public static int CirclePageIndicator_fillColor = 4;
         /**
           <p>This symbol is the offset where the {@link com.viewpagerindicator.R.attr#pageColor}
           attribute's value can be found in the {@link #CirclePageIndicator} array.
@@ -429,7 +429,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name com.viewpagerindicator:pageColor
         */
-        public static final int CirclePageIndicator_pageColor = 5;
+        public static int CirclePageIndicator_pageColor = 5;
         /**
           <p>This symbol is the offset where the {@link com.viewpagerindicator.R.attr#radius}
           attribute's value can be found in the {@link #CirclePageIndicator} array.
@@ -445,7 +445,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name com.viewpagerindicator:radius
         */
-        public static final int CirclePageIndicator_radius = 6;
+        public static int CirclePageIndicator_radius = 6;
         /**
           <p>This symbol is the offset where the {@link com.viewpagerindicator.R.attr#snap}
           attribute's value can be found in the {@link #CirclePageIndicator} array.
@@ -459,7 +459,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name com.viewpagerindicator:snap
         */
-        public static final int CirclePageIndicator_snap = 7;
+        public static int CirclePageIndicator_snap = 7;
         /**
           <p>This symbol is the offset where the {@link com.viewpagerindicator.R.attr#strokeColor}
           attribute's value can be found in the {@link #CirclePageIndicator} array.
@@ -474,7 +474,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name com.viewpagerindicator:strokeColor
         */
-        public static final int CirclePageIndicator_strokeColor = 8;
+        public static int CirclePageIndicator_strokeColor = 8;
         /**
           <p>This symbol is the offset where the {@link com.viewpagerindicator.R.attr#strokeWidth}
           attribute's value can be found in the {@link #CirclePageIndicator} array.
@@ -490,7 +490,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name com.viewpagerindicator:strokeWidth
         */
-        public static final int CirclePageIndicator_strokeWidth = 3;
+        public static int CirclePageIndicator_strokeWidth = 3;
         /** Attributes that can be used with a LinePageIndicator.
            <p>Includes the following attributes:</p>
            <table>
@@ -522,7 +522,7 @@ containing a value of this type.
           attribute's value can be found in the {@link #LinePageIndicator} array.
           @attr name android:background
         */
-        public static final int LinePageIndicator_android_background = 0;
+        public static int LinePageIndicator_android_background = 0;
         /**
           <p>This symbol is the offset where the {@link com.viewpagerindicator.R.attr#centered}
           attribute's value can be found in the {@link #LinePageIndicator} array.
@@ -536,7 +536,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name com.viewpagerindicator:centered
         */
-        public static final int LinePageIndicator_centered = 1;
+        public static int LinePageIndicator_centered = 1;
         /**
           <p>This symbol is the offset where the {@link com.viewpagerindicator.R.attr#gapWidth}
           attribute's value can be found in the {@link #LinePageIndicator} array.
@@ -552,7 +552,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name com.viewpagerindicator:gapWidth
         */
-        public static final int LinePageIndicator_gapWidth = 6;
+        public static int LinePageIndicator_gapWidth = 6;
         /**
           <p>This symbol is the offset where the {@link com.viewpagerindicator.R.attr#lineWidth}
           attribute's value can be found in the {@link #LinePageIndicator} array.
@@ -568,7 +568,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name com.viewpagerindicator:lineWidth
         */
-        public static final int LinePageIndicator_lineWidth = 5;
+        public static int LinePageIndicator_lineWidth = 5;
         /**
           <p>This symbol is the offset where the {@link com.viewpagerindicator.R.attr#selectedColor}
           attribute's value can be found in the {@link #LinePageIndicator} array.
@@ -583,7 +583,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name com.viewpagerindicator:selectedColor
         */
-        public static final int LinePageIndicator_selectedColor = 2;
+        public static int LinePageIndicator_selectedColor = 2;
         /**
           <p>This symbol is the offset where the {@link com.viewpagerindicator.R.attr#strokeWidth}
           attribute's value can be found in the {@link #LinePageIndicator} array.
@@ -599,7 +599,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name com.viewpagerindicator:strokeWidth
         */
-        public static final int LinePageIndicator_strokeWidth = 3;
+        public static int LinePageIndicator_strokeWidth = 3;
         /**
           <p>This symbol is the offset where the {@link com.viewpagerindicator.R.attr#unselectedColor}
           attribute's value can be found in the {@link #LinePageIndicator} array.
@@ -614,7 +614,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name com.viewpagerindicator:unselectedColor
         */
-        public static final int LinePageIndicator_unselectedColor = 4;
+        public static int LinePageIndicator_unselectedColor = 4;
         /** Attributes that can be used with a TitlePageIndicator.
            <p>Includes the following attributes:</p>
            <table>
@@ -664,19 +664,19 @@ containing a value of this type.
           attribute's value can be found in the {@link #TitlePageIndicator} array.
           @attr name android:background
         */
-        public static final int TitlePageIndicator_android_background = 2;
+        public static int TitlePageIndicator_android_background = 2;
         /**
           <p>This symbol is the offset where the {@link android.R.attr#textColor}
           attribute's value can be found in the {@link #TitlePageIndicator} array.
           @attr name android:textColor
         */
-        public static final int TitlePageIndicator_android_textColor = 1;
+        public static int TitlePageIndicator_android_textColor = 1;
         /**
           <p>This symbol is the offset where the {@link android.R.attr#textSize}
           attribute's value can be found in the {@link #TitlePageIndicator} array.
           @attr name android:textSize
         */
-        public static final int TitlePageIndicator_android_textSize = 0;
+        public static int TitlePageIndicator_android_textSize = 0;
         /**
           <p>This symbol is the offset where the {@link com.viewpagerindicator.R.attr#clipPadding}
           attribute's value can be found in the {@link #TitlePageIndicator} array.
@@ -692,7 +692,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name com.viewpagerindicator:clipPadding
         */
-        public static final int TitlePageIndicator_clipPadding = 4;
+        public static int TitlePageIndicator_clipPadding = 4;
         /**
           <p>This symbol is the offset where the {@link com.viewpagerindicator.R.attr#footerColor}
           attribute's value can be found in the {@link #TitlePageIndicator} array.
@@ -707,7 +707,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name com.viewpagerindicator:footerColor
         */
-        public static final int TitlePageIndicator_footerColor = 5;
+        public static int TitlePageIndicator_footerColor = 5;
         /**
           <p>This symbol is the offset where the {@link com.viewpagerindicator.R.attr#footerIndicatorHeight}
           attribute's value can be found in the {@link #TitlePageIndicator} array.
@@ -723,7 +723,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name com.viewpagerindicator:footerIndicatorHeight
         */
-        public static final int TitlePageIndicator_footerIndicatorHeight = 8;
+        public static int TitlePageIndicator_footerIndicatorHeight = 8;
         /**
           <p>This symbol is the offset where the {@link com.viewpagerindicator.R.attr#footerIndicatorStyle}
           attribute's value can be found in the {@link #TitlePageIndicator} array.
@@ -741,7 +741,7 @@ containing a value of this type.
 </table>
           @attr name com.viewpagerindicator:footerIndicatorStyle
         */
-        public static final int TitlePageIndicator_footerIndicatorStyle = 7;
+        public static int TitlePageIndicator_footerIndicatorStyle = 7;
         /**
           <p>This symbol is the offset where the {@link com.viewpagerindicator.R.attr#footerIndicatorUnderlinePadding}
           attribute's value can be found in the {@link #TitlePageIndicator} array.
@@ -757,7 +757,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name com.viewpagerindicator:footerIndicatorUnderlinePadding
         */
-        public static final int TitlePageIndicator_footerIndicatorUnderlinePadding = 9;
+        public static int TitlePageIndicator_footerIndicatorUnderlinePadding = 9;
         /**
           <p>This symbol is the offset where the {@link com.viewpagerindicator.R.attr#footerLineHeight}
           attribute's value can be found in the {@link #TitlePageIndicator} array.
@@ -773,7 +773,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name com.viewpagerindicator:footerLineHeight
         */
-        public static final int TitlePageIndicator_footerLineHeight = 6;
+        public static int TitlePageIndicator_footerLineHeight = 6;
         /**
           <p>This symbol is the offset where the {@link com.viewpagerindicator.R.attr#footerPadding}
           attribute's value can be found in the {@link #TitlePageIndicator} array.
@@ -789,7 +789,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name com.viewpagerindicator:footerPadding
         */
-        public static final int TitlePageIndicator_footerPadding = 10;
+        public static int TitlePageIndicator_footerPadding = 10;
         /**
           <p>This symbol is the offset where the {@link com.viewpagerindicator.R.attr#linePosition}
           attribute's value can be found in the {@link #TitlePageIndicator} array.
@@ -806,7 +806,7 @@ containing a value of this type.
 </table>
           @attr name com.viewpagerindicator:linePosition
         */
-        public static final int TitlePageIndicator_linePosition = 11;
+        public static int TitlePageIndicator_linePosition = 11;
         /**
           <p>This symbol is the offset where the {@link com.viewpagerindicator.R.attr#selectedBold}
           attribute's value can be found in the {@link #TitlePageIndicator} array.
@@ -820,7 +820,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name com.viewpagerindicator:selectedBold
         */
-        public static final int TitlePageIndicator_selectedBold = 12;
+        public static int TitlePageIndicator_selectedBold = 12;
         /**
           <p>This symbol is the offset where the {@link com.viewpagerindicator.R.attr#selectedColor}
           attribute's value can be found in the {@link #TitlePageIndicator} array.
@@ -835,7 +835,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name com.viewpagerindicator:selectedColor
         */
-        public static final int TitlePageIndicator_selectedColor = 3;
+        public static int TitlePageIndicator_selectedColor = 3;
         /**
           <p>This symbol is the offset where the {@link com.viewpagerindicator.R.attr#titlePadding}
           attribute's value can be found in the {@link #TitlePageIndicator} array.
@@ -851,7 +851,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name com.viewpagerindicator:titlePadding
         */
-        public static final int TitlePageIndicator_titlePadding = 13;
+        public static int TitlePageIndicator_titlePadding = 13;
         /**
           <p>This symbol is the offset where the {@link com.viewpagerindicator.R.attr#topPadding}
           attribute's value can be found in the {@link #TitlePageIndicator} array.
@@ -867,7 +867,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name com.viewpagerindicator:topPadding
         */
-        public static final int TitlePageIndicator_topPadding = 14;
+        public static int TitlePageIndicator_topPadding = 14;
         /** Attributes that can be used with a UnderlinePageIndicator.
            <p>Includes the following attributes:</p>
            <table>
@@ -895,7 +895,7 @@ containing a value of this type.
           attribute's value can be found in the {@link #UnderlinePageIndicator} array.
           @attr name android:background
         */
-        public static final int UnderlinePageIndicator_android_background = 0;
+        public static int UnderlinePageIndicator_android_background = 0;
         /**
           <p>This symbol is the offset where the {@link com.viewpagerindicator.R.attr#fadeDelay}
           attribute's value can be found in the {@link #UnderlinePageIndicator} array.
@@ -909,7 +909,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name com.viewpagerindicator:fadeDelay
         */
-        public static final int UnderlinePageIndicator_fadeDelay = 3;
+        public static int UnderlinePageIndicator_fadeDelay = 3;
         /**
           <p>This symbol is the offset where the {@link com.viewpagerindicator.R.attr#fadeLength}
           attribute's value can be found in the {@link #UnderlinePageIndicator} array.
@@ -923,7 +923,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name com.viewpagerindicator:fadeLength
         */
-        public static final int UnderlinePageIndicator_fadeLength = 4;
+        public static int UnderlinePageIndicator_fadeLength = 4;
         /**
           <p>This symbol is the offset where the {@link com.viewpagerindicator.R.attr#fades}
           attribute's value can be found in the {@link #UnderlinePageIndicator} array.
@@ -937,7 +937,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name com.viewpagerindicator:fades
         */
-        public static final int UnderlinePageIndicator_fades = 2;
+        public static int UnderlinePageIndicator_fades = 2;
         /**
           <p>This symbol is the offset where the {@link com.viewpagerindicator.R.attr#selectedColor}
           attribute's value can be found in the {@link #UnderlinePageIndicator} array.
@@ -952,7 +952,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name com.viewpagerindicator:selectedColor
         */
-        public static final int UnderlinePageIndicator_selectedColor = 1;
+        public static int UnderlinePageIndicator_selectedColor = 1;
         /** Attributes that can be used with a ViewPagerIndicator.
            <p>Includes the following attributes:</p>
            <table>
@@ -986,7 +986,7 @@ containing a value of this type.
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           @attr name com.viewpagerindicator:vpiCirclePageIndicatorStyle
         */
-        public static final int ViewPagerIndicator_vpiCirclePageIndicatorStyle = 0;
+        public static int ViewPagerIndicator_vpiCirclePageIndicatorStyle = 0;
         /**
           <p>This symbol is the offset where the {@link com.viewpagerindicator.R.attr#vpiIconPageIndicatorStyle}
           attribute's value can be found in the {@link #ViewPagerIndicator} array.
@@ -996,7 +996,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           @attr name com.viewpagerindicator:vpiIconPageIndicatorStyle
         */
-        public static final int ViewPagerIndicator_vpiIconPageIndicatorStyle = 1;
+        public static int ViewPagerIndicator_vpiIconPageIndicatorStyle = 1;
         /**
           <p>This symbol is the offset where the {@link com.viewpagerindicator.R.attr#vpiLinePageIndicatorStyle}
           attribute's value can be found in the {@link #ViewPagerIndicator} array.
@@ -1006,7 +1006,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           @attr name com.viewpagerindicator:vpiLinePageIndicatorStyle
         */
-        public static final int ViewPagerIndicator_vpiLinePageIndicatorStyle = 2;
+        public static int ViewPagerIndicator_vpiLinePageIndicatorStyle = 2;
         /**
           <p>This symbol is the offset where the {@link com.viewpagerindicator.R.attr#vpiTabPageIndicatorStyle}
           attribute's value can be found in the {@link #ViewPagerIndicator} array.
@@ -1016,7 +1016,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           @attr name com.viewpagerindicator:vpiTabPageIndicatorStyle
         */
-        public static final int ViewPagerIndicator_vpiTabPageIndicatorStyle = 4;
+        public static int ViewPagerIndicator_vpiTabPageIndicatorStyle = 4;
         /**
           <p>This symbol is the offset where the {@link com.viewpagerindicator.R.attr#vpiTitlePageIndicatorStyle}
           attribute's value can be found in the {@link #ViewPagerIndicator} array.
@@ -1026,7 +1026,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           @attr name com.viewpagerindicator:vpiTitlePageIndicatorStyle
         */
-        public static final int ViewPagerIndicator_vpiTitlePageIndicatorStyle = 3;
+        public static int ViewPagerIndicator_vpiTitlePageIndicatorStyle = 3;
         /**
           <p>This symbol is the offset where the {@link com.viewpagerindicator.R.attr#vpiUnderlinePageIndicatorStyle}
           attribute's value can be found in the {@link #ViewPagerIndicator} array.
@@ -1036,6 +1036,6 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
           @attr name com.viewpagerindicator:vpiUnderlinePageIndicatorStyle
         */
-        public static final int ViewPagerIndicator_vpiUnderlinePageIndicatorStyle = 5;
+        public static int ViewPagerIndicator_vpiUnderlinePageIndicatorStyle = 5;
     };
 }

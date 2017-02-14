@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/SwipeMenuListViewLibrary/SwipeMenuListViewLibrary.iml" filepath="$PROJECT_DIR$/SwipeMenuListViewLibrary/SwipeMenuListViewLibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/ViewPagerIndecatorLibrary/ViewPagerIndecatorLibrary.iml" filepath="$PROJECT_DIR$/ViewPagerIndecatorLibrary/ViewPagerIndecatorLibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/Weather.iml" filepath="$PROJECT_DIR$/Weather.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Weather1.0.iml" filepath="$PROJECT_DIR$/Weather1.0.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

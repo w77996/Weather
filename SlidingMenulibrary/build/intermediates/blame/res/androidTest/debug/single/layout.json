@@ -1,5 +1,9 @@
 [
     {
+        "merged": "E:\\GitDownLoad\\Weather1.0\\SlidingMenulibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\slidingmenumain.xml",
+        "source": "E:\\GitDownLoad\\Weather1.0\\SlidingMenulibrary\\build\\intermediates\\bundles\\debug\\res\\layout\\slidingmenumain.xml"
+    },
+    {
         "merged": "D:\\AndroidProject\\Weather\\SlidingMenulibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\slidingmenumain.xml",
         "source": "D:\\AndroidProject\\Weather\\SlidingMenulibrary\\build\\intermediates\\bundles\\debug\\res\\layout\\slidingmenumain.xml"
     }

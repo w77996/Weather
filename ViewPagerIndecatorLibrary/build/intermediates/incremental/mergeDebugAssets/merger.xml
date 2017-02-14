@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="D:\AndroidProject\Weather\ViewPagerIndecatorLibrary\src\main\assets"/><source path="D:\AndroidProject\Weather\ViewPagerIndecatorLibrary\build\generated\assets\shaders\debug"/></dataSet><dataSet config="debug"><source path="D:\AndroidProject\Weather\ViewPagerIndecatorLibrary\src\debug\assets"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="E:\GitDownLoad\Weather1.0\ViewPagerIndecatorLibrary\src\main\assets"/><source path="E:\GitDownLoad\Weather1.0\ViewPagerIndecatorLibrary\build\generated\assets\shaders\debug"/></dataSet><dataSet config="debug"><source path="E:\GitDownLoad\Weather1.0\ViewPagerIndecatorLibrary\src\debug\assets"/></dataSet></merger>

@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="D:\AndroidProject\Weather\SlidingMenulibrary\src\main\shaders"/></dataSet><dataSet config="release"><source path="D:\AndroidProject\Weather\SlidingMenulibrary\src\release\shaders"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="E:\GitDownLoad\Weather1.0\SlidingMenulibrary\src\main\shaders"/></dataSet><dataSet config="release"><source path="E:\GitDownLoad\Weather1.0\SlidingMenulibrary\src\release\shaders"/></dataSet></merger>

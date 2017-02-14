@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="D:\AndroidProject\Weather\ViewPagerIndecatorLibrary\src\main\jniLibs"/></dataSet><dataSet config="release"><source path="D:\AndroidProject\Weather\ViewPagerIndecatorLibrary\src\release\jniLibs"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="E:\GitDownLoad\Weather1.0\ViewPagerIndecatorLibrary\src\main\jniLibs"/></dataSet><dataSet config="release"><source path="E:\GitDownLoad\Weather1.0\ViewPagerIndecatorLibrary\src\release\jniLibs"/></dataSet></merger>

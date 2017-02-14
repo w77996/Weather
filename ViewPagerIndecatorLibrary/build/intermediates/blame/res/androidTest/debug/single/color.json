@@ -1,10 +1,18 @@
 [
     {
+        "merged": "E:\\GitDownLoad\\Weather1.0\\ViewPagerIndecatorLibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\color\\vpi__light_theme.xml",
+        "source": "E:\\GitDownLoad\\Weather1.0\\ViewPagerIndecatorLibrary\\build\\intermediates\\bundles\\debug\\res\\color\\vpi__light_theme.xml"
+    },
+    {
         "merged": "D:\\AndroidProject\\Weather\\ViewPagerIndecatorLibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\color\\vpi__dark_theme.xml",
         "source": "D:\\AndroidProject\\Weather\\ViewPagerIndecatorLibrary\\build\\intermediates\\bundles\\debug\\res\\color\\vpi__dark_theme.xml"
     },
     {
         "merged": "D:\\AndroidProject\\Weather\\ViewPagerIndecatorLibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\color\\vpi__light_theme.xml",
         "source": "D:\\AndroidProject\\Weather\\ViewPagerIndecatorLibrary\\build\\intermediates\\bundles\\debug\\res\\color\\vpi__light_theme.xml"
+    },
+    {
+        "merged": "E:\\GitDownLoad\\Weather1.0\\ViewPagerIndecatorLibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\color\\vpi__dark_theme.xml",
+        "source": "E:\\GitDownLoad\\Weather1.0\\ViewPagerIndecatorLibrary\\build\\intermediates\\bundles\\debug\\res\\color\\vpi__dark_theme.xml"
     }
 ]
