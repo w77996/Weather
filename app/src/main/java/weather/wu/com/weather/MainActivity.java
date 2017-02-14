@@ -640,13 +640,13 @@ public class MainActivity extends SlidingActivity {
                      mLeftCityListMenu.add(wb.getmCityName());
                     Logger.d(wb.getmCityName());
                 }
-                if(mCurrentCity==null){
+
                     mCurrentCity =  mLeftCityListMenu.get(0).toString();
                     Message message = Message.obtain();
                     message.obj = mCurrentCity;
                     message.what=1;
                     mHandler.sendMessage(message);
-                }
+
 
                // requestWeather(mCurrentCity);
                // mCityListAdapter.notifyDataSetChanged();
