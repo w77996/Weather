@@ -6,4 +6,8 @@
     <dimen name="now_weather_condition_size">144dp</dimen>
     <dimen name="now_weather_tempeture_size">125dp</dimen>
     <dimen name="slidingmenu_offset">110dp</dimen>
+
+    <dimen name="side_letter_bar_letter_size">12sp</dimen>
+    <dimen name="side_letter_bar_width">36dp</dimen>
+    <dimen name="city_text_size">16sp</dimen>
 </resources>

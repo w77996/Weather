@@ -8,4 +8,11 @@
     <string name="can_not_find_version_name">找不到版本号</string>
     <string name="bugTableUrl">https://www.wenjuan.com/s/q6riuy/</string>
     <string name="open_source">• RxJava: github.com/ReactiveX/RxJava\\n• RxAndroid: github.com/ReactiveX/RxAndroid\\n• Retrofit: github.com/square/retrofit\\n• Glide: github.com/bumptech/glide\\n• YujunZhu 设计师提供多城市卡片设计\\n• 和风天气提供数据支持\\n• 高德定位提供位置定位服务</string>
+    <string name="cityselect_select_city">选择城市</string>
+    <string name="cityselect_hot_city">热门城市</string>
+    <string name="cityselect_located_city">定位城市</string>
+    <string name="cityselect_hint_search_box">请输入城市名或拼音</string>
+    <string name="cityselect_nothing_found">没有搜索结果~</string>
+    <string name="cityselect_locating">正在定位…</string>
+    <string name="cityselect_located_failed">定位失败</string>
 </resources>

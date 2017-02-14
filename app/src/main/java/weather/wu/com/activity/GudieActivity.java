@@ -11,7 +11,6 @@ import android.widget.Button;
 
 import com.viewpagerindicator.CirclePageIndicator;
 import com.viewpagerindicator.PageIndicator;
-import com.zaaach.citypicker.CityPickerActivity;
 
 import butterknife.BindView;
 import butterknife.BindViews;

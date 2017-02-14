@@ -36,7 +36,6 @@ import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.jeremyfeinstein.slidingmenu.lib.app.SlidingActivity;
 import com.melnykov.fab.FloatingActionButton;
 import com.orhanobut.logger.Logger;
-import com.zaaach.citypicker.CityPickerActivity;
 
 import org.litepal.crud.DataSupport;
 import org.litepal.tablemanager.Connector;
@@ -59,6 +58,7 @@ import weather.wu.com.adapter.HourDataListAdapter;
 import weather.wu.com.bean.FutureWeatherBean;
 import weather.wu.com.bean.HourDataBean;
 import weather.wu.com.bean.WeatherBean;
+import weather.wu.com.cityselect.CitySelectActivity;
 import weather.wu.com.db.WeatherDB;
 import weather.wu.com.utils.DoubleClickExit;
 import weather.wu.com.utils.HttpUtil;
@@ -349,7 +349,7 @@ public class MainActivity extends SlidingActivity {
     private void initView() {
         //如果是第一次加载应用则直接打开城市选择，否者开启线程读取数据库，更新左侧菜单城市列表
         if(SpUtils.getBoolean(getApplicationContext(),SpUtils.FIRST_START,true)){
-            startActivityForResult(new Intent(MainActivity.this, CityPickerActivity.class),
+            startActivityForResult(new Intent(MainActivity.this, CitySelectActivity.class),
                     REQUEST_CODE_PICK_CITY);
             //sharedPreferencesUtils.put("first_start",true);
         }else{
@@ -607,27 +607,29 @@ public class MainActivity extends SlidingActivity {
         mRightAltitudeText.setText("海拔："+weather.getmCityInfoBean().getmAltitude_C15()+"米");
     }
 
-    @OnClick(R.id.nav_button)
-    public void onOpenDrawerLayout() {
-        mDrawerLayout.openDrawer(GravityCompat.START);
-    }
-    @OnClick(R.id.left_add_city)
-    public void onSelectCity() {
-        startActivityForResult(new Intent(MainActivity.this, CityPickerActivity.class),
-                REQUEST_CODE_PICK_CITY);
-    }
-    @OnClick(R.id.left_edit_city)
-    public void onEditCity(){
-        mDrawerLayout.closeDrawer(GravityCompat.START);
-        Intent intent = new Intent(MainActivity.this, CityEditActivity.class);
-        /*intent.putStringArrayListExtra("city", (ArrayList<String>) mListCity);*/
+    @OnClick({R.id.nav_button, R.id.left_add_city, R.id.left_edit_city, R.id.left_more})
+    public void onclick(View v) {
+        switch (v.getId()) {
+            case R.id.nav_button:
+                mDrawerLayout.openDrawer(GravityCompat.START);
+                break;
+            case R.id.left_add_city:
+                mDrawerLayout.closeDrawer(GravityCompat.START);
+                startActivityForResult(new Intent(MainActivity.this, CitySelectActivity.class),
+                        REQUEST_CODE_PICK_CITY);
+                break;
+            case R.id.left_edit_city:
+                mDrawerLayout.closeDrawer(GravityCompat.START);
+                Intent intent = new Intent(MainActivity.this, CityEditActivity.class);
+                //*intent.putStringArrayListExtra("city", (ArrayList<String>) mListCity);*//*
+                startActivityForResult(intent, REQUEST_CODE_EDIT_CITY);
+                break;
+            case R.id.left_more:
+                mDrawerLayout.closeDrawer(GravityCompat.START);
+                startActivity(new Intent(this, AboutActivity.class));
+                break;
+        }
 
-        startActivityForResult(intent, REQUEST_CODE_EDIT_CITY);
-    }
-    @OnClick(R.id.left_more)
-    public void onMore()
-    {
-        startActivity(new Intent(this, AboutActivity.class));
     }
     /**
      * 开启线程对数据库进行操作
@@ -679,7 +681,7 @@ public class MainActivity extends SlidingActivity {
                 Logger.d(SpUtils.getBoolean(getApplicationContext(),SpUtils.FIRST_START,true)+"");
                 mCityListAdapter = new CityLeftMenuListAdapter(MainActivity.this, mLeftCityListMenu);
                 mListViewCity.setAdapter(mCityListAdapter);
-                String city = data.getStringExtra(CityPickerActivity.KEY_PICKED_CITY);
+                String city = data.getStringExtra(CitySelectActivity.KEY_PICKED_CITY);
                 // resultTV.setText("当前选择：" + city);
                 if(! mLeftCityListMenu.contains(city)){
                      mLeftCityListMenu.add(city);

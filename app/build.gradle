@@ -42,7 +42,7 @@ dependencies {
     //易源SDK library
     compile files('libs/showapi_sdk.jar')
     compile files('libs/android-async-http-1.4.6.jar')
-    compile 'com.zaaach:citypicker:1.1'
+    //compile 'com.zaaach:citypicker:1.1'
     //三个moudle
     compile project(':ViewPagerIndecatorLibrary')
     compile project(':SlidingMenulibrary')

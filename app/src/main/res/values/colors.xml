@@ -320,4 +320,17 @@
     <color name="md_blue_grey_800_color_code">#37474f</color>
     <color name="md_blue_grey_900_color_code">#263238</color>
     <color name="defaultTextColor">#6f6f6f</color>
+
+    <color name="cityselect_colorAccent">#F3F3F3</color>
+    <color name="cityselect_colorPrimary">@color/cityselect_colorAccent</color>
+    <color name="cityselect_colorPrimaryDark">@color/cityselect_colorAccent</color>
+
+    <color name="cityselect_divider">#E5E5E5</color>
+    <color name="cityselect_shadow">#AAEBEBEB</color>
+    <color name="cityselect_common_bg">#FAFAFA</color>
+    <color name="cityselect_content_bg">@color/cityselect_colorAccent</color>
+    <color name="cityselect_gray">#8c8c8c</color>
+    <color name="cityselect_gray_deep">#5c5c5c</color>
+    <color name="cityselect_alpha_gray">#CC646464</color>
+    <color name="cityselect_theme_gray">#646464</color>
 </resources>
