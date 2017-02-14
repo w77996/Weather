@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/SlidingMenulibrary/SlidingMenulibrary.iml" filepath="$PROJECT_DIR$/SlidingMenulibrary/SlidingMenulibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SlidingMenuLibrary/SlidingMenuLibrary.iml" filepath="$PROJECT_DIR$/SlidingMenuLibrary/SlidingMenuLibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/SwipeMenuListViewLibrary/SwipeMenuListViewLibrary.iml" filepath="$PROJECT_DIR$/SwipeMenuListViewLibrary/SwipeMenuListViewLibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/ViewPagerIndecatorLibrary/ViewPagerIndecatorLibrary.iml" filepath="$PROJECT_DIR$/ViewPagerIndecatorLibrary/ViewPagerIndecatorLibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/Weather.iml" filepath="$PROJECT_DIR$/Weather.iml" />

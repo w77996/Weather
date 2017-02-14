@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "E:\\GitDownLoad\\Weather1.0\\SlidingMenulibrary\\build\\intermediates\\res\\merged\\release\\values\\values.xml",
+        "outputFile": "D:\\AndroidProject\\Weather\\SlidingMenuLibrary\\build\\intermediates\\res\\merged\\release\\values\\values.xml",
         "map": [
             {
                 "to": {
@@ -11,13 +11,13 @@
                     "endOffset": 999
                 },
                 "from": {
-                    "file": "E:\\GitDownLoad\\Weather1.0\\SlidingMenulibrary\\res\\values\\ids.xml",
+                    "file": "D:\\AndroidProject\\Weather\\SlidingMenuLibrary\\res\\values\\ids.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
-                        "startOffset": 57,
+                        "startOffset": 55,
                         "endColumn": 42,
-                        "endOffset": 95
+                        "endOffset": 93
                     }
                 }
             }
