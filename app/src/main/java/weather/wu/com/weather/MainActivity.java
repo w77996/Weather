@@ -303,6 +303,13 @@ public class MainActivity extends SlidingActivity {
             //pd.dismiss();
         }
     };
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+    }
+
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -694,5 +701,7 @@ public class MainActivity extends SlidingActivity {
        /* if(mDBThread.isAlive()){
             mDBThread.stop();
         }*/
+
     }
+
 }
