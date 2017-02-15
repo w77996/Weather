@@ -21,5 +21,6 @@ public class WeatherApplication extends LitePalApplication {
         // 启动推送服务
 
         BmobPush.startWork(this);*/
+
     }
 }

@@ -91,7 +91,11 @@ public class SystemUtils {
         return simpleDateFormat.format(new Date());
     }
     public static String getCurrentDate(){
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMDD");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd");
+        return simpleDateFormat.format(new Date());
+    }
+    public static String getCurrentMonth(){
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM");
         return simpleDateFormat.format(new Date());
     }
 }

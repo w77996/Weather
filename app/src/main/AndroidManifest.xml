@@ -32,7 +32,8 @@
         <activity android:name="weather.wu.com.activity.SplashActivity"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
         <activity android:name="weather.wu.com.activity.AboutActivity"/>
-        <activity android:name="weather.wu.com.more.MoreActivity"/>
+        <activity android:name="weather.wu.com.more.MoreActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <service
             android:label="PushService"
             android:name="cn.bmob.push.lib.service.PushService"

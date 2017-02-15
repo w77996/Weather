@@ -41,6 +41,15 @@ public class TodayInHistory {
         this.result = result;
     }
 
+    @Override
+    public String toString() {
+        return "TodayInHistory{" +
+                "reason='" + reason + '\'' +
+                ", error_code=" + error_code +
+                ", result=" + result.size() +
+                '}';
+    }
+
     public static class ResultBean {
         /**
          * _id : 11610311
@@ -125,5 +134,20 @@ public class TodayInHistory {
         public void setLunar(String lunar) {
             this.lunar = lunar;
         }
+
+        @Override
+        public String toString() {
+            return "ResultBean{" +
+                    "_id='" + _id + '\'' +
+                    ", title='" + title + '\'' +
+                    ", pic='" + pic + '\'' +
+                    ", year=" + year +
+                    ", month=" + month +
+                    ", day=" + day +
+                    ", des='" + des + '\'' +
+                    ", lunar='" + lunar + '\'' +
+                    '}';
+        }
     }
+
 }

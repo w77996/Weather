@@ -342,9 +342,8 @@ public class WeatherActivity extends SlidingActivity {
         initView();
         Bmob.initialize(this, "d9cf386c0792498c6ff73d3f1e816fe4");
         // 使用推送服务时的初始化操作
-        BmobInstallation.getCurrentInstallation().save();
+     //   BmobInstallation.getCurrentInstallation().save();
         // 启动推送服务
-
         BmobPush.startWork(this);
         db = Connector.getDatabase();
         //  initData();
@@ -432,7 +431,15 @@ public class WeatherActivity extends SlidingActivity {
         mSwipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                requestWeather(mCurrentCity);
+                if(Utility.isNetworkConnected(getApplicationContext())){
+                    requestWeather(mCurrentCity);
+                }else{
+                    Toast.makeText(getApplicationContext(),"请求失败,请检查网络状况",Toast.LENGTH_SHORT).show();
+                    if(mSwipeRefresh.isRefreshing()){
+                        mSwipeRefresh.setRefreshing(false);
+                    }
+                }
+
 
             }
         });
