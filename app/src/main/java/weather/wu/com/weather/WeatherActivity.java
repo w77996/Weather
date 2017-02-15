@@ -44,6 +44,9 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import cn.bmob.push.BmobPush;
+import cn.bmob.v3.Bmob;
+import cn.bmob.v3.BmobInstallation;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
@@ -56,6 +59,7 @@ import weather.wu.com.bean.HourDataBean;
 import weather.wu.com.bean.WeatherBean;
 import weather.wu.com.cityselect.CitySelectActivity;
 import weather.wu.com.db.WeatherDB;
+import weather.wu.com.more.MoreActivity;
 import weather.wu.com.utils.DoubleClickExit;
 import weather.wu.com.utils.HttpUtil;
 import weather.wu.com.utils.SharedPreferencesUtils;
@@ -145,6 +149,11 @@ public class WeatherActivity extends SlidingActivity {
     ListView mListViewCity;
     @BindView(R.id.left_add_city)
     LinearLayout mLinearLayoutAddCity;
+    @BindView(R.id.left_about)
+    LinearLayout mAbout;
+    @BindView(R.id.left_more)
+    LinearLayout mMore;
+
     /**右侧菜单控件初始化**/
     //今日天气状态
    /* @BindView(R.id.right_today_weather)
@@ -230,8 +239,7 @@ public class WeatherActivity extends SlidingActivity {
     @BindView(R.id.index_travel_txt)
     TextView mIndexTravelTxt;
 
-    @BindView(R.id.left_about)
-    TextView mAboutTxt;
+
 
     //今日天气状态
     TextView mRightTodayWeatherText;
@@ -332,6 +340,12 @@ public class WeatherActivity extends SlidingActivity {
 
         ButterKnife.bind(this);
         initView();
+        Bmob.initialize(this, "d9cf386c0792498c6ff73d3f1e816fe4");
+        // 使用推送服务时的初始化操作
+        BmobInstallation.getCurrentInstallation().save();
+        // 启动推送服务
+
+        BmobPush.startWork(this);
         db = Connector.getDatabase();
         //  initData();
     }
@@ -428,6 +442,7 @@ public class WeatherActivity extends SlidingActivity {
                 android.R.color.holo_red_light);
         //控件拉动是放大放小，起始位置，结束位置
         mSwipeRefresh.setProgressViewOffset(true, 100, 200);
+
         //NowWeather主RelativeLayout中的RecycleView
         // mRecyclerView = (RecyclerView)findViewById(R.id.now_weather_recyclerview);
         //获取屏幕高度
@@ -515,7 +530,6 @@ public class WeatherActivity extends SlidingActivity {
                     }
                 });
             }
-
             @Override
             public void onFailure(Call call, IOException e) {
                 Logger.e(e);
@@ -619,7 +633,7 @@ public class WeatherActivity extends SlidingActivity {
         mRightAltitudeText.setText("海拔：" + weather.getmCityInfoBean().getmAltitude_C15() + "米");
     }
 
-    @OnClick({R.id.nav_button, R.id.left_add_city, R.id.left_edit_city, R.id.left_more})
+    @OnClick({R.id.nav_button, R.id.left_add_city, R.id.left_edit_city, R.id.left_more,R.id.left_about})
     public void onclick(View v) {
         switch (v.getId()) {
             case R.id.nav_button:
@@ -638,8 +652,13 @@ public class WeatherActivity extends SlidingActivity {
                 break;
             case R.id.left_more:
                 mDrawerLayout.closeDrawer(GravityCompat.START);
+                startActivity(new Intent(this, MoreActivity.class));
+                break;
+            case R.id.left_about:
+                mDrawerLayout.closeDrawer(GravityCompat.START);
                 startActivity(new Intent(this, AboutActivity.class));
                 break;
+
         }
 
     }
@@ -693,13 +712,18 @@ public class WeatherActivity extends SlidingActivity {
                 mListViewCity.setAdapter(mCityListAdapter);
                 String city = data.getStringExtra(CitySelectActivity.KEY_PICKED_CITY);
                 // resultTV.setText("当前选择：" + city);
-                if (!mLeftCityListMenu.contains(city)) {
-                    mLeftCityListMenu.add(city);
-                    mCityListAdapter.notifyDataSetChanged();
-                    mCurrentCity = city;
-                    requestWeather(mCurrentCity);
+                if(!Utility.isNetworkConnected(getApplicationContext())){
+                    Toast.makeText(getApplicationContext(),"添加失败，请检查网络",Toast.LENGTH_SHORT).show();
+                }else{
+                    if (!mLeftCityListMenu.contains(city)) {
+                        mLeftCityListMenu.add(city);
+                        mCityListAdapter.notifyDataSetChanged();
+                        mCurrentCity = city;
+                        requestWeather(mCurrentCity);
+                    }
+                    Logger.d(city);
                 }
-                Logger.d(city);
+
                 // WeatherBean weatherBean = DataSupport.find(WeatherBean.class,);
             }
         } else if (requestCode == REQUEST_CODE_EDIT_CITY) {

@@ -107,7 +107,7 @@
         android:layout_height="0dp"
         android:layout_weight="2"
         android:orientation="vertical"
-        android:gravity="center|top">
+        android:gravity="center|top|left">
 <!--    <TextView
         android:id="@+id/left_more"
         android:layout_width="wrap_content"
@@ -116,26 +116,50 @@
         android:textSize="18sp"
         android:drawableLeft="@drawable/icon_left_about"/>-->
         <LinearLayout
+            android:id="@+id/left_more"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:orientation="horizontal"
+            android:layout_margin="8dp"
+            android:gravity="center">
+            <ImageView
+                android:layout_width="17dp"
+                android:layout_height="17dp"
+                android:layout_weight="0.7"
+                android:src="@drawable/icon_left_about" />
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:layout_gravity="center"
+                android:text="更多"
+                android:textSize="17sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/left_about"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="8dp"
             android:gravity="center">
         <ImageView
-
             android:layout_width="17dp"
             android:layout_height="17dp"
             android:layout_weight="0.7"
             android:src="@drawable/icon_left_about" />
-
         <TextView
-            android:id="@+id/left_about"
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:layout_gravity="center"
-            android:text="更多"
+            android:text="关于"
             android:textSize="17sp" />
+
             </LinearLayout>
+
     </LinearLayout>
+
 </LinearLayout>

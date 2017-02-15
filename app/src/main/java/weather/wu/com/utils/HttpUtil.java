@@ -9,6 +9,8 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Handler;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -28,6 +30,7 @@ public class HttpUtil {
     public final static String secret = "bd9ad7a172ee4a5a8c57618a248c63e9";//要替换成自己的
     static NowWeatherBean mNowWeatherBean = new NowWeatherBean();
     static List<FutureWeatherBean> mFutureWeatherBeanList = new ArrayList<FutureWeatherBean>();
+   // protected Handler mHandler = new Handler();
     // public static String cityName ="广州";
    /* public static String address = "http://route.showapi.com/9-2?showapi_appid=" + appid + "&area=" + "广州" + "&showapi_sign=" + secret
             + "&needMoreDay=1&needIndex=1&needHourData=1&need3HourForcast=1&needAlarm=1";*/
@@ -37,8 +40,9 @@ public class HttpUtil {
         Request request = new Request.Builder().url(address).build();
         client.newCall(request).enqueue(callback);
     }
-    public static void requestWeather(String cityName,okhttp3.Callback callback) {
-       String address = "http://route.showapi.com/9-2?showapi_appid=28198&area=" + cityName + "&showapi_sign=bd9ad7a172ee4a5a8c57618a248c63e9"
+
+    public static void requestWeather(String cityName, okhttp3.Callback callback) {
+        String address = "http://route.showapi.com/9-2?showapi_appid=28198&area=" + cityName + "&showapi_sign=bd9ad7a172ee4a5a8c57618a248c63e9"
                 + "&needMoreDay=1&needIndex=1&needHourData=1&need3HourForcast=1&needAlarm=1";
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder().url(address).build();
@@ -58,16 +62,26 @@ public class HttpUtil {
                         .addTextPara("need3HourForcast", "1")
                         .addTextPara("needAlarm", "1")
                         .post();
-               // Logger.json(res);
+                // Logger.json(res);
 
-                parseJsonData(res);
+                //parseJsonData(res);
                 //把返回内容通过handler对象更新到界面
             }
         }.start();
 
     }
 
-    public static void parseJsonData(String jsonData) {
+    public static void getHistoryJsonData(final String data) {
+        new Thread() {
+            //在新线程中发送网络请求
+            public void run() {
+                String res = new ShowApiRequest("http://route.showapi.com/119-42", appid, secret).addTextPara("data", data).post();
+                Logger.d(res);
+            }
+        }.start();
+    }
+
+ /*   public static void parseJsonData(String jsonData) {
         try {
           //  Log.d("test", jsonData);
             JSONObject resultData = new JSONObject(jsonData);
@@ -78,9 +92,9 @@ public class HttpUtil {
             JSONObject cityInfo = showapi_res_body.getJSONObject("cityInfo");
             JSONObject todayWeatherInfo = showapi_res_body.getJSONObject("f1");
             JSONArray hourDataList = showapi_res_body.getJSONArray("hourDataList");
-          /*  parseNowJsonData(nowData);
+          *//*  parseNowJsonData(nowData);
             parseCityInfo(cityInfo);
-            parseTodayWeatherInfo(todayWeatherInfo);*/
+            parseTodayWeatherInfo(todayWeatherInfo);*//*
             //  parseHourDataList(hourDataList);
             JSONObject f1 = showapi_res_body.getJSONObject("f1");
             JSONObject f2 = showapi_res_body.getJSONObject("f2");
@@ -98,7 +112,7 @@ public class HttpUtil {
         }
     }
 
-    /**
+    *//**
      *  public String mDay_Weather;
      public String mDay_Weather_Code;
      public String mNight_Weather;
@@ -118,7 +132,7 @@ public class HttpUtil {
      public String mNight_Wind_Direction;
      public String mDay;
      * @param p
-     */
+     *//*
     private static void parseFutureJson(String[] p) {
         try {
             for (int i = 0; i < p.length; i++) {
@@ -332,5 +346,5 @@ public class HttpUtil {
             e.printStackTrace();
         }
 
-    }
+    }*/
 }

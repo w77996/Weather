@@ -8,6 +8,8 @@ import android.util.TypedValue;
 import android.view.WindowManager;
 
 import java.lang.reflect.Field;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Logger;
 
 import weather.wu.com.weather.R;
@@ -82,5 +84,14 @@ public class SystemUtils {
         ClipData clipData = ClipData.newPlainText("msg", info);
         manager.setPrimaryClip(clipData);
        // ToastUtil.showShort(String.format("[%s] 已经复制到剪切板啦( •̀ .̫ •́ )✧", info));
+    }
+
+    public static String getCurrentTime(){
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMDDHHmmss");
+        return simpleDateFormat.format(new Date());
+    }
+    public static String getCurrentDate(){
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMDD");
+        return simpleDateFormat.format(new Date());
     }
 }
