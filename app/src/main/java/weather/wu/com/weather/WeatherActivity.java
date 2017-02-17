@@ -337,7 +337,7 @@ public class WeatherActivity extends SlidingActivity {
         // initWindow();
 
         setContentView(R.layout.activity_main);
-
+       // getWindowManager().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
         ButterKnife.bind(this);
         initView();
         Bmob.initialize(this, "d9cf386c0792498c6ff73d3f1e816fe4");

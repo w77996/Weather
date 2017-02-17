@@ -79,13 +79,14 @@
                 <action android:name="cn.bmob.push.action.NOTIFY" />
             </intent-filter>
         </receiver>
-        <!--<receiver android:name="weather.wu.com.widget.WeatherAppWidget">
+       <receiver android:name="weather.wu.com.widget.WeatherAppWidget">
             <meta-data android:name="android.appwidget.provider"
             android:resource="@xml/weather_appwidget"></meta-data>
         <intent-filter>
             <action android:name="android.appwidget.action.APPWIDGET_UPDATE"></action>
         </intent-filter>
-    </receiver>-->
+    </receiver>
+        <service android:name="weather.wu.com.service.WidgetService"/>
 </application>
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />

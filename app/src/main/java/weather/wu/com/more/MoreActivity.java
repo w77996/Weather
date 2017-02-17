@@ -5,8 +5,11 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
@@ -27,6 +30,7 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 import weather.wu.com.more.bean.TodayInHistory;
+import weather.wu.com.more.fragment.TodayInHistoryFragment;
 import weather.wu.com.utils.HttpUtil;
 import weather.wu.com.utils.SystemUtils;
 import weather.wu.com.weather.R;
@@ -50,51 +54,30 @@ public class MoreActivity extends AppCompatActivity implements NavigationView.On
 
         initView();
         Logger.d("ddd");
-        getHistoryJsonData();
+        //getHistoryJsonData();
     }
     private void initView(){
         setSupportActionBar(mToolbar);
+        ActionBar actionBar = getSupportActionBar();
+        if(actionBar!=null){
+            actionBar.setHomeAsUpIndicator(R.drawable.more_ic_nav_menu);
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
+        TodayInHistoryFragment todayInHistoryFragment = new TodayInHistoryFragment();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.more_fragment_content,todayInHistoryFragment);
+        fragmentTransaction.commit();
     }
-    @Override
+/*    @Override
     public void onBackPressed(){
         if(mDrawerLayout.isDrawerOpen(GravityCompat.START)){
             mDrawerLayout.closeDrawer(GravityCompat.START);
         }else{
             super.onBackPressed();
         }
-    }
-    private void getHistoryJsonData() {
-        long now = System.currentTimeMillis();
-        String currentTime = SystemUtils.getCurrentTime();
-        String currentDate = SystemUtils.getCurrentDate();
-        String currentMonth = SystemUtils.getCurrentMonth();
-        //String url = "http://route.showapi.com/119-42?data=" + currentDate + "&showapi_appid=28198&showapi_timestam" + currentTime + "&showapi_sign=bd9ad7a172ee4a5a8c57618a248c63e9";
-       String url ="http://api.juheapi.com/japi/toh?v=&month="+currentMonth+"&day="+currentDate+"&key=02351f897b139cc86e39a225aaeaa42d";
-        Logger.d(url);
-        Logger.d(now + " " + currentTime + " " + currentDate);
-        HttpUtil.sendOkHttpRequest(url, new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-                Logger.e(e);
-            }
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                String json = response.body().string();
-                try {
-                    JSONObject resultJson = new JSONObject(json);
-                    String errorcode = resultJson.getInt("error_code") + "";
-                    if ("0".equals(errorcode)) {
-                        Gson gson = new Gson();
-                        TodayInHistory todayInHistory = gson.fromJson(json, TodayInHistory.class);
-                        Logger.d(todayInHistory.toString());
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                Logger.d(json);
-            }
-        });
-    }
+    }*/
+
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {

@@ -2,7 +2,7 @@
     android:minWidth="250dp"
     android:minHeight="180dp"
     android:previewImage="@drawable/ic_default_big"
-    android:initialLayout="@layout/appwidget_typeone"
+    android:initialLayout="@layout/appwidget_type"
     android:resizeMode="horizontal|vertical"
     android:widgetCategory="home_screen|keyguard">
 

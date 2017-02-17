@@ -9,6 +9,9 @@ import android.content.Intent;
 
 import com.orhanobut.logger.Logger;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import cn.bmob.push.PushConstants;
 import weather.wu.com.activity.SplashActivity;
 import weather.wu.com.weather.R;
@@ -24,6 +27,14 @@ public class BombMessageReceiver extends BroadcastReceiver {
         // TODO Auto-generated method stub
         if (intent.getAction().equals(PushConstants.ACTION_MESSAGE)) {
             Logger.d(intent.getStringExtra("msg"));
+            String content =null;
+            String msg = intent.getStringExtra("msg");
+            try {
+                JSONObject msgJson = new JSONObject(msg);
+                 content = msgJson.getString("alert");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
             NotificationManager manager = (NotificationManager) context.getSystemService(context.NOTIFICATION_SERVICE);
             // 使用PendingIntent延时执行Intent
             PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, new Intent(context, SplashActivity.class), 0);
@@ -32,7 +43,7 @@ public class BombMessageReceiver extends BroadcastReceiver {
                     .setSmallIcon(R.mipmap.ic_launcher) // 必须设置图片,否则无法正常推送
                     .setContentInfo("Message Content")
                     .setTicker("This is Ticker") // 直接在标题栏里显示的通知
-                    .setContentTitle(intent.getStringExtra("msg"))
+                    .setContentTitle(content)
                     .setContentIntent(pendingIntent)  // 点击事件
                     .setOngoing(false) // 允许用户删除
 //                .setNumber(1)
