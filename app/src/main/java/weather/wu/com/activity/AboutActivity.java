@@ -13,7 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
+import android.widget.Toast;
 
 
 import butterknife.BindView;
@@ -21,6 +21,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import weather.wu.com.utils.Utility;
 import weather.wu.com.weather.R;
+import weather.wu.com.weather.WeatherActivity;
 
 public class AboutActivity extends Activity {
     @BindView(R.id.toolbar)
@@ -85,6 +86,7 @@ public class AboutActivity extends Activity {
                 break;
             case R.id.bt_pay:
                 Utility.copyToClipboard(getString(R.string.alipay), this);
+                Toast.makeText(getApplicationContext(),"已粘贴到剪贴板",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.bt_share:
                 Intent sharingIntent = new Intent(Intent.ACTION_SEND);
@@ -103,10 +105,12 @@ public class AboutActivity extends Activity {
     }
 
     private void goToHtml(String url) {
-        Uri uri = Uri.parse(url);   //指定网址
-        Intent intent = new Intent();
-        intent.setAction(Intent.ACTION_VIEW);           //指定Action
-        intent.setData(uri);                            //设置Uri
+       // Uri uri = Uri.parse(url);   //指定网址
+        Intent intent = new Intent(this,WebViewActivity.class);
+        intent.putExtra("url", url);
+
+       /* intent.setAction(Intent.ACTION_VIEW);           //指定Action
+        intent.setData(uri);                            //设置Uri*/
         startActivity(intent);        //启动Activity
     }
 

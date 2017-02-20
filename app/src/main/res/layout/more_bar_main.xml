@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
@@ -9,15 +10,30 @@
     tools:context="weather.wu.com.more.MoreActivity">
     <android.support.design.widget.AppBarLayout
         android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-       >
+        android:layout_width="match_parent">
         <android.support.v7.widget.Toolbar
             android:id="@+id/more_toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             android:background="@color/md_blue_900_color_code">
         </android.support.v7.widget.Toolbar>
-        <include layout="@layout/more_content_main"/>
+       <LinearLayout
+        android:layout_width="match_parent"
+        android:id="@+id/more_contetn_main_rl"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+       >
+        <FrameLayout
+            android:id="@+id/more_fragment_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/md_grey_500_color_code">
+
+        </FrameLayout>
+
+    </LinearLayout>
     </android.support.design.widget.AppBarLayout>
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/more_fab"

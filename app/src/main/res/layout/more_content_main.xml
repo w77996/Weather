@@ -7,7 +7,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="weather.wu.com.more.MoreActivity"
-    app:layout_behavior="android.support.design.widget.AppBarLayout$ScrollingVIewBehavior"
     tools:showIn="@layout/more_bar_main">
     <FrameLayout
         android:id="@+id/more_fragment_content"

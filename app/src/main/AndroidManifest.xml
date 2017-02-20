@@ -5,52 +5,59 @@
     <application
         android:name="weather.wu.com.WeatherApplication"
         android:allowBackup="true"
+        android:configChanges="orientation|keyboardHidden|screenSize"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        android:configChanges="orientation|keyboardHidden|screenSize"
-        >
-        <activity android:name=".WeatherActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize">
-        </activity>
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity
+            android:name=".WeatherActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"></activity>
         <activity
             android:name="weather.wu.com.cityselect.CitySelectActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan"/>
-        <meta-data android:name="com.amap.api.v2.apikey"
-            android:value="11136045834c5e98a06de9ac7af0b4ac"/>
+
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="11136045834c5e98a06de9ac7af0b4ac" />
+
         <activity android:name="weather.wu.com.activity.GudieActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="weather.wu.com.activity.CityEditActivity"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"
-            android:configChanges="orientation|keyboardHidden|screenSize"/>
-        <activity android:name="weather.wu.com.activity.SplashActivity"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
-        <activity android:name="weather.wu.com.activity.AboutActivity"/>
-        <activity android:name="weather.wu.com.more.MoreActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name="weather.wu.com.activity.CityEditActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:theme="@style/Theme.AppCompat" />
+        <activity
+            android:name="weather.wu.com.activity.SplashActivity"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+        <activity android:name="weather.wu.com.activity.AboutActivity"
+            android:theme="@style/AppTheme"/>
+        <activity
+            android:name="weather.wu.com.more.MoreActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name="weather.wu.com.activity.WebViewActivity"/>
         <service
-            android:label="PushService"
             android:name="cn.bmob.push.lib.service.PushService"
-            android:process=":bmobpush"
-            android:exported="true">
+            android:exported="true"
+            android:label="PushService"
+            android:process=":bmobpush">
             <intent-filter>
-                <action android:name="cn.bmob.push.lib.service.PushService"/>
+                <action android:name="cn.bmob.push.lib.service.PushService" />
             </intent-filter>
         </service>
 
         <!-- 用于进程保活 -->
         <service
             android:name="cn.bmob.push.lib.service.PushNotifyService"
-            android:process=":bmobpush" >
-        </service>
+            android:process=":bmobpush"></service>
 
-        <receiver android:name="cn.bmob.push.PushReceiver" >
+        <receiver android:name="cn.bmob.push.PushReceiver">
             <intent-filter>
                 <!-- 系统启动完成后会调用 -->
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
@@ -63,15 +70,15 @@
 
         <!-- 第四部中创建的消息接收器，在这里进行注册 -->
         <receiver android:name="weather.wu.com.broadcast.BombMessageReceiver">
-            <intent-filter >
-                <action android:name="cn.bmob.push.action.MESSAGE"/>
+            <intent-filter>
+                <action android:name="cn.bmob.push.action.MESSAGE" />
             </intent-filter>
         </receiver>
 
         <!-- 接收心跳和唤醒的广播，要和PushService运行在同个进程 -->
         <receiver
             android:name="cn.bmob.push.PushNotifyReceiver"
-            android:process=":bmobpush" >
+            android:process=":bmobpush">
             <intent-filter>
                 <!-- 接收心跳广播的action -->
                 <action android:name="cn.bmob.push.action.HEARTBEAT" />
@@ -79,22 +86,27 @@
                 <action android:name="cn.bmob.push.action.NOTIFY" />
             </intent-filter>
         </receiver>
-       <receiver android:name="weather.wu.com.widget.WeatherAppWidget">
-            <meta-data android:name="android.appwidget.provider"
-            android:resource="@xml/weather_appwidget"></meta-data>
-        <intent-filter>
-            <action android:name="android.appwidget.action.APPWIDGET_UPDATE"></action>
-        </intent-filter>
-    </receiver>
-        <service android:name="weather.wu.com.service.WidgetService"/>
-</application>
+        <receiver android:name="weather.wu.com.widget.WeatherAppWidget">
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/weather_appwidget"></meta-data>
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"></action>
+            </intent-filter>
+        </receiver>
+
+        <service android:name="weather.wu.com.service.WidgetService" />
+    </application>
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
 
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW" />
     <!--BmobSDK所需的权限 -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <!--推送所需的权限-->
@@ -102,4 +114,13 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
 
+    <!--用于进行网络定位-->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"></uses-permission>
+    <!--用于访问GPS定位-->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
+    <!--用于申请调用A-GPS模块-->
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS"></uses-permission>
+    <!--用于申请获取蓝牙信息进行室内定位-->
+    <uses-permission android:name="android.permission.BLUETOOTH"></uses-permission>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"></uses-permission>
 </manifest>

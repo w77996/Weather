@@ -63,7 +63,7 @@ public class CityEditListAdapter extends BaseAdapter {
         Glide.with(context).load(list.get(position).getmWeather_Pic()).diskCacheStrategy(DiskCacheStrategy.ALL).into(cityEditListViewHolde.mImageView);
         return convertView;
     }
-    public class CityEditListViewHolde {
+    public static class CityEditListViewHolde {
         // @BindView(R.id.left_city_name)
         // public  ImageView mImageViewLocation;
         public  TextView mCityName;

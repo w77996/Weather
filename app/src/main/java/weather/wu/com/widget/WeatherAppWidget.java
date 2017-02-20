@@ -36,6 +36,7 @@ public class WeatherAppWidget extends AppWidgetProvider {
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
         Intent intent = new Intent(context,WidgetService.class);
         intent.putExtra("id",appWidgetIds[0]+"");
+        Logger.e(appWidgetIds[0]+"");
         context.startService(intent);
 //        Logger.d(appWidgetIds.toString());
       /*  mRemoteViews = new RemoteViews(context.getPackageName(),R.layout.appwidget_type);

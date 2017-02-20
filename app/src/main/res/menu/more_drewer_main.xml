@@ -2,14 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/more_nav_history"
-            android:icon="@drawable/about_1"
-            android:title="历史上的今天"
-            />
-        <item
             android:id="@+id/more_nav_news"
             android:icon="@drawable/about_1"
-            android:title="新闻"
+            android:title="今日新闻"
+            />
+        <item
+            android:id="@+id/more_nav_joke"
+            android:icon="@drawable/about_1"
+            android:title="福岛笑话"
             />
         <item
             android:id="@+id/more_nav_pic"

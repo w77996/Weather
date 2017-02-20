@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Weather</string>
+    <string name="app_name">多知天气</string>
     <string name="aboutContent">2016年11月23开始建立项目，Weather作为一款MD风格的生活APP具备天气APP的基本功能，其丰富的天气信息数据是最大的亮点</string>
     <string name="share_txt">weather</string>
     <string name="share_app">分享</string>

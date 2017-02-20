@@ -10,7 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import weather.wu.com.utils.SystemUtils;
+import weather.wu.com.utils.Utility;
 import weather.wu.com.weather.WeatherActivity;
 
 /**
@@ -28,9 +31,14 @@ public class GuideThirdFragment extends Fragment {
         text.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+            if(Utility.isNetworkConnected(getActivity())){
                 getActivity().startActivity(new Intent(getActivity(),WeatherActivity.class));
                 getActivity().finish();
+            }else{
+                //SystemUtils.showDialog(getActivity());
+                Toast.makeText(getActivity(),"网络连接无可用，请开启网络",Toast.LENGTH_SHORT);
+            }
+
             }
         });
         LinearLayout layout = new LinearLayout(getActivity());

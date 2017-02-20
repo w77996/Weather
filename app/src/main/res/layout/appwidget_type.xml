@@ -2,20 +2,38 @@
  <LinearLayout
     android:id="@+id/appwidget_layout"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+     android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+        <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:orientation="horizontal"
+            android:background="@color/color_white">
     <TextView
         android:id="@+id/appwidget_city"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="深圳"/>
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:textSize="23sp"
+        android:textColor="@color/md_grey_900_color_code"
+        android:text="city"/>
     <ImageView
         android:id="@+id/appwidget_img"
-        android:layout_width="60dp"
-        android:layout_height="60dp" />
+        android:layout_width="40dp"
+        android:layout_weight="1"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_default_big"/>
     <TextView
         android:id="@+id/appwidget_temp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="12"/>
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:textSize="25sp"
+        android:textColor="@color/md_grey_500_color_code"
+        android:text="--"/>
+    </LinearLayout>
+
 </LinearLayout>

@@ -1,10 +1,14 @@
 package weather.wu.com.utils;
 
+import android.app.AlertDialog;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
+import android.view.Display;
 import android.view.WindowManager;
 
 import java.lang.reflect.Field;
@@ -87,7 +91,7 @@ public class SystemUtils {
     }
 
     public static String getCurrentTime(){
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMDDHHmmss");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
         return simpleDateFormat.format(new Date());
     }
     public static String getCurrentDate(){
@@ -97,5 +101,33 @@ public class SystemUtils {
     public static String getCurrentMonth(){
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM");
         return simpleDateFormat.format(new Date());
+    }
+
+    public static void showDialog(final Context context) {
+        // TODO Auto-generated method stub
+  /* create ui */
+        final AlertDialog dialog;
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle("提示").setMessage("WiFi连接不可用");
+        builder.setPositiveButton("前往打开", new DialogInterface.OnClickListener() { public void onClick(DialogInterface dialog, int which) {
+            Intent go2wifi = new Intent(android.provider.Settings.ACTION_WIRELESS_SETTINGS);
+            go2wifi.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(go2wifi); }
+        }).setNegativeButton("下次再说", null);
+        dialog = builder.create();
+        dialog.getWindow().setType(WindowManager.LayoutParams.TYPE_SYSTEM_ALERT);
+        // d.getWindow().setType(WindowManager.LayoutParams.TYPE_SYSTEM_OVERLAY);
+        dialog.show(); /* set size & pos */
+        WindowManager.LayoutParams lp = dialog.getWindow().getAttributes();
+        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        Display display = wm.getDefaultDisplay();
+        if (display.getHeight() > display.getWidth()) {
+            // lp.height = (int) (display.getHeight() * 0.5);
+            lp.width = (int) (display.getWidth() * 1.0);
+        } else {
+            // lp.height = (int) (display.getHeight() * 0.75);
+            lp.width = (int) (display.getWidth() * 0.5);
+        }
+        dialog.getWindow().setAttributes(lp);
     }
 }

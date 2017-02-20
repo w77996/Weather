@@ -18,6 +18,7 @@ import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
+import com.orhanobut.logger.Logger;
 
 import java.util.List;
 
@@ -59,6 +60,7 @@ public class CitySelectActivity extends AppCompatActivity implements View.OnClic
         AMapLocationClientOption option = new AMapLocationClientOption();
         option.setLocationMode(AMapLocationClientOption.AMapLocationMode.Hight_Accuracy);
         option.setOnceLocation(true);
+        option.setMockEnable(true);//虚拟定位
         mLocationClient.setLocationOption(option);
         mLocationClient.setLocationListener(new AMapLocationListener() {
             @Override
@@ -71,6 +73,7 @@ public class CitySelectActivity extends AppCompatActivity implements View.OnClic
                         mCityAdapter.updateLocateState(LocateState.SUCCESS, location);
                     } else {
                         //定位失败
+                        Logger.e(aMapLocation.getErrorInfo()+" "+ aMapLocation.getErrorCode());
                         mCityAdapter.updateLocateState(LocateState.FAILED, null);
                     }
                 }

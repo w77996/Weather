@@ -44,7 +44,7 @@ public class WidgetService extends Service {
     private updateHandler mUpdateHandler;
     int mAppwidgetId;
 
-    private static final int ALAM_DURATION = 5*60*1000;
+    private static final int ALAM_DURATION = 300*60*1000;
     private static final int UPDATE_DURATION = 60*1000;
     private static final int ALAM_MESSAGE = 1000;
     @Nullable
@@ -56,19 +56,22 @@ public class WidgetService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
        // AlarmManager alarmManager = (AlarmManager)
-        mAppwidgetId =Integer.parseInt(intent.getStringExtra("id"));
-        Logger.d(mAppwidgetId+"");
+        //获取AppWidget的id，service再次运行的时候调用starCommand,为空出现ANR
+        if(null!=intent.getStringExtra("id")){
+            mAppwidgetId =Integer.parseInt(intent.getStringExtra("id"));
+            Logger.i(mAppwidgetId+"");
+        }
+
         mRemoteViews = new RemoteViews(getApplicationContext().getPackageName(),R.layout.appwidget_type);
         if(Utility.isNetworkConnected(getApplicationContext())){
             updateWeather();
         }else{
 
         }
-        updateAppWidget();
+       updateAppWidget();
         Intent intent1= new Intent(getApplicationContext(), SplashActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(),0,intent1,0);
         mRemoteViews.setOnClickPendingIntent(R.id.appwidget_layout,pendingIntent);
-
         AlarmManager alarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
         Intent alarmIntent = new Intent(getApplicationContext(),WidgetService.class);
         PendingIntent alarmPendingIntent = PendingIntent.getService(getApplicationContext(),0,alarmIntent,PendingIntent.FLAG_CANCEL_CURRENT);
@@ -80,6 +83,7 @@ public class WidgetService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
+
         Message message =Message.obtain();
         message.what = ALAM_MESSAGE;
         mUpdateHandler = new updateHandler();

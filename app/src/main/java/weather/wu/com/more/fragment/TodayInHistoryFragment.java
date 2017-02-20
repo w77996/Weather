@@ -1,3 +1,4 @@
+/*
 package weather.wu.com.more.fragment;
 
 
@@ -18,20 +19,19 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 
-import butterknife.BindView;
-import butterknife.BindViews;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
-import weather.wu.com.more.adapter.TodayInHistoryAdapter;
 import weather.wu.com.more.bean.TodayInHistory;
 import weather.wu.com.utils.HttpUtil;
 import weather.wu.com.utils.SystemUtils;
 import weather.wu.com.weather.R;
 
+*/
 /**
  * Created by Administrator on 2017/2/16.
- */
+ *//*
+
 public class TodayInHistoryFragment extends Fragment {
 
     RecyclerView mRecyclerView;
@@ -81,7 +81,10 @@ public class TodayInHistoryFragment extends Fragment {
                             @Override
                             public void run() {
                            // editor.putString("weather", responseText);
-                           // editor.apply();*//**/
+                           // editor.apply();*//*
+*/
+/**//*
+
                                    // showWeatherInfo(weather);
                                Logger.d( mTodayInHistory.getResult().size()+"");
                                 TodayInHistoryAdapter todayInHistoryAdapter = new TodayInHistoryAdapter(getActivity(), mTodayInHistory.getResult());
@@ -100,3 +103,4 @@ public class TodayInHistoryFragment extends Fragment {
         });
     }
 }
+*/
