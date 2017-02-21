@@ -1,65 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+<LinearLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="10dp"
-    >
+    android:layout_margin="20dp"
+    android:background="@drawable/cardview_style">
 
-    <android.support.v7.widget.CardView
-        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    <ImageView
+        android:id="@+id/more_news_img"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_margin="4dp" />
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        card_view:cardCornerRadius="3dp"
-        card_view:cardElevation="7dp">
+        android:layout_height="match_parent"
+        android:gravity="center|center_vertical|center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/more_news_title"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:maxLines="2"
+            android:paddingLeft="5dp"
+            android:layout_marginTop="8dp"
+            android:text="fasdfadfadfasdf"
+            android:textColor="@color/md_grey_900_color_code"
+            android:textSize="18sp" />
+
 
         <LinearLayout
-
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="0dp"
+            android:layout_weight="1">
 
-            <ImageView
-                android:id="@+id/more_news_img"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_margin="4dp" />
-
-            <LinearLayout
+            <TextView
+                android:id="@+id/more_news_lunar"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center|center_vertical|center_horizontal"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/more_news_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="2"
-                    android:ellipsize="end"
-                    android:gravity="center_vertical"
-                    android:maxLines="2"
-                    android:paddingLeft="5dp"
-                    android:text="fasdfadfadfasdf"
-                    android:textColor="@color/md_grey_900_color_code"
-                    android:textSize="18sp" />
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1">
-
-                    <TextView
-                        android:id="@+id/more_news_lunar"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="right|center_vertical"
-                        android:paddingRight="5dp"
-                        android:text="fasdfadfadfasdf"
-                        android:textSize="12sp" />
-
-                </LinearLayout>
-            </LinearLayout>
+                android:gravity="right|center_vertical"
+                android:paddingRight="5dp"
+                android:text="fasdfadfadfasdf"
+                android:textSize="12sp" />
         </LinearLayout>
-    </android.support.v7.widget.CardView>
+    </LinearLayout>
 </LinearLayout>

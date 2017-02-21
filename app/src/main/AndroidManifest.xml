@@ -23,6 +23,7 @@
             android:name="com.amap.api.v2.apikey"
             android:value="11136045834c5e98a06de9ac7af0b4ac" />
 
+
         <activity android:name="weather.wu.com.activity.GudieActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,7 +33,7 @@
         <activity
             android:name="weather.wu.com.activity.CityEditActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:theme="@style/Theme.AppCompat" />
+            android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" />
         <activity
             android:name="weather.wu.com.activity.SplashActivity"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
@@ -51,7 +52,6 @@
                 <action android:name="cn.bmob.push.lib.service.PushService" />
             </intent-filter>
         </service>
-
         <!-- 用于进程保活 -->
         <service
             android:name="cn.bmob.push.lib.service.PushNotifyService"
@@ -74,7 +74,7 @@
                 <action android:name="cn.bmob.push.action.MESSAGE" />
             </intent-filter>
         </receiver>
-
+        <service android:name="com.amap.api.location.APSService"/>
         <!-- 接收心跳和唤醒的广播，要和PushService运行在同个进程 -->
         <receiver
             android:name="cn.bmob.push.PushNotifyReceiver"

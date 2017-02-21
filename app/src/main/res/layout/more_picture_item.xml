@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="190dp"
+    android:background="@drawable/cardview_style"
+    android:gravity="center"
+    android:layout_height="230dp">
+    <ImageView
+        android:id="@+id/more_picture_img"
+        android:layout_width="170dp"
+        android:layout_height="200dp"
+        android:adjustViewBounds="true"
+        android:layout_gravity="center"
+        android:scaleType="centerCrop"/>
+</LinearLayout>

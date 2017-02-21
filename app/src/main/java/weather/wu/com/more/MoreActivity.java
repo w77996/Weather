@@ -32,6 +32,7 @@ import okhttp3.Callback;
 import okhttp3.Response;
 import weather.wu.com.more.fragment.JokeFragment;
 import weather.wu.com.more.fragment.NewsFragment;
+import weather.wu.com.more.fragment.PictureFragment;
 import weather.wu.com.utils.HttpUtil;
 import weather.wu.com.utils.SystemUtils;
 import weather.wu.com.weather.R;
@@ -81,6 +82,10 @@ public class MoreActivity extends AppCompatActivity {
                         fragmentTransaction.commit();
                         break;
                     case R.id.more_nav_pic:
+                        mDrawerLayout.closeDrawer(GravityCompat.START);
+                        PictureFragment pictureFragment = new PictureFragment();
+                        fragmentTransaction.replace(R.id.more_fragment_content,pictureFragment);
+                        fragmentTransaction.commit();
                         break;
                     case R.id.more_nav_else:
                         break;
