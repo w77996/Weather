@@ -133,7 +133,8 @@
                         android:layout_centerHorizontal="true"
                         android:layout_centerVertical="true"
                         android:paddingLeft="12dp"
-                        android:text="晴"
+                        android:textColor="@color/md_grey_900_color_code"
+                        android:text="- -"
                         android:textSize="30sp" />
 
                     <ImageView
@@ -155,6 +156,7 @@
                             android:layout_weight="1"
                             android:layout_gravity="right"
                             android:text="紫外线-"
+                            android:paddingRight="5dp"
                             android:textSize="10sp" />
 
                         <TextView
@@ -164,7 +166,8 @@
                             android:layout_gravity="right"
                             android:layout_weight="1"
                             android:gravity="center"
-                            android:text="降雨概率-"
+                            android:text="降雨概率 --"
+                            android:paddingRight="5dp"
                             android:textSize="10sp" />
                         <TextView
                             android:id="@+id/right_air_press"
@@ -174,6 +177,7 @@
                             android:gravity="center"
                             android:layout_gravity="right"
                             android:text="气压--"
+                            android:paddingRight="5dp"
                             android:textSize="10sp" />
                     </LinearLayout>
                 </RelativeLayout>

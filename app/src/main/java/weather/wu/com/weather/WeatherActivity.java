@@ -311,6 +311,11 @@ public class WeatherActivity extends SlidingActivity {
                     for(WeatherDB weatherDB:weatherDBs){
                         mListCity.add(weatherDB.getmCityName());
                     }*/
+                    break;
+                case 2:
+                    requestWeather(mCurrentCity);
+                    mSwipeRefresh.setRefreshing(false);
+                    break;
             }
             //只要执行到这里就关闭对话框
             //pd.dismiss();
@@ -431,7 +436,10 @@ public class WeatherActivity extends SlidingActivity {
             @Override
             public void onRefresh() {
                 if(Utility.isNetworkConnected(getApplicationContext())){
-                    requestWeather(mCurrentCity);
+                    Message message = Message.obtain();
+                    message.what =2;
+                   // requestWeather(mCurrentCity);
+                    mHandler.sendMessageDelayed(message,2000);
                 }else{
                     Toast.makeText(getApplicationContext(),"请求失败,请检查网络状况",Toast.LENGTH_SHORT).show();
                     if(mSwipeRefresh.isRefreshing()){
@@ -447,7 +455,7 @@ public class WeatherActivity extends SlidingActivity {
                 android.R.color.holo_orange_light,
                 android.R.color.holo_red_light);
         //控件拉动是放大放小，起始位置，结束位置
-        mSwipeRefresh.setProgressViewOffset(true, 100, 200);
+        mSwipeRefresh.setProgressViewOffset(false, 150, 300);
 
         //NowWeather主RelativeLayout中的RecycleView
         // mRecyclerView = (RecyclerView)findViewById(R.id.now_weather_recyclerview);
@@ -598,11 +606,12 @@ public class WeatherActivity extends SlidingActivity {
         mAirNo2Index.setText(weather.getmAqiDetailBean().getmNo2());
         mAirO3Index.setText(weather.getmAqiDetailBean().getmO3());
         mAirPm10Index.setText(weather.getmAqiDetailBean().getmPm10());
-        //  if(weather.getmAqiDetailBean().getmPrimary_Pollutant()!=null&&!"".equals(weather.getmAqiDetailBean().getmPrimary_Pollutant())){
-        mAqiPrimaryPollutiant.setText("主要污染物：    " + weather.getmAqiDetailBean().getmPrimary_Pollutant());
-       /* }else{
+         if(weather.getmAqiDetailBean().getmPrimary_Pollutant()!=null&&!"".equals(weather.getmAqiDetailBean().getmPrimary_Pollutant())){
+             mAqiPrimaryPollutiant.setVisibility(View.VISIBLE);
+             mAqiPrimaryPollutiant.setText("主要污染物：    " + weather.getmAqiDetailBean().getmPrimary_Pollutant());
+       }else{
             mAqiPrimaryPollutiant.setVisibility(View.GONE);
-        }*/
+        }
 
         mAirSo2Index.setText(weather.getmAqiDetailBean().getmSo2());
         //生活指数UI更新

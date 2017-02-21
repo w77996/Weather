@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:textColor="@color/md_grey_900_color_code"
-            android:text="良"
+            android:text="- -"
             android:textSize="60sp" />
 
         <TextView
@@ -43,7 +43,7 @@
             android:layout_marginTop="3dp"
             android:textColor="@color/md_grey_800_color_code"
             android:gravity="center"
-            android:text="主要污染物:     PM2.5"
+            android:text="主要污染物:    - -"
             android:textSize="15sp"/>
     </LinearLayout>
 
@@ -69,7 +69,7 @@
                     android:id="@+id/PM10"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="PM2.5"
+                    android:text="PM10"
                     android:textColor="@color/md_grey_900_color_code"
                     android:textSize="13sp"
                     android:textStyle="bold" />
@@ -88,7 +88,7 @@
                     android:layout_centerVertical="true"
                     android:layout_toLeftOf="@+id/pm10_unit"
                     android:paddingTop="5dp"
-                    android:text="200"
+                    android:text="- -"
                     android:textColor="@color/md_grey_900_color_code"
                     android:textSize="13sp"
                     android:textStyle="bold" />
@@ -132,7 +132,7 @@
                     android:layout_centerVertical="true"
                     android:layout_toLeftOf="@+id/unit"
                     android:paddingTop="5dp"
-                    android:text="200"
+                    android:text="- -"
                     android:textColor="@color/md_blue_grey_900_color_code"
                     android:textSize="13sp"
                     android:textStyle="bold" />
@@ -181,7 +181,7 @@
                     android:layout_centerVertical="true"
                     android:layout_toLeftOf="@+id/co_unit"
                     android:paddingTop="5dp"
-                    android:text="200"
+                    android:text="- -"
                     android:textColor="@color/md_grey_900_color_code"
                     android:textSize="13sp"
                     android:textStyle="bold" />
@@ -225,7 +225,7 @@
                     android:layout_centerVertical="true"
                     android:layout_toLeftOf="@+id/so2_unit"
                     android:paddingTop="5dp"
-                    android:text="200"
+                    android:text="- -"
                     android:textColor="@color/md_grey_900_color_code"
                     android:textSize="13sp"
                     android:textStyle="bold" />
@@ -275,7 +275,7 @@
                 android:layout_centerVertical="true"
                 android:layout_toLeftOf="@+id/o3_unit"
                 android:paddingTop="5dp"
-                android:text="200"
+                android:text="- -"
                 android:textColor="@color/md_grey_900_color_code"
                 android:textSize="13sp"
                 android:textStyle="bold" />
@@ -319,7 +319,7 @@
                 android:layout_centerVertical="true"
                 android:layout_toLeftOf="@+id/no2_unit"
                 android:paddingTop="5dp"
-                android:text="200"
+                android:text="- -"
                 android:textColor="@color/md_grey_900_color_code"
                 android:textSize="13sp"
                 android:textStyle="bold" />

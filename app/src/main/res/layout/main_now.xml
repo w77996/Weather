@@ -29,7 +29,7 @@
             android:layout_marginRight="10dp"
             android:layout_marginTop="10dp"
             android:text="--:-- --"
-            android:textColor="@color/md_blue_grey_500_color_code"
+            android:textColor="@color/md_blue_grey_900_color_code"
             android:textSize="16sp" />
 
         <RelativeLayout
@@ -98,6 +98,7 @@
             android:layout_alignTop="@+id/temp_high_icon"
             android:layout_marginLeft="10dp"
             android:text="- -°"
+            android:textColor="@color/md_grey_900_color_code"
             android:textSize="19sp" />
         <ImageView
             android:id="@+id/temp_low_icon"

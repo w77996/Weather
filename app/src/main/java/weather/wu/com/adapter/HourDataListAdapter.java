@@ -52,7 +52,7 @@ public class HourDataListAdapter extends RecyclerView.Adapter<HourDataListAdapte
             HourDataBean hourDataBean = datas.get(position);
             holder.mHourDataListTemptureTime.setText(hourDataBean.getmTemperature_Time());
             Glide.with(context).load(hourDataBean.getmWeather_Pic()).into(holder.mHourDataWeatherImg);
-            holder.mHourDataTempture.setText(hourDataBean.getmTemperature());
+            holder.mHourDataTempture.setText(hourDataBean.getmTemperature()+"°");
             holder.mHourDataWind.setText(hourDataBean.getmWind_Direction()+hourDataBean.getmWind_Power());
     }
 
