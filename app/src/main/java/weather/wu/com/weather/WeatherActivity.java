@@ -44,9 +44,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import cn.bmob.push.BmobPush;
-import cn.bmob.v3.Bmob;
-import cn.bmob.v3.BmobInstallation;
+
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
@@ -340,12 +338,12 @@ public class WeatherActivity extends SlidingActivity {
        // getWindowManager().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
         ButterKnife.bind(this);
         initView();
-        Bmob.initialize(this, "d9cf386c0792498c6ff73d3f1e816fe4");
+       // Bmob.initialize(this, "d9cf386c0792498c6ff73d3f1e816fe4");
         // 使用推送服务时的初始化操作
        //
         // BmobInstallation.getCurrentInstallation().save();
         // 启动推送服务
-        BmobPush.startWork(this);
+       // BmobPush.startWork(this);
         db = Connector.getDatabase();
         //  initData();
     }

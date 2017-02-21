@@ -4,9 +4,8 @@ import android.app.Application;
 
 import org.litepal.LitePalApplication;
 
-import cn.bmob.push.BmobPush;
-import cn.bmob.v3.Bmob;
-import cn.bmob.v3.BmobInstallation;
+import cn.jpush.android.api.JPushInterface;
+
 
 /**
  * Created by Administrator on 2017/1/5.
@@ -21,6 +20,7 @@ public class WeatherApplication extends LitePalApplication {
         // 启动推送服务
 
         BmobPush.startWork(this);*/
-
+        JPushInterface.setDebugMode(true);
+        JPushInterface.init(this);
     }
 }

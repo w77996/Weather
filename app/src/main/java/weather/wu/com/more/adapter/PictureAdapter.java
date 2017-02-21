@@ -13,7 +13,6 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.bmob.v3.b.I;
 import weather.wu.com.more.bean.Picture;
 import weather.wu.com.weather.R;
 
