@@ -35,12 +35,5 @@
 
     </LinearLayout>
     </android.support.design.widget.AppBarLayout>
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/more_fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="20dp"
-        app:srcCompat="@android:drawable/ic_menu_today">
-    </android.support.design.widget.FloatingActionButton>
+
 </android.support.design.widget.CoordinatorLayout>

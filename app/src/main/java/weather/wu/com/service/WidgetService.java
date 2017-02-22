@@ -63,11 +63,7 @@ public class WidgetService extends Service {
         }
 
         mRemoteViews = new RemoteViews(getApplicationContext().getPackageName(),R.layout.appwidget_type);
-        if(Utility.isNetworkConnected(getApplicationContext())){
-            updateWeather();
-        }else{
 
-        }
        updateAppWidget();
         Intent intent1= new Intent(getApplicationContext(), SplashActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(),0,intent1,0);
@@ -96,7 +92,7 @@ public class WidgetService extends Service {
                 Logger.d(weatherBean.toString());
                 //  Logger.d(weatherBean.getmCityName());
                 mRemoteViews.setTextViewText(R.id.appwidget_city,weatherBean.mCityName);
-                mRemoteViews.setTextViewText(R.id.appwidget_temp,weatherBean.getmNowWeatherBean().getmTemperature());
+                mRemoteViews.setTextViewText(R.id.appwidget_temp,weatherBean.getmFutureWeatherBeen().get(0).getmNight_Air_Temperature()+"°/"+weatherBean.getmFutureWeatherBeen().get(0).getmDay_Air_Temperature()+"°");
                  mAppWidgetTarget =new AppWidgetTarget(getApplicationContext(),mRemoteViews,R.id.appwidget_img,mAppwidgetId);
                 Glide.with(getApplicationContext()).load(weatherBean.getmNowWeatherBean().getmWeather_Pic()).asBitmap().into(mAppWidgetTarget);
               //  mRemoteViews.setImageViewBitmap(R.id.appwidget_img,bitmap);

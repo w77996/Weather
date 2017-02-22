@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_margin="10dp"
     android:layout_height="wrap_content"
-    android:background="@color/color_white">
+    android:layout_margin="8dp"
+    android:background="@drawable/cardview_style"
+    >
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/cardview_style"
+
         >
     <ImageView
         android:id="@+id/more_joke_img"
@@ -19,8 +20,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:paddingLeft="5dp"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:maxLines="2"
+            android:textColor="@color/md_grey_900_color_code"
             android:ellipsize="end"
             android:text="dddd"/>
     </LinearLayout>

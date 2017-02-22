@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/color_white">
-    <ListView
-        android:id="@+id/more_joke_listview"
+    android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/guide1_img"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        >
-
-    </ListView>
+        android:layout_margin="30dp"/>
 </LinearLayout>

@@ -13,6 +13,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.Window;
 
 import com.google.gson.Gson;
@@ -43,8 +44,8 @@ import weather.wu.com.weather.R;
 public class MoreActivity extends AppCompatActivity {
   /*  @BindView(R.id.more_toolbar)*/
     Toolbar mToolbar;
-    @BindView(R.id.more_fab)
-    FloatingActionButton mFloatingActionButton;
+  /*  @BindView(R.id.more_fab)
+    FloatingActionButton mFloatingActionButton;*/
   //  @BindView(R.id.more_drawlayout)
     DrawerLayout mDrawerLayout;
    // @BindView(R.id.more_nav)
@@ -96,6 +97,9 @@ public class MoreActivity extends AppCompatActivity {
          mToolbar = (Toolbar)findViewById(R.id.more_toolbar);
        setSupportActionBar(mToolbar);
          ActionBar actionBar = getSupportActionBar();
+
+        mToolbar.setTitleTextColor(getResources().getColor(R.color.md_white_color_code));
+
         if(actionBar!=null){
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setHomeAsUpIndicator(R.drawable.more_ic_nav_menu);
@@ -127,7 +131,8 @@ public class MoreActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId()==R.id.home){
+        Logger.d((item.getItemId())+"");
+        if(item.getItemId()==android.R.id.home){
             if(mDrawerLayout.isDrawerOpen(GravityCompat.START)){
                 mDrawerLayout.closeDrawers();
             }else{

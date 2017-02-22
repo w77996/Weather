@@ -8,9 +8,11 @@ import android.os.Bundle;
 
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,12 +23,11 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import weather.wu.com.utils.Utility;
 import weather.wu.com.weather.R;
-import weather.wu.com.weather.WeatherActivity;
 
-public class AboutActivity extends Activity {
-    @BindView(R.id.toolbar)
+public class AboutActivity extends AppCompatActivity {
+   /* @BindView(R.id.toolbar)*/
     Toolbar mToolbar;
-    @BindView(R.id.toolbar_layout)
+   // @BindView(R.id.toolbar_layout)
     CollapsingToolbarLayout mToolbarLayout;
     @BindView(R.id.tv_version)
     TextView mTvVersion;
@@ -47,6 +48,7 @@ public class AboutActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_about);
         ButterKnife.bind(this);
        // StatusBarUtil.setImmersiveStatusBar(this);
@@ -55,9 +57,11 @@ public class AboutActivity extends Activity {
     }
 
     private void initView() {
-        //setSupportActionBar(mToolbar);
-      // ActionBar actionBar = getSupportActionBar();
-       // if (actionBar != null) actionBar.setDisplayHomeAsUpEnabled(true);
+        mToolbar = (Toolbar)findViewById(R.id.about_toolbar);
+        mToolbarLayout= (CollapsingToolbarLayout)findViewById(R.id.toolbar_layout);
+        setSupportActionBar(mToolbar);
+      ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) actionBar.setDisplayHomeAsUpEnabled(true);
         mTvVersion.setText(String.format("当前版本: %s (Build %s)", Utility.getVersion(this), Utility.getVersionCode(this)));
         mToolbarLayout.setTitleEnabled(false);
         // TODO: 2016/12/4 这里有个 bug

@@ -46,35 +46,36 @@
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
     <LinearLayout
         android:id="@+id/left_edit_city"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_weight="1"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:gravity="center"
         android:clickable="true"
         android:orientation="horizontal">
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="0.7"
             android:layout_gravity="center"
             android:src="@drawable/icon_edit_location" />
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="编辑城市"
             android:textSize="17sp"/>
     </LinearLayout>
-        <LinearLayout
+      <!--  <LinearLayout
             android:id="@+id/left_add_city"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_weight="1"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:gravity="center"
             android:clickable="true"
             android:orientation="horizontal">
@@ -91,7 +92,7 @@
                 android:layout_gravity="center"
                 android:text="添加城市"
                 android:textSize="17sp"/>
-        </LinearLayout>
+        </LinearLayout>-->
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -99,8 +100,8 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="2px"
-            android:background="@color/md_grey_500_color_code"
+            android:layout_height="1px"
+            android:background="@color/md_grey_400_color_code"
             android:layout_marginBottom="8dp"
             />
     </LinearLayout>

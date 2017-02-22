@@ -80,6 +80,8 @@ public class WeatherActivity extends SlidingActivity {
     Button mNavButton;
     @BindView(R.id.title_city)
     TextView mTextViewTileCity;
+    @BindView(R.id.title_add_city)
+    TextView mAddCityBtn;
     /* @BindView(R.id.weather_scrollview_layout)
      ScrollView scrollView;*/
     //下拉刷新控件
@@ -145,8 +147,9 @@ public class WeatherActivity extends SlidingActivity {
     LinearLayout mLinearLayoutEditCity;
     @BindView(R.id.left_list_city_select)
     ListView mListViewCity;
-    @BindView(R.id.left_add_city)
-    LinearLayout mLinearLayoutAddCity;
+   /* @BindView(R.id.left_add_city)
+    LinearLayout mLinearLayoutAddCity;*/
+
     @BindView(R.id.left_about)
     LinearLayout mAbout;
     @BindView(R.id.left_more)
@@ -200,6 +203,8 @@ public class WeatherActivity extends SlidingActivity {
     /**
      * 空气质量控件初始化
      **/
+  /*  @BindView(R.id.air_linearlayout)
+  public   LinearLayout mAirLinearLayout;*/
     @BindView(R.id.air_weather_condition)
     TextView mAirWeatherCondition;
     @BindView(R.id.air_pm2_5_index)
@@ -349,6 +354,7 @@ public class WeatherActivity extends SlidingActivity {
         // BmobInstallation.getCurrentInstallation().save();
         // 启动推送服务
        // BmobPush.startWork(this);
+        initWindow();
         db = Connector.getDatabase();
         //  initData();
     }
@@ -600,6 +606,7 @@ public class WeatherActivity extends SlidingActivity {
         }
         mForecastLayout.setLayoutParams((new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, DisplayHeight / 2)));
         //空气质量UI更新
+     //  mAirLinearLayout.setLayoutParams((new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,DisplayHeight/2)));
         mAirWeatherCondition.setText(weather.getmAqiDetailBean().mQuality);
         mAirPm25Index.setText(weather.getmAqiDetailBean().getmPm2_5());
         mAirCoIndex.setText(weather.getmAqiDetailBean().getmCo());
@@ -648,14 +655,14 @@ public class WeatherActivity extends SlidingActivity {
         mRightAltitudeText.setText("海拔：" + weather.getmCityInfoBean().getmAltitude_C15() + "米");
     }
 
-    @OnClick({R.id.nav_button, R.id.left_add_city, R.id.left_edit_city, R.id.left_more,R.id.left_about})
+    @OnClick({R.id.nav_button, R.id.title_add_city, R.id.left_edit_city, R.id.left_more,R.id.left_about})
     public void onclick(View v) {
         switch (v.getId()) {
             case R.id.nav_button:
                 mDrawerLayout.openDrawer(GravityCompat.START);
                 break;
-            case R.id.left_add_city:
-                mDrawerLayout.closeDrawer(GravityCompat.START);
+            case R.id.title_add_city:
+               // mDrawerLayout.closeDrawer(GravityCompat.START);
                 startActivityForResult(new Intent(WeatherActivity.this, CitySelectActivity.class),
                         REQUEST_CODE_PICK_CITY);
                 break;
