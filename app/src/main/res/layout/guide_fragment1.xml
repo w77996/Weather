@@ -6,5 +6,5 @@
         android:id="@+id/guide1_img"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="30dp"/>
+        android:background="@drawable/guide1"/>
 </LinearLayout>

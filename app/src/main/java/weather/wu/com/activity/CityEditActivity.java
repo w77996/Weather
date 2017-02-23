@@ -107,11 +107,12 @@ public class CityEditActivity extends Activity {
                 deleteItem.setBackground(new ColorDrawable(Color.rgb(0xF9,
                         0x3F, 0x25)));
                 // set item width
-                deleteItem.setWidth(dp2px(90));
+                deleteItem.setWidth(dp2px(60));
                 // set a icon
-
+                deleteItem.setIcon(R.drawable.ic_delete);
                 // add to menu
                 menu.addMenuItem(deleteItem);
+
              /*   SwipeMenuItem deleteItem = new SwipeMenuItem(
                         getApplicationContext());
                 // set item background
@@ -120,7 +121,7 @@ public class CityEditActivity extends Activity {
                 deleteItem.setWidth(dp2px(90));
 
                 // set a icon
-                deleteItem.setIcon(R.drawable.ic_default_big);
+
                 // add to menu
                 menu.addMenuItem(deleteItem);*/
             }

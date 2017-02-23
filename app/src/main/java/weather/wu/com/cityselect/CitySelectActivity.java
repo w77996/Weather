@@ -22,6 +22,7 @@ import com.orhanobut.logger.Logger;
 
 import java.util.List;
 
+import weather.wu.com.utils.SpUtils;
 import weather.wu.com.weather.R;
 
 public class CitySelectActivity extends AppCompatActivity implements View.OnClickListener {
@@ -165,6 +166,13 @@ public class CitySelectActivity extends AppCompatActivity implements View.OnClic
 
         clearBtn.setOnClickListener(this);
         backBtn.setOnClickListener(this);
+    }
+
+    @Override
+    public void onBackPressed() {
+        //if(SpUtils.getBoolean(getApplicationContext(), SpUtils.FIRST_START, true))
+        super.onBackPressed();
+
     }
 
     private void back(String city){

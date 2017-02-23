@@ -61,7 +61,7 @@ public class WidgetService extends Service {
             mAppwidgetId =Integer.parseInt(intent.getStringExtra("id"));
             Logger.i(mAppwidgetId+"");
         }
-
+        Logger.d("AppWidget onStartCommand");
         mRemoteViews = new RemoteViews(getApplicationContext().getPackageName(),R.layout.appwidget_type);
 
        updateAppWidget();

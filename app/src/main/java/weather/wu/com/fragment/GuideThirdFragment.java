@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import weather.wu.com.utils.SystemUtils;
 import weather.wu.com.utils.Utility;
+import weather.wu.com.weather.R;
 import weather.wu.com.weather.WeatherActivity;
 
 /**
@@ -23,28 +24,30 @@ public class GuideThirdFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        TextView text = new TextView(getActivity());
+      /*  TextView text = new TextView(getActivity());
         text.setGravity(Gravity.CENTER);
         text.setText("吴海辉");
         text.setTextSize(20 * getResources().getDisplayMetrics().density);
-        text.setPadding(20, 20, 20, 20);
-        text.setOnClickListener(new View.OnClickListener() {
+        text.setPadding(20, 20, 20, 20);*/
+        View view = inflater.inflate(R.layout.guide_fragment3,container,false);
+        LinearLayout linearLayout = (LinearLayout)view.findViewById(R.id.guide_fragment3_linearlayout);
+        linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            if(Utility.isNetworkConnected(getActivity())){
-                getActivity().startActivity(new Intent(getActivity(),WeatherActivity.class));
-                getActivity().finish();
-            }else{
-                //SystemUtils.showDialog(getActivity());
-                Toast.makeText(getActivity(),"网络连接无可用，请开启网络",Toast.LENGTH_SHORT);
-            }
+                if(Utility.isNetworkConnected(getActivity())){
+                    getActivity().startActivity(new Intent(getActivity(),WeatherActivity.class));
+                    getActivity().finish();
+                }else{
+                    //SystemUtils.showDialog(getActivity());
+                    Toast.makeText(getActivity(),"网络连接无可用，请开启网络",Toast.LENGTH_SHORT);
+                }
 
             }
         });
-        LinearLayout layout = new LinearLayout(getActivity());
+      /*  LinearLayout layout = new LinearLayout(getActivity());
         layout.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.FILL_PARENT));
         layout.setGravity(Gravity.CENTER);
-        layout.addView(text);
-        return layout;
+        layout.addView(text);*/
+        return view;
     }
 }

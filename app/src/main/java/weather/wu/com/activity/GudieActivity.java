@@ -21,7 +21,7 @@ public class GudieActivity extends FragmentActivity implements ViewPager.OnPageC
     //@BindViews(R.id.pager)
     ViewPager mPager;
    // @BindView(R.id.indicator)
-    PageIndicator mIndicator;
+   // PageIndicator mIndicator;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,8 +47,8 @@ public class GudieActivity extends FragmentActivity implements ViewPager.OnPageC
        mPager = (ViewPager)findViewById(R.id.pager);
         mPager.setAdapter(mAdapter);
 
-        mIndicator = (CirclePageIndicator)findViewById(R.id.indicator);
-        mIndicator.setViewPager(mPager);
+      /*  mIndicator = (CirclePageIndicator)findViewById(R.id.indicator);
+        mIndicator.setViewPager(mPager);*/
 
       /*  mAdapter.setCount(mAdapter.getCount() + 1);
         mIndicator.notifyDataSetChanged();*/

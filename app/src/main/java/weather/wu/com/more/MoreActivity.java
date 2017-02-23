@@ -31,6 +31,7 @@ import butterknife.OnClick;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
+import weather.wu.com.more.fragment.BluetoothFragment;
 import weather.wu.com.more.fragment.JokeFragment;
 import weather.wu.com.more.fragment.NewsFragment;
 import weather.wu.com.more.fragment.PictureFragment;
@@ -89,6 +90,10 @@ public class MoreActivity extends AppCompatActivity {
                         fragmentTransaction.commit();
                         break;
                     case R.id.more_nav_else:
+                        mDrawerLayout.closeDrawer(GravityCompat.START);
+                        BluetoothFragment bluetoothFragment = new BluetoothFragment();
+                        fragmentTransaction.replace(R.id.more_fragment_content,bluetoothFragment);
+                        fragmentTransaction.commit();
                         break;
                 }
                 return false;
