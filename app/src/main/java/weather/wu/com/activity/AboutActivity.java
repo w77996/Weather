@@ -109,11 +109,11 @@ public class AboutActivity extends AppCompatActivity {
     }
 
     private void goToHtml(String url) {
-       // Uri uri = Uri.parse(url);   //指定网址
-        Intent intent = new Intent(this,WebViewActivity.class);
-        intent.putExtra("url", url);
-
-       /* intent.setAction(Intent.ACTION_VIEW);           //指定Action
+       Uri uri = Uri.parse(url);   //指定网址
+        /*Intent intent = new Intent(this,WebViewActivity.class);
+        intent.putExtra("url", url);*/
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_VIEW);           //指定Action
         intent.setData(uri);                            //设置Uri*/
         startActivity(intent);        //启动Activity
     }

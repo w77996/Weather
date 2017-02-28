@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    android:id="@+id/appwidget_layout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="fill_parent"
-    android:background="@color/md_grey_900_color_code"
+    android:background="@drawable/cardview_style"
     android:layout_height="130dp">
     <LinearLayout
         android:layout_width="wrap_content"
@@ -11,24 +13,29 @@
         android:gravity="center_horizontal|center"
         android:layout_weight="5">
         <TextView
+            android:id="@+id/appwiget_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
+            android:textColor="@color/md_grey_600_color_code"
             android:text="23:21"
-            android:textSize="50sp"/>
+            android:textSize="30sp"/>
         <TextView
+            android:id="@+id/appwiget_date"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:gravity="center_horizontal|center"
-            android:textSize="17sp"
+            android:textSize="15sp"
+            android:textColor="@color/md_grey_600_color_code"
             android:text="2017年1月17日"/>
         <TextView
+            android:id="@+id/appwiget_week"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:gravity="center_horizontal|center"
-            android:textSize="17sp"
+            android:textSize="15sp"
+            android:textColor="@color/md_grey_600_color_code"
             android:text="星期二   "/>
     </LinearLayout>
     <LinearLayout
@@ -38,24 +45,30 @@
         android:orientation="vertical"
         >
         <ImageView
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:id="@+id/appwiget_picture"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:src="@drawable/ic_default_big"
             android:layout_gravity="center"
             android:textSize="20sp"/>
         <TextView
+            android:id="@+id/appwiget_weather_condition"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:layout_gravity="center"
-            android:textSize="18sp"
+            android:gravity="center"
+            android:textSize="15sp"
+            android:textColor="@color/md_grey_600_color_code"
             android:text="晴"/>
         <TextView
+            android:id="@+id/appwiget_h"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:layout_gravity="center"
-            android:textSize="18sp"
+            android:gravity="center"
+            android:textSize="15sp"
+            android:textColor="@color/md_grey_600_color_code"
             android:text="湿度：64%"/>
     </LinearLayout>
     <LinearLayout
@@ -66,18 +79,25 @@
         android:layout_weight="7">
 
         <TextView
+            android:id="@+id/appwiget_cityname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
+
+            android:textColor="@color/md_grey_600_color_code"
+            android:layout_gravity="center"
             android:layout_marginRight="8dp"
+            android:gravity="center"
             android:text="上海"
-            android:textSize="25sp"/>
+            android:textSize="30sp"/>
         <TextView
+            android:id="@+id/appwidget_nowtemp"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:layout_gravity="center"
-            android:textSize="33sp"
+            android:gravity="center"
+            android:textColor="@color/md_grey_600_color_code"
+            android:layout_gravity="center|center_horizontal"
+            android:textSize="15sp"
             android:text="19"/>
         <LinearLayout
             android:layout_width="wrap_content"
@@ -85,17 +105,16 @@
             android:layout_weight="1"
             android:layout_gravity="center"
             android:orientation="vertical">
+
         <TextView
+            android:id="@+id/appwiget_wind"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:layout_gravity="center"
-            android:textSize="17sp"
-            android:text="19/23"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:textSize="17sp"
+            android:gravity="center"
+            android:textSize="15sp"
+            android:textColor="@color/md_grey_600_color_code"
             android:text="东南风一级"/>
         </LinearLayout>
     </LinearLayout>

@@ -2,6 +2,8 @@ package weather.wu.com;
 
 import android.app.Application;
 
+import net.youmi.android.AdManager;
+
 import org.litepal.LitePalApplication;
 
 import cn.jpush.android.api.JPushInterface;
@@ -22,5 +24,7 @@ public class WeatherApplication extends LitePalApplication {
         BmobPush.startWork(this);*/
         JPushInterface.setDebugMode(true);
         JPushInterface.init(this);
+        AdManager.getInstance(getApplicationContext()).init("9392bd24660e693f","b55642a79da8ae7b", true, true);
+
     }
 }

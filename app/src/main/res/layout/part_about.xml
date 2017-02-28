@@ -205,7 +205,7 @@
             android:layout_marginStart="6dp"
             android:autoLink="web"
             android:lineSpacingExtra="6dp"
-            android:text="@string/open_source"
+            android:text= "@string/open_source"
             android:textColorLink="@color/md_blue_grey_200_color_code"
             android:textSize="12sp"
             />

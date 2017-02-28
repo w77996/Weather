@@ -38,7 +38,8 @@ public class PictureAdapter  extends RecyclerView.Adapter<PictureAdapter.Picture
 
     @Override
     public void onBindViewHolder(PictureViewHolder holder, int position) {
-        Glide.with(cotext).load(datas.get(position).getUrl()).fitCenter().diskCacheStrategy(DiskCacheStrategy.ALL).into(holder.mImageView);
+        Glide.with(cotext).load(datas.get(position).getUrl()).fitCenter().into(holder.mImageView);
+        holder.setIsRecyclable(false);
     }
 
 
@@ -48,7 +49,7 @@ public class PictureAdapter  extends RecyclerView.Adapter<PictureAdapter.Picture
         return datas.size();
     }
 
-    public static class PictureViewHolder extends RecyclerView.ViewHolder{
+    public  class PictureViewHolder extends RecyclerView.ViewHolder{
         ImageView mImageView;
         public PictureViewHolder(View itemView) {
             super(itemView);

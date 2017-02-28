@@ -24,6 +24,7 @@ import weather.wu.com.weather.R;
 public class SystemUtils {
     /**
      * 获取手机屏幕高度
+     *
      * @param context
      * @return
      */
@@ -35,8 +36,10 @@ public class SystemUtils {
         wm.getDefaultDisplay().getMetrics(dm);
         return dm.heightPixels;
     }
+
     /**
      * 获取手机屏幕宽度
+     *
      * @param context
      * @return
      */
@@ -51,6 +54,7 @@ public class SystemUtils {
 
     /**
      * 反射方法获取状态栏高度
+     *
      * @param context
      * @return
      */
@@ -73,12 +77,13 @@ public class SystemUtils {
 
     /**
      * 获取?attr/actionBarSize高度
+     *
      * @param context
      * @return
      */
-    public static int getActionBarSize(Context context){
+    public static int getActionBarSize(Context context) {
         TypedValue typedValue = new TypedValue();
-       context.getTheme().resolveAttribute(R.attr.actionBarSize, typedValue, true);
+        context.getTheme().resolveAttribute(R.attr.actionBarSize, typedValue, true);
         int actionBarHeight = TypedValue.complexToDimensionPixelSize(typedValue.data, context.getResources().getDisplayMetrics());
         return actionBarHeight;
     }
@@ -87,18 +92,20 @@ public class SystemUtils {
         ClipboardManager manager = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
         ClipData clipData = ClipData.newPlainText("msg", info);
         manager.setPrimaryClip(clipData);
-       // ToastUtil.showShort(String.format("[%s] 已经复制到剪切板啦( •̀ .̫ •́ )✧", info));
+        // ToastUtil.showShort(String.format("[%s] 已经复制到剪切板啦( •̀ .̫ •́ )✧", info));
     }
 
-    public static String getCurrentTime(){
+    public static String getCurrentTime() {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
         return simpleDateFormat.format(new Date());
     }
-    public static String getCurrentDate(){
+
+    public static String getCurrentDate() {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd");
         return simpleDateFormat.format(new Date());
     }
-    public static String getCurrentMonth(){
+
+    public static String getCurrentMonth() {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM");
         return simpleDateFormat.format(new Date());
     }
@@ -109,10 +116,12 @@ public class SystemUtils {
         final AlertDialog dialog;
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle("提示").setMessage("WiFi连接不可用");
-        builder.setPositiveButton("前往打开", new DialogInterface.OnClickListener() { public void onClick(DialogInterface dialog, int which) {
-            Intent go2wifi = new Intent(android.provider.Settings.ACTION_WIRELESS_SETTINGS);
-            go2wifi.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            context.startActivity(go2wifi); }
+        builder.setPositiveButton("前往打开", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                Intent go2wifi = new Intent(android.provider.Settings.ACTION_WIRELESS_SETTINGS);
+                go2wifi.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(go2wifi);
+            }
         }).setNegativeButton("下次再说", null);
         dialog = builder.create();
         dialog.getWindow().setType(WindowManager.LayoutParams.TYPE_SYSTEM_ALERT);

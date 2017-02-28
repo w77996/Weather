@@ -11,6 +11,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.google.gson.Gson;
@@ -30,6 +32,7 @@ import weather.wu.com.more.bean.Picture;
 import weather.wu.com.more.bean.SpacesItemDecoration;
 import weather.wu.com.utils.HttpUtil;
 import weather.wu.com.utils.SpUtils;
+import weather.wu.com.utils.SystemUtils;
 import weather.wu.com.utils.Utility;
 import weather.wu.com.weather.R;
 
@@ -39,6 +42,7 @@ import weather.wu.com.weather.R;
 public class PictureFragment extends Fragment {
     private RecyclerView mRecyclerView;
     private Picture mPicture;
+
     public PictureFragment() {
         super();
     }
@@ -53,6 +57,7 @@ public class PictureFragment extends Fragment {
     public View onCreateView(final LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View pictureFragment = inflater.inflate(R.layout.more_picture_fragment,container,false);
         //  mRecyclerView = (RecyclerView)todayInHistoryFragment.findViewById(R.id.toh_rl);
+       // pictureFragment.setLayoutParams(new LinearLayout.LayoutParams(mDisplayWideth/2, LinearLayout.LayoutParams.WRAP_CONTENT));
         mRecyclerView = (RecyclerView) pictureFragment.findViewById(R.id.more_picture_recyclerview);
       /*  mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -90,7 +95,7 @@ public class PictureFragment extends Fragment {
                         // Logger.d( mTodayInHistory.getResult().size()+"");
                         PictureAdapter pictureAdapter = new PictureAdapter(getActivity(),mPicture.getResults());
                         mRecyclerView.setAdapter(pictureAdapter);
-                        SpacesItemDecoration spacesItemDecoration = new SpacesItemDecoration(16);
+                        SpacesItemDecoration spacesItemDecoration = new SpacesItemDecoration(8);
                         mRecyclerView.addItemDecoration(spacesItemDecoration);
                       /*  NewsAdapter newsAdapter = new NewsAdapter(getActivity(), mNews.getResult().getData());
                         mListView.setAdapter(newsAdapter);*/

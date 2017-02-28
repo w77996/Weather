@@ -47,7 +47,7 @@ public class BluetoothFragment extends Fragment implements AdapterView.OnItemCli
     private ArrayAdapter<String> arrayAdapter;
     // UUID，蓝牙建立链接需要的
     private final UUID MY_UUID = UUID
-            .fromString("db764ac8-4b08-7f25-aafe-59d03c27bae3");
+            .fromString("00001101-0000-1000-8000-00805F9B34FB");
     // 为其链接创建一个名称
     private final String NAME = "Bluetooth_Socket";
     // 选中发送数据的蓝牙设备，全局变量，否则连接在方法执行完就结束了
@@ -153,7 +153,7 @@ public class BluetoothFragment extends Fragment implements AdapterView.OnItemCli
             // 判断是否拿到输出流
             if (os != null) {
                 // 需要发送的信息
-                String text = "成功发送信息";
+                String text = "1";
                 // 以utf-8的格式发送出去
                 os.write(text.getBytes("UTF-8"));
             }
@@ -243,5 +243,10 @@ public class BluetoothFragment extends Fragment implements AdapterView.OnItemCli
             }
         });
         return view;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
     }
 }

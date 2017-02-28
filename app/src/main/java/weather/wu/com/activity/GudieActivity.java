@@ -9,6 +9,8 @@ import android.widget.Button;
 import com.viewpagerindicator.CirclePageIndicator;
 import com.viewpagerindicator.PageIndicator;
 
+import net.youmi.android.AdManager;
+
 import butterknife.BindView;
 import weather.wu.com.adapter.GuideFragmentAdapter;
 import weather.wu.com.utils.SpUtils;

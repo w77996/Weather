@@ -24,6 +24,8 @@ import com.orhanobut.logger.Logger;
 
 import org.litepal.crud.DataSupport;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
@@ -62,7 +64,7 @@ public class WidgetService extends Service {
             Logger.i(mAppwidgetId+"");
         }
         Logger.d("AppWidget onStartCommand");
-        mRemoteViews = new RemoteViews(getApplicationContext().getPackageName(),R.layout.appwidget_type);
+        mRemoteViews = new RemoteViews(getApplicationContext().getPackageName(),R.layout.appwidget_typeone);
 
        updateAppWidget();
         Intent intent1= new Intent(getApplicationContext(), SplashActivity.class);
@@ -91,9 +93,22 @@ public class WidgetService extends Service {
                 WeatherBean weatherBean = Utility.handleWeatherResponse(weatherDB.get(0).getmJsonData());
                 Logger.d(weatherBean.toString());
                 //  Logger.d(weatherBean.getmCityName());
-                mRemoteViews.setTextViewText(R.id.appwidget_city,weatherBean.mCityName);
-                mRemoteViews.setTextViewText(R.id.appwidget_temp,weatherBean.getmFutureWeatherBeen().get(0).getmNight_Air_Temperature()+"°/"+weatherBean.getmFutureWeatherBeen().get(0).getmDay_Air_Temperature()+"°");
-                 mAppWidgetTarget =new AppWidgetTarget(getApplicationContext(),mRemoteViews,R.id.appwidget_img,mAppwidgetId);
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm");
+                SimpleDateFormat simpleDateFormat2 = new SimpleDateFormat("yyyy年MM月dd日");
+                Date date = new Date();
+                mRemoteViews.setTextViewText(R.id.appwiget_cityname,weatherBean.mCityName);
+                mRemoteViews.setTextViewText(R.id.appwiget_time,simpleDateFormat.format(date));
+                mRemoteViews.setTextViewText(R.id.appwiget_date,simpleDateFormat2.format(date));
+                mRemoteViews.setTextViewText(R.id.appwiget_week,Utility.weakDayInfliter(weatherBean.getmTodayWeatherBean().getmWeekDay()));
+                mRemoteViews.setTextViewText(R.id.appwiget_weather_condition,weatherBean.getmNowWeatherBean().getmWeather());
+                mRemoteViews.setTextViewText(R.id.appwiget_h,"湿度 "+weatherBean.getmNowWeatherBean().getmSd());
+                mRemoteViews.setTextViewText(R.id.appwidget_nowtemp,weatherBean.getmNowWeatherBean().getmTemperature()+"°");
+                mRemoteViews.setTextViewText(R.id.appwiget_wind,weatherBean.getmNowWeatherBean().getmWind_Direction()+weatherBean.getmNowWeatherBean().getmWind_Power());
+
+                mRemoteViews.setTextViewText(R.id.appwiget_weather_condition,weatherBean.getmNowWeatherBean().getmWeather());
+                //mRemoteViews.setTextViewText(R.id.appwiget_today_temp,weatherBean.getmFutureWeatherBeen().get(0).getmNight_Air_Temperature()+"°/"+weatherBean.getmFutureWeatherBeen().get(0).getmDay_Air_Temperature()+"°");
+
+                 mAppWidgetTarget =new AppWidgetTarget(getApplicationContext(),mRemoteViews,R.id.appwiget_picture,mAppwidgetId);
                 Glide.with(getApplicationContext()).load(weatherBean.getmNowWeatherBean().getmWeather_Pic()).asBitmap().into(mAppWidgetTarget);
               //  mRemoteViews.setImageViewBitmap(R.id.appwidget_img,bitmap);
                // Glide.with(getApplicationContext()).load(weatherBean.getmNowWeatherBean().getmWeather_Pic()).asBitmap().into(mAppWidgetTarget);

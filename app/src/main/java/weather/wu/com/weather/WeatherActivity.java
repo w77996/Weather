@@ -34,6 +34,10 @@ import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.jeremyfeinstein.slidingmenu.lib.app.SlidingActivity;
 import com.orhanobut.logger.Logger;
 
+import net.youmi.android.normal.banner.BannerManager;
+import net.youmi.android.normal.banner.BannerViewListener;
+import net.youmi.android.normal.spot.SpotManager;
+
 import org.litepal.crud.DataSupport;
 import org.litepal.tablemanager.Connector;
 
@@ -48,6 +52,7 @@ import butterknife.OnClick;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
+import weather.wu.com.WeatherApplication;
 import weather.wu.com.activity.AboutActivity;
 import weather.wu.com.activity.CityEditActivity;
 import weather.wu.com.adapter.CityLeftMenuListAdapter;
@@ -345,6 +350,30 @@ public class WeatherActivity extends SlidingActivity {
         // initWindow();
 
         setContentView(R.layout.activity_main);
+
+        View bannerView = BannerManager.getInstance(WeatherActivity.this)
+                .getBannerView(WeatherActivity.this, new BannerViewListener() {
+                    @Override
+                    public void onRequestSuccess() {
+
+                    }
+
+                    @Override
+                    public void onSwitchBanner() {
+
+                    }
+
+                    @Override
+                    public void onRequestFailed() {
+
+                    }
+                });
+
+// 获取要嵌入广告条的布局
+        LinearLayout bannerLayout = (LinearLayout) findViewById(R.id.ll_banner);
+
+// 将广告条加入到布局中
+        bannerLayout.addView(bannerView);
        // getWindowManager().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
         ButterKnife.bind(this);
         initView();
@@ -769,6 +798,8 @@ public class WeatherActivity extends SlidingActivity {
         } else if (!DoubleClickExit.check()) {
             Toast.makeText(getApplicationContext(), "再按一次退出", Toast.LENGTH_SHORT).show();
         } else {
+          //  SpotManager.getInstance(getApplicationContext()).onAppExit();
+            BannerManager.getInstance(this).onDestroy();
             finish();
         }
     }

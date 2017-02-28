@@ -9,7 +9,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <ImageView
+         <ImageView
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:background="@drawable/header_back"/>
@@ -48,6 +48,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+        <LinearLayout
+            android:id="@+id/ll_banner"
+            android:layout_width="match_parent"
+            android:layout_gravity="bottom"
+            android:orientation="vertical"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal|bottom">
+        </LinearLayout>
     <LinearLayout
         android:id="@+id/left_edit_city"
         android:layout_width="match_parent"
@@ -122,7 +130,8 @@
         <LinearLayout
             android:id="@+id/left_more"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:orientation="horizontal"
             android:layout_margin="8dp"
             android:gravity="center">
@@ -144,7 +153,8 @@
         <LinearLayout
             android:id="@+id/left_about"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:orientation="horizontal"
             android:layout_margin="8dp"
             android:gravity="center">
@@ -161,7 +171,6 @@
             android:layout_gravity="center"
             android:text="关于"
             android:textSize="17sp" />
-
             </LinearLayout>
 
     </LinearLayout>
