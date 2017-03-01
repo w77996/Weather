@@ -62,6 +62,7 @@ import weather.wu.com.bean.HourDataBean;
 import weather.wu.com.bean.WeatherBean;
 import weather.wu.com.cityselect.CitySelectActivity;
 import weather.wu.com.db.WeatherDB;
+import weather.wu.com.more.BlueToolthActivity;
 import weather.wu.com.more.MoreActivity;
 import weather.wu.com.utils.DoubleClickExit;
 import weather.wu.com.utils.HttpUtil;
@@ -152,6 +153,8 @@ public class WeatherActivity extends SlidingActivity {
     LinearLayout mLinearLayoutEditCity;
     @BindView(R.id.left_list_city_select)
     ListView mListViewCity;
+    @BindView(R.id.left_blue)
+    LinearLayout mLinearLayoutBlue;
    /* @BindView(R.id.left_add_city)
     LinearLayout mLinearLayoutAddCity;*/
 
@@ -684,7 +687,7 @@ public class WeatherActivity extends SlidingActivity {
         mRightAltitudeText.setText("海拔：" + weather.getmCityInfoBean().getmAltitude_C15() + "米");
     }
 
-    @OnClick({R.id.nav_button, R.id.title_add_city, R.id.left_edit_city, R.id.left_more,R.id.left_about})
+    @OnClick({R.id.nav_button, R.id.title_add_city, R.id.left_edit_city, R.id.left_more,R.id.left_about,R.id.left_blue})
     public void onclick(View v) {
         switch (v.getId()) {
             case R.id.nav_button:
@@ -709,9 +712,12 @@ public class WeatherActivity extends SlidingActivity {
                 mDrawerLayout.closeDrawer(GravityCompat.START);
                 startActivity(new Intent(this, AboutActivity.class));
                 break;
+            case R.id.left_blue:
+                mDrawerLayout.closeDrawer(GravityCompat.START);
+                startActivity(new Intent(this, BlueToolthActivity.class));
+                break;
 
         }
-
     }
 
     /**

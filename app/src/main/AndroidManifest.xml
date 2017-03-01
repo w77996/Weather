@@ -44,6 +44,7 @@
             android:name="weather.wu.com.more.MoreActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name="weather.wu.com.activity.WebViewActivity"/>
+        <activity android:name="weather.wu.com.more.BlueToolthActivity"/>
        <!-- <service
             android:name="cn.bmob.push.lib.service.PushService"
             android:exported="true"
@@ -70,7 +71,7 @@
         </receiver>
 
         &lt;!&ndash; 第四部中创建的消息接收器，在这里进行注册 &ndash;&gt;
-        <receiver android:name="weather.wu.com.broadcast.BombMessageReceiver">
+        <receiver android:name="weather.wu.com.broadcast.JPushMessageReceiverr">
             <intent-filter>
                 <action android:name="cn.bmob.push.action.MESSAGE" />
             </intent-filter>
@@ -156,7 +157,7 @@
 
         <!-- User defined. 用户自定义的广播接收器-->
         <receiver
-            android:name="weather.wu.com.broadcast.BombMessageReceiver"
+            android:name="weather.wu.com.broadcast.JPushMessageReceiver"
             android:enabled="true">
             <intent-filter>
                 <!--Required 用户注册SDK的intent-->
@@ -209,7 +210,12 @@
                 <data android:scheme="package" />
             </intent-filter>
         </receiver>
-
+        <receiver android:name="weather.wu.com.broadcast.BluetoothReceiver" >
+            <intent-filter android:priority="1000">
+                <action android:name="android.bluetooth.device.action.PAIRING_REQUEST"/>
+                <action android:name="android.bluetooth.device.action.FOUND" />
+            </intent-filter>
+        </receiver>
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="com.youmi.android.addemo.fileProvider"

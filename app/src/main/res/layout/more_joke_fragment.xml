@@ -3,6 +3,14 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/color_white">
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/joke_swpsh"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
     <ListView
         android:id="@+id/more_joke_listview"
         android:layout_width="match_parent"
@@ -10,4 +18,6 @@
         >
 
     </ListView>
+        </LinearLayout>
+    </android.support.v4.widget.SwipeRefreshLayout>
 </LinearLayout>

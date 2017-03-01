@@ -24,7 +24,8 @@
                 android:id="@+id/more_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:background="@color/md_blue_900_color_code"></android.support.v7.widget.Toolbar>
+                android:background="@color/md_blue_900_color_code">
+            </android.support.v7.widget.Toolbar>
 
             <LinearLayout
                 android:id="@+id/more_contetn_main_rl"

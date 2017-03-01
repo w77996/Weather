@@ -82,10 +82,10 @@ public class BluetoothFragment extends Fragment implements AdapterView.OnItemCli
         }
         // 因为蓝牙搜索到设备和完成搜索都是通过广播来告诉其他应用的
         // 这里注册找到设备和完成搜索广播
-        IntentFilter filter = new IntentFilter( BluetoothAdapter.ACTION_DISCOVERY_FINISHED);
+     /*   IntentFilter filter = new IntentFilter( BluetoothAdapter.ACTION_DISCOVERY_FINISHED);
         getActivity().registerReceiver(receiver, filter);
         filter = new IntentFilter(BluetoothDevice.ACTION_FOUND);
-        getActivity().registerReceiver(receiver, filter);
+        getActivity().registerReceiver(receiver, filter);*/
 
         // 实例接收客户端传过来的数据线程
         thread = new AcceptThread();
@@ -97,7 +97,7 @@ public class BluetoothFragment extends Fragment implements AdapterView.OnItemCli
 
     }
 
-    // 注册广播接收者
+/*    // 注册广播接收者
     private BroadcastReceiver receiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context arg0, Intent intent) {
@@ -120,7 +120,7 @@ public class BluetoothFragment extends Fragment implements AdapterView.OnItemCli
                getActivity(). setTitle("搜索完成");
             }
         }
-    };
+    };*/
 
     // 点击listView中的设备，传送数据
 
@@ -136,7 +136,7 @@ public class BluetoothFragment extends Fragment implements AdapterView.OnItemCli
         // 如果选择设备为空则代表还没有选择设备
         if (selectDevice == null) {
             //通过地址获取到该设备
-            selectDevice = mBluetoothAdapter.getRemoteDevice(address);
+            selectDevice = mBluetoothAdapter.getRemoteDevice("20:15:11:09:47:91");
         }
         // 这里需要try catch一下，以防异常抛出
         try {

@@ -17,7 +17,7 @@
             android:title="每日美图"
             />
     </group>
-    <item android:title="其他">
+    <!--<item android:title="其他">
         <menu>
             <item
                 android:id="@+id/more_nav_else"
@@ -25,5 +25,5 @@
                 android:title="null"
                 />
         </menu>
-    </item>
+    </item>-->
 </menu>

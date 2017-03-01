@@ -22,7 +22,7 @@ import weather.wu.com.weather.WeatherActivity;
 /**
  * Created by Administrator on 2017/2/15.
  */
-public class BombMessageReceiver extends BroadcastReceiver {
+public class JPushMessageReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {

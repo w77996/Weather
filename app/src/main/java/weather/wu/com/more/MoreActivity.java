@@ -89,12 +89,12 @@ public class MoreActivity extends AppCompatActivity {
                         fragmentTransaction.replace(R.id.more_fragment_content,pictureFragment);
                         fragmentTransaction.commit();
                         break;
-                    case R.id.more_nav_else:
+                  /*  case R.id.more_nav_else:
                         mDrawerLayout.closeDrawer(GravityCompat.START);
                         BluetoothFragment bluetoothFragment = new BluetoothFragment();
                         fragmentTransaction.replace(R.id.more_fragment_content,bluetoothFragment);
                         fragmentTransaction.commit();
-                        break;
+                        break;*/
                 }
                 return false;
             }

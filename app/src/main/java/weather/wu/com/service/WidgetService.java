@@ -46,7 +46,7 @@ public class WidgetService extends Service {
     private updateHandler mUpdateHandler;
     int mAppwidgetId;
 
-    private static final int ALAM_DURATION = 300*60*1000;
+    private static final int ALAM_DURATION =300* 60*1000;
     private static final int UPDATE_DURATION = 60*1000;
     private static final int ALAM_MESSAGE = 1000;
     @Nullable
