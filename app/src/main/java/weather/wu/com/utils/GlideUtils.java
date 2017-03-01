@@ -8,6 +8,7 @@ import com.bumptech.glide.Glide;
 /**
  * Created by Administrator on 2017/1/3.
  */
+//未使用
 public class GlideUtils {
     public static  void loaderImager(Context context, String url, ImageView imageView){
         Glide.with(context).load(url).into(imageView);

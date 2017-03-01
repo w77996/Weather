@@ -35,14 +35,13 @@ public class JPushMessageReceiver extends BroadcastReceiver {
             Logger.d( "[MyReceiver] 接收Registration Id : " + regId);
         }else if (JPushInterface.ACTION_MESSAGE_RECEIVED.equals(intent.getAction())) {
             Logger.d( "收到了自定义消息。消息内容是：" + bundle.getString(JPushInterface.EXTRA_MESSAGE));
-            // 自定义消息不会展示在通知栏，完全要开发者写代码去处理
+            // 自定义消息不会展示在通知栏，完全要写代码去处理
         } else if (JPushInterface.ACTION_NOTIFICATION_RECEIVED.equals(intent.getAction())) {
             Logger.d( "收到了通知");
             // 在这里可以做些统计，或者做些其他工作
         } else if (JPushInterface.ACTION_NOTIFICATION_OPENED.equals(intent.getAction())) {
-            Logger.d( "用户点击打开了通知");
-            // 在这里可以自己写代码去定义用户点击后的行为
-            Intent i = new Intent(context, SplashActivity.class);  //自定义打开的界面
+            Logger.d( "点击打开了通知");
+            Intent i = new Intent(context, SplashActivity.class);  //打开的界面
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(i);
         } else {

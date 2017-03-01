@@ -64,29 +64,33 @@ public class WidgetService extends Service {
             Logger.i(mAppwidgetId+"");
         }
         Logger.d("AppWidget onStartCommand");
+        //获取远程的小工具
         mRemoteViews = new RemoteViews(getApplicationContext().getPackageName(),R.layout.appwidget_typeone);
 
        updateAppWidget();
+        //点击跳转至主界面
         Intent intent1= new Intent(getApplicationContext(), SplashActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(),0,intent1,0);
         mRemoteViews.setOnClickPendingIntent(R.id.appwidget_layout,pendingIntent);
+        //设置定时器，定时启动service
         AlarmManager alarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
         Intent alarmIntent = new Intent(getApplicationContext(),WidgetService.class);
         PendingIntent alarmPendingIntent = PendingIntent.getService(getApplicationContext(),0,alarmIntent,PendingIntent.FLAG_CANCEL_CURRENT);
         alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime()+ALAM_DURATION,alarmPendingIntent);
-
+        //防止被强行杀死
         return START_STICKY;
     }
 
     @Override
     public void onCreate() {
         super.onCreate();
-
+        //没分钟更新一次UI
         Message message =Message.obtain();
         message.what = ALAM_MESSAGE;
         mUpdateHandler = new updateHandler();
         mUpdateHandler.sendMessageDelayed(message,UPDATE_DURATION);
     }
+
         private void updateAppWidget(){
             List<WeatherDB> weatherDB = DataSupport.findAll(WeatherDB.class);
             if (weatherDB != null) {
@@ -107,7 +111,7 @@ public class WidgetService extends Service {
 
                 mRemoteViews.setTextViewText(R.id.appwiget_weather_condition,weatherBean.getmNowWeatherBean().getmWeather());
                 //mRemoteViews.setTextViewText(R.id.appwiget_today_temp,weatherBean.getmFutureWeatherBeen().get(0).getmNight_Air_Temperature()+"°/"+weatherBean.getmFutureWeatherBeen().get(0).getmDay_Air_Temperature()+"°");
-
+                //通过APPWIdgetTarget获取到Image控件
                  mAppWidgetTarget =new AppWidgetTarget(getApplicationContext(),mRemoteViews,R.id.appwiget_picture,mAppwidgetId);
                 Glide.with(getApplicationContext()).load(weatherBean.getmNowWeatherBean().getmWeather_Pic()).asBitmap().into(mAppWidgetTarget);
               //  mRemoteViews.setImageViewBitmap(R.id.appwidget_img,bitmap);

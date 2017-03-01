@@ -268,6 +268,7 @@ public class Utility {
         }
         return null;
     }
+    //判断是否连接网络
     public  static boolean isNetworkConnected(Context context) {
         if (context != null) {
             ConnectivityManager mConnectivityManager = (ConnectivityManager) context

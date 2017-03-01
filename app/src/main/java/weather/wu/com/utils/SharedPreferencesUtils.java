@@ -9,6 +9,7 @@ import java.util.Map;
 /**
  * Created by Administrator on 2017/1/4.
  */
+//已经废弃
 public class SharedPreferencesUtils {
     private static SharedPreferences sharedPreferences;
     /**

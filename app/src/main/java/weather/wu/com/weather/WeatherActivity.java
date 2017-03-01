@@ -293,22 +293,22 @@ public class WeatherActivity extends SlidingActivity {
     private int DisplayHeight;
     private int DisplayWideth;
     private Context mContext = WeatherActivity.this;
-    private HourDataListAdapter mHourDataListAdapter;
-    private List<String> datas;
+   // private HourDataListAdapter mHourDataListAdapter;
+    //private List<String> datas;
     public static CityLeftMenuListAdapter mCityListAdapter;
     private static final int REQUEST_CODE_PICK_CITY = 0;
     private static final int REQUEST_CODE_EDIT_CITY = 1;
     public SQLiteDatabase db;
     public DBThread mDBThread;
-    private List<FutureWeatherBean> fff = new ArrayList<FutureWeatherBean>();
-    private List<HourDataBean> hhh = new ArrayList<HourDataBean>();
+   // private List<FutureWeatherBean> fff = new ArrayList<FutureWeatherBean>();
+    //private List<HourDataBean> hhh = new ArrayList<HourDataBean>();
     public static String mCurrentCity;
     //启动
     //  String json;
     // String a = "http://route.showapi.com/9-2?showapi_appid=28198&area=广州&showapi_sign=bd9ad7a172ee4a5a8c57618a248c63e9&needMoreDay=1&needIndex=1&needHourData=1&need3HourForcast=1&needAlarm=1";
     private List<String> listData = new ArrayList<>();
     private static List<String> mLeftCityListMenu = new ArrayList<String>();
-    SharedPreferencesUtils sharedPreferencesUtils;
+    //SharedPreferencesUtils sharedPreferencesUtils;
     private DBThread mThread;
     private Handler mHandler = new Handler() {
         @Override
@@ -318,16 +318,16 @@ public class WeatherActivity extends SlidingActivity {
             int type = msg.what;
             switch (type) {
                 case 1:
-                    mCityListAdapter.notifyDataSetChanged();
-                    requestWeather(mCurrentCity);
+                    mCityListAdapter.notifyDataSetChanged();//左侧菜单更新
+                    requestWeather(mCurrentCity);//请求天气
                   /*  List<WeatherDB> weatherDBs= (List<WeatherDB>) msg.obj;
                     for(WeatherDB weatherDB:weatherDBs){
                         mListCity.add(weatherDB.getmCityName());
                     }*/
                     break;
                 case 2:
-                    requestWeather(mCurrentCity);
-                    mSwipeRefresh.setRefreshing(false);
+                    requestWeather(mCurrentCity);//请求天气
+                    mSwipeRefresh.setRefreshing(false);//请求后下拉刷新停止
                     break;
             }
             //只要执行到这里就关闭对话框
@@ -353,31 +353,22 @@ public class WeatherActivity extends SlidingActivity {
         // initWindow();
 
         setContentView(R.layout.activity_main);
-
+        //广告条初始化
         View bannerView = BannerManager.getInstance(WeatherActivity.this)
                 .getBannerView(WeatherActivity.this, new BannerViewListener() {
                     @Override
-                    public void onRequestSuccess() {
-
-                    }
-
+                    public void onRequestSuccess() {}
                     @Override
-                    public void onSwitchBanner() {
-
-                    }
-
+                    public void onSwitchBanner() {}
                     @Override
-                    public void onRequestFailed() {
-
-                    }
+                    public void onRequestFailed() {}
                 });
-
-// 获取要嵌入广告条的布局
+        // 获取要嵌入广告条的布局
         LinearLayout bannerLayout = (LinearLayout) findViewById(R.id.ll_banner);
-
-// 将广告条加入到布局中
+        // 将广告条加入到布局中
         bannerLayout.addView(bannerView);
        // getWindowManager().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
+        //绑定Butterknife
         ButterKnife.bind(this);
         initView();
        // Bmob.initialize(this, "d9cf386c0792498c6ff73d3f1e816fe4");
@@ -386,15 +377,14 @@ public class WeatherActivity extends SlidingActivity {
         // BmobInstallation.getCurrentInstallation().save();
         // 启动推送服务
        // BmobPush.startWork(this);
+        //初始化窗口和数据库
         initWindow();
         db = Connector.getDatabase();
         //  initData();
     }
-
-    private void initData() {
+   /* private void initData() {
         mLeftCityListMenu.add("深圳");
-    }
-
+    }*/
     @TargetApi(19)
     private void initWindow() {
         if (Build.VERSION.SDK_INT >= 21) {
@@ -404,7 +394,6 @@ public class WeatherActivity extends SlidingActivity {
             getWindow().getDecorView().setFitsSystemWindows(true);
         }
     }
-
     /**
      * 初始化视图
      */
@@ -432,8 +421,10 @@ public class WeatherActivity extends SlidingActivity {
         //mTitleLayout.bringToFront();
         //SlidingMenu右侧滑出，遮盖110dp
         SlidingMenu mRightMenu = getSlidingMenu();
+        //右侧菜单布局
         setBehindContentView(R.layout.main_right_menu);
         mRightMenu.setMode(SlidingMenu.RIGHT);
+        //滑出距离
         mRightMenu.setBehindOffsetRes(R.dimen.slidingmenu_offset);
         // 设置渐入渐出效果的值
         mRightMenu.setFadeDegree(0.35f);
@@ -464,6 +455,7 @@ public class WeatherActivity extends SlidingActivity {
        /* FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.attachToScrollView(mScrollView);
         fab.setColorPressed(0xffb71c1c);*/
+        //滑动至最上
         mScrollView.smoothScrollTo(0, 0);
         //   mRecyclerView = (RecyclerView)findViewById(R.id.hourdata_recyclerview);
         //  mForecastLayout = (LinearLayout)findViewById(R.id.forecast_layout);
@@ -477,6 +469,7 @@ public class WeatherActivity extends SlidingActivity {
                     Message message = Message.obtain();
                     message.what =2;
                    // requestWeather(mCurrentCity);
+                    //延时2秒
                     mHandler.sendMessageDelayed(message,2000);
                 }else{
                     Toast.makeText(getApplicationContext(),"请求失败,请检查网络状况",Toast.LENGTH_SHORT).show();
@@ -488,6 +481,7 @@ public class WeatherActivity extends SlidingActivity {
 
             }
         });
+        //下拉刷新颜色设置
         mSwipeRefresh.setColorSchemeResources(android.R.color.holo_blue_bright,
                 android.R.color.holo_green_light,
                 android.R.color.holo_orange_light,
@@ -521,7 +515,7 @@ public class WeatherActivity extends SlidingActivity {
         mNowWeatherRelativeLayout.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, mNowWeatherHeight));
         // mImageViewBack.setLayoutParams(new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT,mNowWeatherHeight/2));
         //  mLinearLayoutLeftMenu.setLayoutParams(new DrawerLayout.LayoutParams(DisplayWideth/2, DrawerLayout.LayoutParams.MATCH_PARENT));
-
+        //左侧菜单设置监听事件
         mListViewCity.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -531,7 +525,7 @@ public class WeatherActivity extends SlidingActivity {
             }
         });
     }
-
+    //Splash调用launch
     public static void launch(Context context) {
         context.startActivity(new Intent(context, WeatherActivity.class));
     }
@@ -548,10 +542,13 @@ public class WeatherActivity extends SlidingActivity {
 
             // mSwipeRefresh.setProgressViewOffset(false,100,300);
         }
+        //使用okhttp的封装进行请求
         HttpUtil.sendOkHttpRequest(weatherUrl, new Callback() {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
+                //这里有坑
                 String responseText = response.body().string();
+                //解析获取到的json数据
                 final WeatherBean weather = Utility.handleWeatherResponse(responseText);
                 WeatherDB weatherDB = new WeatherDB();
                 WeatherDB weatherData = DataSupport.where("mCityName = ?", cityName).findFirst(WeatherDB.class);
@@ -609,6 +606,7 @@ public class WeatherActivity extends SlidingActivity {
      * @param weather
      */
     private void showWeatherInfo(WeatherBean weather) {
+        //NowWeather数据显示
         mTextViewTileCity.setText(weather.getmCityName());
         mLastUpateText.setText(weather.getmNowWeatherBean().getmTemperature_Time() + "更新");
         mNowWeatherAirQuality.setText("空气" + weather.getmAqiDetailBean().getmQuality());
@@ -618,10 +616,11 @@ public class WeatherActivity extends SlidingActivity {
         mNowWeatherTempeture.setText(weather.getmNowWeatherBean().getmTemperature());
         mNowWeatherCondition.setText(weather.getmNowWeatherBean().getmWeather());
         Glide.with(this).load(weather.getmNowWeatherBean().getmWeather_Pic()).diskCacheStrategy(DiskCacheStrategy.ALL).into(mNowWeather);
-
+        //hourlist数据显示
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, true));
         mRecyclerView.setAdapter(new HourDataListAdapter(mContext, weather.getmHourDataList()));
         mRecyclerView.scrollToPosition(weather.getmHourDataList().size() - 1);
+        //天气view动态添加
         mForecastLayout.removeAllViews();
         for (FutureWeatherBean futureWeatherBean : weather.getmFutureWeatherBeen()) {
             View view = LayoutInflater.from(this).inflate(R.layout.forecast_item, mForecastLayout, false);
@@ -662,7 +661,7 @@ public class WeatherActivity extends SlidingActivity {
         mIndexSportTxt.setText(weather.getIndexBean().getmSportsDesc());
         mIndexTravelBrief.setText("旅游指数：" + weather.getIndexBean().getmTravelTitle());
         mIndexTravelTxt.setText(weather.getIndexBean().getmTravelDesc());
-
+        //右侧菜单数据
         mRightTodayWeatherText.setText(weather.getmTodayWeatherBean().getmDay_Weather());
         mRightAirPressText.setText("气压" + weather.getmTodayWeatherBean().getmAir_Press());
         mRightRainText.setText("降水概率" + weather.getmTodayWeatherBean().getmJiangShui());
@@ -690,28 +689,34 @@ public class WeatherActivity extends SlidingActivity {
     @OnClick({R.id.nav_button, R.id.title_add_city, R.id.left_edit_city, R.id.left_more,R.id.left_about,R.id.left_blue})
     public void onclick(View v) {
         switch (v.getId()) {
+            //左上角菜单键
             case R.id.nav_button:
                 mDrawerLayout.openDrawer(GravityCompat.START);
                 break;
+            //右上角添加城市
             case R.id.title_add_city:
                // mDrawerLayout.closeDrawer(GravityCompat.START);
                 startActivityForResult(new Intent(WeatherActivity.this, CitySelectActivity.class),
                         REQUEST_CODE_PICK_CITY);
                 break;
+            //左侧菜单编辑城市
             case R.id.left_edit_city:
                 mDrawerLayout.closeDrawer(GravityCompat.START);
                 Intent intent = new Intent(WeatherActivity.this, CityEditActivity.class);
                 //*intent.putStringArrayListExtra("city", (ArrayList<String>) mListCity);*//*
                 startActivityForResult(intent, REQUEST_CODE_EDIT_CITY);
                 break;
+            //左侧菜单更多模块
             case R.id.left_more:
                 mDrawerLayout.closeDrawer(GravityCompat.START);
                 startActivity(new Intent(this, MoreActivity.class));
                 break;
+            //左侧菜单关于
             case R.id.left_about:
                 mDrawerLayout.closeDrawer(GravityCompat.START);
                 startActivity(new Intent(this, AboutActivity.class));
                 break;
+            //左侧菜单蓝牙
             case R.id.left_blue:
                 mDrawerLayout.closeDrawer(GravityCompat.START);
                 startActivity(new Intent(this, BlueToolthActivity.class));
@@ -726,18 +731,18 @@ public class WeatherActivity extends SlidingActivity {
     private class DBThread extends Thread {
         @Override
         public void run() {
-            List<WeatherDB> weatherDB = DataSupport.findAll(WeatherDB.class);
-            if (weatherDB != null) {
+            List<WeatherDB> weatherDB = DataSupport.findAll(WeatherDB.class);//从数据库中找到所有保存的城市
+            if (weatherDB != null) {//如果数据库不为空，清空左侧菜单
                 mLeftCityListMenu.clear();
-                for (WeatherDB wb : weatherDB) {
+                for (WeatherDB wb : weatherDB) {//将数据库中的城市名添加到lsit中
                     mLeftCityListMenu.add(wb.getmCityName());
                     Logger.d(wb.getmCityName());
                 }
-                mCurrentCity = mLeftCityListMenu.get(0).toString();
+                mCurrentCity = mLeftCityListMenu.get(0).toString();//将list中第一个数据定位currentcity
                 Message message = Message.obtain();
                 message.obj = mCurrentCity;
                 message.what = 1;
-                mHandler.sendMessage(message);
+                mHandler.sendMessage(message);//发送到主线程
                 // requestWeather(mCurrentCity);
                 // mCityListAdapter.notifyDataSetChanged();
              /* Message message = Message.obtain();
@@ -756,15 +761,18 @@ public class WeatherActivity extends SlidingActivity {
     //重写onActivityResult方法
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        //城市选择的返回
         if (requestCode == REQUEST_CODE_PICK_CITY && resultCode == RESULT_OK) {
             if (data != null) {
-                if (SpUtils.getBoolean(getApplicationContext(), SpUtils.FIRST_START, true) && Utility.isNetworkConnected(this)) {
+               /* if (SpUtils.getBoolean(getApplicationContext(), SpUtils.FIRST_START, true) && Utility.isNetworkConnected(this)) {
 
-                }
+                }*/
+                //如果是第一次开启应用，则将数值赋值为false
                 if (SpUtils.getBoolean(getApplicationContext(), SpUtils.FIRST_START, true)) {
                     SpUtils.putBoolean(getApplicationContext(), SpUtils.FIRST_START, false);
                 }
                 Logger.d(SpUtils.getBoolean(getApplicationContext(), SpUtils.FIRST_START, true) + "");
+                //左侧城市菜单绑定适配器
                 mCityListAdapter = new CityLeftMenuListAdapter(WeatherActivity.this, mLeftCityListMenu);
                 mListViewCity.setAdapter(mCityListAdapter);
                 String city = data.getStringExtra(CitySelectActivity.KEY_PICKED_CITY);
@@ -797,6 +805,7 @@ public class WeatherActivity extends SlidingActivity {
             mDBThread.stop();
         }*/
     }
+    //用户点击返回按钮事件
     @Override
     public void onBackPressed() {
         if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
@@ -805,7 +814,7 @@ public class WeatherActivity extends SlidingActivity {
             Toast.makeText(getApplicationContext(), "再按一次退出", Toast.LENGTH_SHORT).show();
         } else {
           //  SpotManager.getInstance(getApplicationContext()).onAppExit();
-            BannerManager.getInstance(this).onDestroy();
+            BannerManager.getInstance(this).onDestroy();//广告条退出时销毁
             finish();
         }
     }

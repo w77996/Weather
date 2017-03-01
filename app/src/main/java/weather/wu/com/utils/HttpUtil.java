@@ -28,8 +28,8 @@ import weather.wu.com.bean.TodayWeatherBean;
 public class HttpUtil {
     public final static String appid = "28198";//要替换成自己的
     public final static String secret = "bd9ad7a172ee4a5a8c57618a248c63e9";//要替换成自己的
-    static NowWeatherBean mNowWeatherBean = new NowWeatherBean();
-    static List<FutureWeatherBean> mFutureWeatherBeanList = new ArrayList<FutureWeatherBean>();
+   // static NowWeatherBean mNowWeatherBean = new NowWeatherBean();
+    //static List<FutureWeatherBean> mFutureWeatherBeanList = new ArrayList<FutureWeatherBean>();
    // protected Handler mHandler = new Handler();
     // public static String cityName ="广州";
    /* public static String address = "http://route.showapi.com/9-2?showapi_appid=" + appid + "&area=" + "广州" + "&showapi_sign=" + secret
@@ -41,15 +41,15 @@ public class HttpUtil {
         client.newCall(request).enqueue(callback);
     }
 
-    public static void requestWeather(String cityName, okhttp3.Callback callback) {
+  /*  public static void requestWeather(String cityName, okhttp3.Callback callback) {
         String address = "http://route.showapi.com/9-2?showapi_appid=28198&area=" + cityName + "&showapi_sign=bd9ad7a172ee4a5a8c57618a248c63e9"
                 + "&needMoreDay=1&needIndex=1&needHourData=1&need3HourForcast=1&needAlarm=1";
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder().url(address).build();
         client.newCall(request).enqueue(callback);
-    }
+    }*/
 
-    public static void getWeatherJsonData(final String cityName) {
+   /* public static void getWeatherJsonData(final String cityName) {
         new Thread() {
             //在新线程中发送网络请求
             public void run() {
@@ -79,7 +79,7 @@ public class HttpUtil {
                 Logger.d(res);
             }
         }.start();
-    }
+    }*/
 
  /*   public static void parseJsonData(String jsonData) {
         try {

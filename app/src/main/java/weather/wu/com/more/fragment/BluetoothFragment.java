@@ -35,6 +35,7 @@ import weather.wu.com.weather.R;
 /**
  * Created by Administrator on 2017/2/22.
  */
+//未使用
 public class BluetoothFragment extends Fragment implements AdapterView.OnItemClickListener{
     private BluetoothAdapter mBluetoothAdapter;
     // 用来保存搜索到的设备信息
