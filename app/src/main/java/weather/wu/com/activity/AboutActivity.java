@@ -64,7 +64,7 @@ public class AboutActivity extends AppCompatActivity {
         if (actionBar != null) actionBar.setDisplayHomeAsUpEnabled(true);
         mTvVersion.setText(String.format("当前版本: %s (Build %s)", Utility.getVersion(this), Utility.getVersionCode(this)));
         mToolbarLayout.setTitleEnabled(false);
-        // TODO: 2016/12/4 这里有个 bug
+
         mToolbarLayout.setTitle(getString(R.string.app_name));
         mToolbar.setTitle(this.getString(R.string.app_name));
     }
@@ -90,7 +90,7 @@ public class AboutActivity extends AppCompatActivity {
                 break;
             case R.id.bt_pay:
                 Utility.copyToClipboard(getString(R.string.alipay), this);
-                Toast.makeText(getApplicationContext(),"已粘贴到剪贴板",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),"支付宝账号已粘贴到剪贴板",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.bt_share:
                 Intent sharingIntent = new Intent(Intent.ACTION_SEND);
@@ -104,6 +104,8 @@ public class AboutActivity extends AppCompatActivity {
                 break;
             case R.id.bt_update:
               //  CheckVersion.checkVersion(this, true);
+                Utility.copyToClipboard("1047239335", this);
+                Toast.makeText(getApplicationContext(),"QQ号已粘贴到剪贴板",Toast.LENGTH_SHORT).show();
                 break;
         }
     }

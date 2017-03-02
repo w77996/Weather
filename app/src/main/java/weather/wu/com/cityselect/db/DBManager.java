@@ -1,4 +1,4 @@
-package weather.wu.com.cityselect;
+package weather.wu.com.cityselect.db;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+
+import weather.wu.com.cityselect.bean.City;
 
 /**
  * Created by Administrator on 2017/1/16.

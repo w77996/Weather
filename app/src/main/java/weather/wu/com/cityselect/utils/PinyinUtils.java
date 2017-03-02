@@ -1,4 +1,4 @@
-package weather.wu.com.cityselect;
+package weather.wu.com.cityselect.utils;
 
 import android.text.TextUtils;
 

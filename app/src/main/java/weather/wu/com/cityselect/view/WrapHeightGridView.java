@@ -1,4 +1,4 @@
-package weather.wu.com.cityselect;
+package weather.wu.com.cityselect.view;
 
 import android.content.Context;
 import android.util.AttributeSet;

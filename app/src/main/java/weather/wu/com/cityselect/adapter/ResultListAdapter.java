@@ -1,4 +1,4 @@
-package weather.wu.com.cityselect;
+package weather.wu.com.cityselect.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import weather.wu.com.cityselect.bean.City;
 import weather.wu.com.weather.R;
 
 /**

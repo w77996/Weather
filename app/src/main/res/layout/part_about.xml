@@ -23,7 +23,7 @@
             android:drawableStart="@drawable/about_1"
             android:gravity="center"
             android:text="很高兴认识你"
-            android:textColor="@color/md_blue_800_color_code"
+            android:textColor="@color/md_grey_500_color_code"
             android:textSize="15sp"/>
         <View
             android:layout_width="match_parent"
@@ -31,7 +31,7 @@
             android:layout_marginBottom="8dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="4dp"
-            android:background="@color/md_yellow_200_color_code"/>
+            android:background="@color/md_yellow_100_color_code"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -44,7 +44,7 @@
             android:layout_height="0.3dp"
             android:layout_marginBottom="8dp"
             android:layout_marginTop="12dp"
-            android:background="@color/md_yellow_200_color_code"/>
+            android:background="@color/md_yellow_100_color_code"/>
 
     </LinearLayout>
 
@@ -62,7 +62,7 @@
             android:drawableStart="@drawable/about_2"
             android:gravity="center"
             android:text="一切都很值得"
-            android:textColor="@color/md_blue_800_color_code"
+            android:textColor="@color/md_grey_500_color_code"
             android:textSize="15sp"/>
         <View
             android:layout_width="match_parent"
@@ -70,7 +70,7 @@
             android:layout_marginBottom="8dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="4dp"
-            android:background="@color/md_yellow_200_color_code"/>
+            android:background="@color/md_yellow_100_color_code"/>
 
         <GridLayout
             android:layout_width="match_parent"
@@ -147,7 +147,7 @@
                 android:drawablePadding="12dp"
                 android:drawableStart="@drawable/about_update"
                 android:gravity="start|center_vertical"
-                android:text="检查软件更新"
+                android:text="QQ联系开发者"
                 android:textColor="@color/defaultTextColor"
                 tools:targetApi="lollipop"/>
             <Button
@@ -175,7 +175,7 @@
             android:layout_height="0.3dp"
             android:layout_marginBottom="8dp"
             android:layout_marginTop="12dp"
-            android:background="@color/md_yellow_200_color_code"/>
+            android:background="@color/md_yellow_100_color_code"/>
     </LinearLayout>
 
     <LinearLayout
@@ -190,7 +190,7 @@
             android:drawableStart="@drawable/about_3"
             android:gravity="center"
             android:text="感谢开源的世界和开放的资源"
-            android:textColor="@color/md_blue_800_color_code"
+            android:textColor="@color/md_grey_500_color_code"
             android:textSize="15sp"/>
         <View
             android:layout_width="match_parent"

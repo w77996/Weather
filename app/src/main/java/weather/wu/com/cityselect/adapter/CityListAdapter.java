@@ -1,4 +1,4 @@
-package weather.wu.com.cityselect;
+package weather.wu.com.cityselect.adapter;
 
 import android.content.Context;
 import android.text.TextUtils;
@@ -13,6 +13,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import weather.wu.com.cityselect.bean.City;
+import weather.wu.com.cityselect.utils.LocateState;
+import weather.wu.com.cityselect.utils.PinyinUtils;
+import weather.wu.com.cityselect.view.WrapHeightGridView;
 import weather.wu.com.weather.R;
 
 /**

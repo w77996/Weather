@@ -22,7 +22,13 @@ import com.orhanobut.logger.Logger;
 
 import java.util.List;
 
-import weather.wu.com.utils.SpUtils;
+import weather.wu.com.cityselect.adapter.CityListAdapter;
+import weather.wu.com.cityselect.adapter.ResultListAdapter;
+import weather.wu.com.cityselect.bean.City;
+import weather.wu.com.cityselect.db.DBManager;
+import weather.wu.com.cityselect.utils.LocateState;
+import weather.wu.com.cityselect.utils.StringUtils;
+import weather.wu.com.cityselect.view.SideLetterBar;
 import weather.wu.com.weather.R;
 
 public class CitySelectActivity extends AppCompatActivity implements View.OnClickListener {

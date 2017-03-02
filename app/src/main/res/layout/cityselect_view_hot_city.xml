@@ -11,7 +11,7 @@
         style="@style/LetterIndexTextViewStyle"
         android:text="@string/cityselect_hot_city"/>
 
-    <weather.wu.com.cityselect.WrapHeightGridView
+    <weather.wu.com.cityselect.view.WrapHeightGridView
         android:id="@+id/gridview_hot_city"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

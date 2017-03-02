@@ -1,4 +1,4 @@
-package weather.wu.com.cityselect;
+package weather.wu.com.cityselect.utils;
 
 /**
  * Created by Administrator on 2017/1/16.

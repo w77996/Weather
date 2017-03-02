@@ -1,4 +1,4 @@
-package weather.wu.com.cityselect;
+package weather.wu.com.cityselect.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
