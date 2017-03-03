@@ -7,7 +7,19 @@
     <string name="alipay">dd</string>
     <string name="can_not_find_version_name">找不到版本号</string>
     <string name="bugTableUrl">https://www.wenjuan.com/s/q6riuy/</string>
-    <string name="open_source">• RxJava: github.com/ReactiveX/RxJava \\n • RxAndroid: github.com/ReactiveX/RxAndroid\\n• Retrofit: github.com/square/retrofit\\n• Glide: github.com/bumptech/glide\\n• YujunZhu 设计师提供多城市卡片设计\\n• 和风天气提供数据支持\\n• 高德定位提供位置定位服务</string>
+    <string name="open_source">
+            •Butterknife注解式框架 http://jakewharton.github.io/butterknife/ \n
+            •Glide图片加载框架 https://github.com/bumptech/glide \n
+            •Okhttp网络请求框架 http://square.github.io/okhttp/ \n
+            •LitePal数据库操作框架 https://github.com/LitePalFramework/LitePal \n
+            •Logger 开发日志框架 https://github.com/orhanobut/logger \n
+            •Gson json数据解析框架 https://github.com/google/gson \n
+            •SlidingMenu侧拉菜单框架 https://github.com/jfeinstein10/SlidingMenu \n
+            •SwipeMenuListView侧滑删除框架 https://github.com/baoyongzhang/SwipeMenuListView/ \n
+            •易源数据提供的天气数据 https://www.showapi.com/ \n
+            •极光推送服务 https://www.jiguang.cn/accounts/platform \n
+            •有米广告平台 https://www.youmi.net/ \n
+            •高德地图 http://lbs.amap.com/ \n</string>
     <string name="cityselect_select_city">选择城市</string>
     <string name="cityselect_hot_city">热门城市</string>
     <string name="cityselect_located_city">定位城市</string>

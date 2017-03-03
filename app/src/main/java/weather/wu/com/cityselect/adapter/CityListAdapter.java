@@ -51,6 +51,7 @@ public class CityListAdapter extends BaseAdapter {
             String currentLetter = PinyinUtils.getFirstLetter(mCities.get(index).getPinyin());
             //上个首字母，如果不存在设为""
             String previousLetter = index >= 1 ? PinyinUtils.getFirstLetter(mCities.get(index - 1).getPinyin()) : "";
+            //前面一个字母是否等于后面一个，是的话不添加，否的话添加，并记录下位置
             if (!TextUtils.equals(currentLetter, previousLetter)){
                 letterIndexes.put(currentLetter, index);
                 sections[index] = currentLetter;
@@ -77,7 +78,7 @@ public class CityListAdapter extends BaseAdapter {
         Integer integer = letterIndexes.get(letter);
         return integer == null ? -1 : integer;
     }
-
+        //三种类型
     @Override
     public int getViewTypeCount() {
         return VIEW_TYPE_COUNT;

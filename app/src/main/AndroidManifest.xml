@@ -210,12 +210,12 @@
                 <data android:scheme="package" />
             </intent-filter>
         </receiver>
-        <receiver android:name="weather.wu.com.broadcast.BluetoothReceiver" >
+       <!-- <receiver android:name="weather.wu.com.broadcast.BluetoothReceiver" >
             <intent-filter android:priority="1000">
                 <action android:name="android.bluetooth.device.action.PAIRING_REQUEST"/>
                 <action android:name="android.bluetooth.device.action.FOUND" />
             </intent-filter>
-        </receiver>
+        </receiver>-->
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="com.youmi.android.addemo.fileProvider"

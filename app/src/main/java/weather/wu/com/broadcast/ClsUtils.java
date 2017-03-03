@@ -1,6 +1,6 @@
 package weather.wu.com.broadcast;
 
-/************************************ ������Ժ��� * **************/
+/************************************蓝牙配对函数* **************/
 
 import java.lang.reflect.Method;  
 import java.lang.reflect.Field;  
@@ -10,7 +10,7 @@ import android.util.Log;
 public class ClsUtils   
 {  
     /** 
-     * ���豸��� �ο�Դ�룺platform/packages/apps/Settings.git 
+     * 与设备配对参考源码platform/packages/apps/Settings.git
      * /Settings/src/com/android/settings/bluetooth/CachedBluetoothDevice.java 
      */  
     static public boolean createBond(Class btClass, BluetoothDevice btDevice)  
@@ -22,7 +22,7 @@ public class ClsUtils
     }  
    
     /** 
-     * ���豸������ �ο�Դ�룺platform/packages/apps/Settings.git 
+     * 与设备解除配对 参考源码platform/packages/apps/Settings.git
      * /Settings/src/com/android/settings/bluetooth/CachedBluetoothDevice.java 
      */  
     static public boolean removeBond(Class<?> btClass, BluetoothDevice btDevice)  
@@ -58,14 +58,13 @@ public class ClsUtils
         }  
         catch (Exception e)  
         {  
-            // TODO Auto-generated catch block  
-            e.printStackTrace();  
+            e.printStackTrace();
         }  
         return true;  
    
     }  
    
-    // ȡ���û�����  
+    // 取消用户输入
     static public boolean cancelPairingUserInput(Class<?> btClass,  
             BluetoothDevice device)  throws Exception  
     {  
@@ -75,7 +74,7 @@ public class ClsUtils
         return returnValue.booleanValue();  
     }  
    
-    // ȡ�����  
+    // 取消配对
     static public boolean cancelBondProcess(Class<?> btClass,  
             BluetoothDevice device)  
    
@@ -86,7 +85,7 @@ public class ClsUtils
         return returnValue.booleanValue();  
     } 
     
-    //ȷ�����
+    //确认配对
     
     static public void setPairingConfirmation(Class<?> btClass,BluetoothDevice device,boolean isConfirm)throws Exception 
     {
@@ -103,7 +102,7 @@ public class ClsUtils
     {  
         try  
         {  
-            // ȡ�����з���  
+            // 取得所有方法
             Method[] hideMethod = clsShow.getMethods();  
             int i = 0;  
             for (; i < hideMethod.length; i++)  
@@ -111,7 +110,7 @@ public class ClsUtils
                 Log.e("method name", hideMethod[i].getName() + ";and the i is:"  
                         + i);  
             }
-            // ȡ�����г���  
+            // 取得所有常量
             Field[] allFields = clsShow.getFields();  
             for (i = 0; i < allFields.length; i++)  
             {  
@@ -130,8 +129,7 @@ public class ClsUtils
         }  
         catch (Exception e)  
         {  
-            // TODO Auto-generated catch block  
-            e.printStackTrace();  
+            e.printStackTrace();
         }  
     }  
 }  

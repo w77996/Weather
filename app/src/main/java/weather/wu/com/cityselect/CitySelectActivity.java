@@ -65,8 +65,8 @@ public class CitySelectActivity extends AppCompatActivity implements View.OnClic
     private void initLocation() {
         mLocationClient = new AMapLocationClient(this);
         AMapLocationClientOption option = new AMapLocationClientOption();
-        option.setLocationMode(AMapLocationClientOption.AMapLocationMode.Hight_Accuracy);
-        option.setOnceLocation(true);
+        option.setLocationMode(AMapLocationClientOption.AMapLocationMode.Hight_Accuracy);//高精度
+        option.setOnceLocation(true);//只定位一次
         option.setMockEnable(true);//虚拟定位
         mLocationClient.setLocationOption(option);
         mLocationClient.setLocationListener(new AMapLocationListener() {
@@ -76,7 +76,7 @@ public class CitySelectActivity extends AppCompatActivity implements View.OnClic
                     if (aMapLocation.getErrorCode() == 0) {
                         String city = aMapLocation.getCity();
                         String district = aMapLocation.getDistrict();
-                        String location = StringUtils.extractLocation(city, district);
+                        String location = StringUtils.extractLocation(city, district);//市县名称筛选
                         mCityAdapter.updateLocateState(LocateState.SUCCESS, location);
                     } else {
                         //定位失败
@@ -90,11 +90,11 @@ public class CitySelectActivity extends AppCompatActivity implements View.OnClic
     }
 
     private void initData() {
-        dbManager = new DBManager(this);
-        dbManager.copyDBFile();
-        mAllCities = dbManager.getAllCities();
-        mCityAdapter = new CityListAdapter(this, mAllCities);
-        mCityAdapter.setOnCityClickListener(new CityListAdapter.OnCityClickListener() {
+        dbManager = new DBManager(this);//初始化数据库
+        dbManager.copyDBFile();//复制数据库
+        mAllCities = dbManager.getAllCities();//获取到所有城市
+        mCityAdapter = new CityListAdapter(this, mAllCities);//设置适配器
+        mCityAdapter.setOnCityClickListener(new CityListAdapter.OnCityClickListener() {//通过回调回去城市
             @Override
             public void onCityClick(String name) {
                 back(name);
@@ -123,7 +123,7 @@ public class CitySelectActivity extends AppCompatActivity implements View.OnClic
         mLetterBar.setOnLetterChangedListener(new SideLetterBar.OnLetterChangedListener() {
             @Override
             public void onLetterChanged(String letter) {
-                int position = mCityAdapter.getLetterPosition(letter);
+                int position = mCityAdapter.getLetterPosition(letter);//获取到letter所在的位置
                 mListView.setSelection(position);
             }
         });

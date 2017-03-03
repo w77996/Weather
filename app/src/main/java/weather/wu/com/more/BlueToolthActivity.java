@@ -68,7 +68,7 @@ public class BlueToolthActivity extends Activity {
                     mBluetoothAdapter.enable();
                 }
                 mBluetoothAdapter.startDiscovery();
-                showProgressDialog("提示", "正在加载......");
+                showProgressDialog("提示", "正在连接......");
                 //创建连接
                 new ConnectTask().execute(address);
             }
@@ -153,6 +153,8 @@ public class BlueToolthActivity extends Activity {
         btnConnect=(Button)this.findViewById(R.id.blue_btn_conn);
         btnSend=(Button)this.findViewById(R.id.blue_btn_send);
         btnQuit=(Button)this.findViewById(R.id.blue_btn_disconn);
+        btnQuit.setClickable(false);
+        btnSend.setClickable(false);
       //  etSend=(EditText)this.findViewById(R.id.editText1);
         txReceived=(TextView)this.findViewById(R.id.blue_rec_temp);
     }
@@ -187,10 +189,10 @@ public class BlueToolthActivity extends Activity {
             } catch (IOException e) {
                 try {
                     btSocket.close();
-                    return "Socket 创建失败";
+                    return "连接设备失败";
                 } catch (IOException e2) {
                     Logger .e("error","ON RESUME: Unable to close socket during connection failure", e2);
-                    return "Socket 关闭失败";
+                    return "连接关闭失败";
                 }
             }
             //取消搜索
@@ -202,7 +204,9 @@ public class BlueToolthActivity extends Activity {
                 Logger.e("error", "ON RESUME: Output stream creation failed.", e);
                 return "Socket 流创建失败";
             }
-            return "蓝牙连接正常,Socket 创建成功";
+
+
+            return "设备连接成功";
         }
         //这个方法是在主线程中运行的，所以可以更新界面
         @Override
@@ -212,13 +216,18 @@ public class BlueToolthActivity extends Activity {
             rThread=new ReceiveThread();
             rThread.start();
             statusLabel.setText(result);
+            hideProgressDialog();
+            if("设备连接成功".equals(result)){
+                btnQuit.setClickable(true);
+                btnSend.setClickable(true);
+            }
     /*        Message message = Message.obtain();
             message.what =2;
            handler.sendMessageDelayed(message,2000);*/
        /*  if("蓝牙连接正常,Socket 创建成功".equals(result)) {
 
          }*/
-            hideProgressDialog();
+
                /*  if(timer.){
                    Timer timer = new Timer();
                    timer.schedule(task, 2000, 5000);
@@ -250,9 +259,9 @@ public class BlueToolthActivity extends Activity {
                     outStream.write(msgBuffer);
                 } catch (IOException e) {
                     Logger.e("error", "ON RESUME: Exception during write.", e);
-                    return "发送失败";
+                    return "获取失败";
                 }
-            return "发送成功";
+            return "获取成功";
         }
         @Override
         protected void onPostExecute(String result) {
