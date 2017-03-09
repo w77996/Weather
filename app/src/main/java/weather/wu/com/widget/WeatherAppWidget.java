@@ -27,6 +27,7 @@ import weather.wu.com.weather.R;
 public class WeatherAppWidget extends AppWidgetProvider {
     private RemoteViews mRemoteViews;
     private AppWidgetTarget mAppWidgetTarget;
+    Intent intent;
     @Override
     public void onReceive(Context context, Intent intent) {
         super.onReceive(context, intent);
@@ -34,7 +35,7 @@ public class WeatherAppWidget extends AppWidgetProvider {
 
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
-        Intent intent = new Intent(context,WidgetService.class);
+         intent = new Intent(context,WidgetService.class);
         intent.putExtra("id",appWidgetIds[0]+"");
         Logger.e(appWidgetIds[0]+"");
         context.startService(intent);
@@ -62,6 +63,7 @@ public class WeatherAppWidget extends AppWidgetProvider {
     @Override
     public void onDeleted(Context context, int[] appWidgetIds) {
         super.onDeleted(context, appWidgetIds);
+       // context.stopService(intent);
     }
 
     @Override

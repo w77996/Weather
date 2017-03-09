@@ -59,10 +59,10 @@ public class WidgetService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
        // AlarmManager alarmManager = (AlarmManager)
         //获取AppWidget的id，service再次运行的时候调用starCommand,为空出现ANR
-        if(null!=intent.getStringExtra("id")){
+        if(null!=intent){
             mAppwidgetId =Integer.parseInt(intent.getStringExtra("id"));
             Logger.i(mAppwidgetId+"");
-        }
+
         Logger.d("AppWidget onStartCommand");
         //获取远程的小工具
         mRemoteViews = new RemoteViews(getApplicationContext().getPackageName(),R.layout.appwidget_typeone);
@@ -77,7 +77,7 @@ public class WidgetService extends Service {
         Intent alarmIntent = new Intent(getApplicationContext(),WidgetService.class);
         PendingIntent alarmPendingIntent = PendingIntent.getService(getApplicationContext(),0,alarmIntent,PendingIntent.FLAG_CANCEL_CURRENT);
         alarmManager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime()+ALAM_DURATION,alarmPendingIntent);
-        //防止被强行杀死
+        } //防止被强行杀死
         return START_STICKY;
     }
 

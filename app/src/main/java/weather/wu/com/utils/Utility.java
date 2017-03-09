@@ -190,8 +190,8 @@ public class Utility {
             indexBean.mUvDesc = indexJsonData.getJSONObject("uv").getString("desc");
             indexBean.mClTitle = indexJsonData.getJSONObject("cl").getString("title");
             indexBean.mClDesc = indexJsonData.getJSONObject("cl").getString("desc");
-            indexBean.mGlassTitle = indexJsonData.getJSONObject("glass").getString("title");
-            indexBean.mGlassDesc = indexJsonData.getJSONObject("glass").getString("desc");
+          //  indexBean.mGlassTitle = indexJsonData.getJSONObject("glass").getString("title");
+           // indexBean.mGlassDesc = indexJsonData.getJSONObject("glass").getString("desc");
             indexBean.mWash_CarTitle = indexJsonData.getJSONObject("wash_car").getString("title");
             indexBean.mWash_CarDesc = indexJsonData.getJSONObject("wash_car").getString("desc");
             indexBean.mAqiTitle = indexJsonData.getJSONObject("aqi").getString("title");
