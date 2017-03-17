@@ -5,7 +5,7 @@ import android.util.AttributeSet;
 import android.widget.GridView;
 
 /**
- * Created by Administrator on 2017/1/16.
+ * Created by 吴海辉 on 2017/1/16.
  */
 public class WrapHeightGridView extends GridView {
     public WrapHeightGridView(Context context) {
@@ -22,6 +22,7 @@ public class WrapHeightGridView extends GridView {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        //重写GridView方法，防止出现显示不全的问题
         int heightSpec = MeasureSpec.makeMeasureSpec(Integer.MAX_VALUE >> 2, MeasureSpec.AT_MOST);
         super.onMeasure(widthMeasureSpec, heightSpec);
     }

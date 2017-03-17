@@ -18,7 +18,7 @@ import java.util.List;
 import weather.wu.com.cityselect.bean.City;
 
 /**
- * Created by Administrator on 2017/1/16.
+ * Created by 吴海辉 on 2017/1/16.
  */
 public class DBManager {
     private static final String ASSETS_NAME = "china_cities.db";
@@ -48,7 +48,7 @@ public class DBManager {
             InputStream is;
             OutputStream os;
             try {
-                is = mContext.getResources().getAssets().open(ASSETS_NAME);
+                is = mContext.getResources().getAssets().open(ASSETS_NAME);//打开固定目录下的数据库
                 os = new FileOutputStream(dbFile);
                 byte[] buffer = new byte[BUFFER_SIZE];
                 int length;
@@ -64,6 +64,10 @@ public class DBManager {
         }
     }
 
+    /**
+     * 获取所有的城市，从数据库中
+     * @return
+     */
     public List<City> getAllCities(){
         SQLiteDatabase db = SQLiteDatabase.openOrCreateDatabase(DB_PATH + DB_NAME, null);
         Cursor cursor = db.rawQuery("select * from " + TABLE_NAME, null);
@@ -81,6 +85,11 @@ public class DBManager {
         return result;
     }
 
+    /**
+     * 查找城市，获取输入框中的字符，对数据库进行模糊查询
+     * @param keyword
+     * @return
+     */
     public List<City> searchCity(final String keyword){
         SQLiteDatabase db = SQLiteDatabase.openOrCreateDatabase(DB_PATH + DB_NAME, null);
         Cursor cursor = db.rawQuery("select * from " + TABLE_NAME +" where name like \"%" + keyword

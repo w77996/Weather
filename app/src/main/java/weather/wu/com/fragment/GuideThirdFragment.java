@@ -22,7 +22,7 @@ import weather.wu.com.weather.R;
 import weather.wu.com.weather.WeatherActivity;
 
 /**
- * Created by Administrator on 2017/1/6.
+ * Created by 吴海辉 on 2017/1/6.
  */
 public class GuideThirdFragment extends Fragment {
     ImageView imageView ;

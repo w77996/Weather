@@ -38,7 +38,7 @@ import weather.wu.com.weather.R;
 import weather.wu.com.widget.WeatherAppWidget;
 
 /**
- * Created by Administrator on 2017/2/17.
+ * Created by 吴海辉 on 2017/2/17.
  */
 public class WidgetService extends Service {
     private RemoteViews mRemoteViews;

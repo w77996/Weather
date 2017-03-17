@@ -3,7 +3,7 @@ package weather.wu.com.db;
 import org.litepal.crud.DataSupport;
 
 /**
- * Created by Administrator on 2017/1/12.
+ * Created by 吴海辉 on 2017/1/12.
  */
 public class WeatherDB extends DataSupport {
     public int id;

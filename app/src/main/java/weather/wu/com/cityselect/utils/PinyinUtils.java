@@ -5,7 +5,7 @@ import android.text.TextUtils;
 import java.util.regex.Pattern;
 
 /**
- * Created by Administrator on 2017/1/16.
+ * Created by 吴海辉 on 2017/1/16.
  */
 public class PinyinUtils {
     /**
@@ -16,6 +16,7 @@ public class PinyinUtils {
     public static String getFirstLetter(final String pinyin){
         if (TextUtils.isEmpty(pinyin)) return "定位";
         String c = pinyin.substring(0, 1);
+        //正则表达式，获取A-Z的字母
         Pattern pattern = Pattern.compile("^[A-Za-z]+$");
         if (pattern.matcher(c).matches()){
             return c.toUpperCase();

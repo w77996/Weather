@@ -12,7 +12,7 @@ import android.widget.TextView;
 import weather.wu.com.weather.R;
 
 /**
- * Created by Administrator on 2017/1/16.
+ * Created by 吴海辉 on 2017/1/16.
  */
 public class SideLetterBar extends View {
     private static final String[] letter = {"定位", "热门", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
@@ -20,7 +20,7 @@ public class SideLetterBar extends View {
     private Paint paint = new Paint();
     private boolean showBg = false;
     private OnLetterChangedListener onLetterChangedListener;
-    private TextView overlay;
+    private TextView overlay;//出现字母框
 
     public SideLetterBar(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
@@ -52,7 +52,7 @@ public class SideLetterBar extends View {
 
         int height = getHeight();
         int width = getWidth();
-        int singleHeight = height / letter.length;
+        int singleHeight = height / letter.length;//单个字母的高度
         for (int i = 0; i < letter.length; i++) {
             paint.setTextSize(getResources().getDimension(R.dimen.side_letter_bar_letter_size));
             paint.setColor(getResources().getColor(R.color.cityselect_gray));
@@ -69,29 +69,34 @@ public class SideLetterBar extends View {
 
     }
 
+    /**
+     * 事件拦截
+     * @param event
+     * @return
+     */
     @Override
     public boolean dispatchTouchEvent(MotionEvent event) {
         final int action = event.getAction();
-        final float y = event.getY();
+        final float y = event.getY();//判断事件的点击
         final int oldChoose = choose;
         final OnLetterChangedListener listener = onLetterChangedListener;
-        final int c = (int) (y / getHeight() * letter.length);
+        final int c = (int) (y / getHeight() * letter.length);//回去字母的在View中的位子
 
         switch (action) {
             case MotionEvent.ACTION_DOWN:
                 showBg = true;
                 if (oldChoose != c && listener != null) {
+                    //点击的事件获取到的字母的位子
                     if (c >= 0 && c < letter.length) {
                         listener.onLetterChanged(letter[c]);
                         choose = c;
-                        invalidate();
+                        invalidate();//更新
                         if (overlay != null){
                             overlay.setVisibility(VISIBLE);
                             overlay.setText(letter[c]);
                         }
                     }
                 }
-
                 break;
             case MotionEvent.ACTION_MOVE:
                 if (oldChoose != c && listener != null) {
@@ -122,7 +127,7 @@ public class SideLetterBar extends View {
     public boolean onTouchEvent(MotionEvent event) {
         return super.onTouchEvent(event);
     }
-
+    //外部接口通过回调回去listener
     public void setOnLetterChangedListener(OnLetterChangedListener onLetterChangedListener) {
         this.onLetterChangedListener = onLetterChangedListener;
     }

@@ -16,7 +16,7 @@ import android.widget.TextView;
 import weather.wu.com.weather.R;
 
 /**
- * Created by Administrator on 2017/1/4.
+ * Created by 吴海辉 on 2017/1/4.
  */
 public class GuideSecondFragment extends Fragment {
 

@@ -20,7 +20,7 @@ import weather.wu.com.cityselect.view.WrapHeightGridView;
 import weather.wu.com.weather.R;
 
 /**
- * Created by Administrator on 2017/1/16.
+ * Created by 吴海辉 on 2017/1/16.
  */
 public class CityListAdapter extends BaseAdapter {
     private static final int VIEW_TYPE_COUNT = 3;
@@ -70,7 +70,7 @@ public class CityListAdapter extends BaseAdapter {
     }
 
     /**
-     * 获取字母索引的位置
+     * 获取字母索引的位置,得到对应list的位子
      * @param letter
      * @return
      */
@@ -83,7 +83,7 @@ public class CityListAdapter extends BaseAdapter {
     public int getViewTypeCount() {
         return VIEW_TYPE_COUNT;
     }
-
+//类型返回
     @Override
     public int getItemViewType(int position) {
         return position < VIEW_TYPE_COUNT - 1 ? position : VIEW_TYPE_COUNT - 1;
@@ -124,6 +124,7 @@ public class CityListAdapter extends BaseAdapter {
                         state.setText(locatedCity);
                         break;
                 }
+                //再次点击的时候重新定位，定位成功则返回城市
                 container.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -189,7 +190,7 @@ public class CityListAdapter extends BaseAdapter {
         }
         return view;
     }
-
+//城市的viewHolder
     public static class CityViewHolder{
         TextView letter;
         TextView name;

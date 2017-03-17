@@ -20,22 +20,20 @@ import weather.wu.com.weather.R;
 import weather.wu.com.weather.WeatherActivity;
 
 /**
- * Created by Administrator on 2017/2/15.
+ * Created by 吴海辉
+ * on 2017/2/15.
  */
 public class JPushMessageReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        // TODO Auto-generated method stub
         Bundle bundle = intent.getExtras();
         Logger.d( "onReceive - " + intent.getAction());
-
         if (JPushInterface.ACTION_REGISTRATION_ID.equals(intent.getAction())) {
             String regId = bundle.getString(JPushInterface.EXTRA_REGISTRATION_ID);
             Logger.d( "[MyReceiver] 接收Registration Id : " + regId);
         }else if (JPushInterface.ACTION_MESSAGE_RECEIVED.equals(intent.getAction())) {
             Logger.d( "收到了自定义消息。消息内容是：" + bundle.getString(JPushInterface.EXTRA_MESSAGE));
-            // 自定义消息不会展示在通知栏，完全要写代码去处理
         } else if (JPushInterface.ACTION_NOTIFICATION_RECEIVED.equals(intent.getAction())) {
             Logger.d( "收到了通知");
             // 在这里可以做些统计，或者做些其他工作

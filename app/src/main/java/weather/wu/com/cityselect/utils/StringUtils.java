@@ -1,7 +1,7 @@
 package weather.wu.com.cityselect.utils;
 
 /**
- * Created by Administrator on 2017/1/16.
+ * Created by 吴海辉 on 2017/1/16.
  */
 public class StringUtils {
     /**

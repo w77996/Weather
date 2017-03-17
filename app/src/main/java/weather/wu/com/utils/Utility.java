@@ -31,6 +31,11 @@ import weather.wu.com.weather.R;
  * Created by 吴海辉 on 2016/12/30.
  */
 public class Utility {
+    /**
+     * 天气数据的json解析
+     * @param response
+     * @return
+     */
     public static WeatherBean handleWeatherResponse(String response) {
         try {
             List<FutureWeatherBean> futureWeatherBeanList = new ArrayList<FutureWeatherBean>();
@@ -247,6 +252,11 @@ public class Utility {
         return null;
     }
 
+    /**
+     * 星期格式化
+     * @param weekDay
+     * @return
+     */
     public static String weakDayInfliter(String weekDay) {
         switch (weekDay) {
             case "1":
@@ -268,7 +278,12 @@ public class Utility {
         }
         return null;
     }
-    //判断是否连接网络
+
+    /**
+     * 判断是否有网络
+     * @param context
+     * @return
+     */
     public  static boolean isNetworkConnected(Context context) {
         if (context != null) {
             ConnectivityManager mConnectivityManager = (ConnectivityManager) context
@@ -280,6 +295,12 @@ public class Utility {
         }
         return false;
     }
+
+    /**
+     * 复制到粘贴板
+     * @param info
+     * @param context
+     */
     public static void copyToClipboard(String info, Context context) {
         ClipboardManager manager = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
         ClipData clipData = ClipData.newPlainText("msg", info);

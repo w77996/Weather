@@ -1,7 +1,7 @@
 package weather.wu.com.cityselect.bean;
 
 /**
- * Created by Administrator on 2017/1/16.
+ * Created by 吴海辉 on 2017/1/16.
  */
 public class City {
     private String name;

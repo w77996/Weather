@@ -3,7 +3,7 @@ package weather.wu.com.more.bean;
 import java.util.List;
 
 /**
- * Created by Administrator on 2017/2/17.
+ * Created by 吴海辉 on 2017/2/17.
  */
 public class News {
 

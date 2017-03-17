@@ -28,7 +28,7 @@ import weather.wu.com.weather.R;
  * Created by Administrator on 2017/1/17.
  */
 public class SplashActivity extends Activity {
-    private static final String TAG = SplashActivity.class.getSimpleName();
+
     private SwitchHandler mHandler = new SwitchHandler(this);
   //  SplashViewSettings splashViewSettings = new SplashViewSettings();
     private LinearLayout linearLayout;
@@ -36,7 +36,7 @@ public class SplashActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //activity切换的淡入淡出效果
-       // overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_splash);

@@ -13,7 +13,7 @@ import java.util.List;
 import weather.wu.com.weather.R;
 
 /**
- * Created by Administrator on 2017/1/16.
+ * Created by 吴海辉 on 2017/1/16.
  */
 public class HotCityGridAdapter extends BaseAdapter {
     private Context mContext;

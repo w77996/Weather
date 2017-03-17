@@ -13,7 +13,7 @@ import weather.wu.com.cityselect.bean.City;
 import weather.wu.com.weather.R;
 
 /**
- * Created by Administrator on 2017/1/16.
+ * Created by 吴海辉 on 2017/1/16.
  */
 public class ResultListAdapter extends BaseAdapter {
     private Context mContext;
@@ -23,7 +23,7 @@ public class ResultListAdapter extends BaseAdapter {
         this.mCities = mCities;
         this.mContext = mContext;
     }
-
+    //清空，加载list,变更适配
     public void changeData(List<City> list){
         if (mCities == null){
             mCities = list;

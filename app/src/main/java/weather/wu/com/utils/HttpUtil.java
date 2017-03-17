@@ -26,8 +26,8 @@ import weather.wu.com.bean.TodayWeatherBean;
  * Created by Administrator on 2016/12/24.
  */
 public class HttpUtil {
-    public final static String appid = "28198";//要替换成自己的
-    public final static String secret = "bd9ad7a172ee4a5a8c57618a248c63e9";//要替换成自己的
+    public final static String appid = "28198";
+    public final static String secret = "bd9ad7a172ee4a5a8c57618a248c63e9";
    // static NowWeatherBean mNowWeatherBean = new NowWeatherBean();
     //static List<FutureWeatherBean> mFutureWeatherBeanList = new ArrayList<FutureWeatherBean>();
    // protected Handler mHandler = new Handler();

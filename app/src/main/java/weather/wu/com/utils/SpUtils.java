@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 /**
- * Created by Administrator on 2017/1/4.
+ * Created by 吴海辉 on 2017/1/4.
  */
 public class SpUtils {
     public static SharedPreferences sp;

@@ -76,11 +76,10 @@ public class BlueToolthActivity extends Activity {
         btnQuit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
                 if(btSocket!=null)
                 {
                     try {
-                        btSocket.close();
+                        btSocket.close();//关闭socket
                         btSocket=null;
                         if(rThread!=null)
                         {
@@ -105,7 +104,7 @@ public class BlueToolthActivity extends Activity {
         btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
+
                 new SendInfoTask().execute("1");
 				/*
 					      byte[] msgBuffer = etSend.getText().toString().getBytes();
@@ -127,9 +126,14 @@ public class BlueToolthActivity extends Activity {
             }
         });
     }
+
+    /**
+     * 显示加载框
+     * @param title
+     * @param message
+     */
     public void showProgressDialog(String title, String message) {
         if (progressDialog == null) {
-
             progressDialog = ProgressDialog.show(BlueToolthActivity.this, title,
                     message, true, false);
         } else if (progressDialog.isShowing()) {
@@ -140,6 +144,10 @@ public class BlueToolthActivity extends Activity {
         progressDialog.show();
 
     }
+
+    /**
+     * 隐藏加载框
+     */
     public void hideProgressDialog() {
 
         if (progressDialog != null && progressDialog.isShowing()) {
@@ -147,6 +155,10 @@ public class BlueToolthActivity extends Activity {
         }
 
     }
+
+    /**
+     * 初始化控件
+     */
     public void Init()
     {
         statusLabel=(TextView)this.findViewById(R.id.textView1);
@@ -158,6 +170,10 @@ public class BlueToolthActivity extends Activity {
       //  etSend=(EditText)this.findViewById(R.id.editText1);
         txReceived=(TextView)this.findViewById(R.id.blue_rec_temp);
     }
+
+    /**
+     * 初始化蓝牙适配器
+     */
     public void InitBluetooth()
     {
         //得到一个蓝牙适配器
@@ -175,23 +191,25 @@ public class BlueToolthActivity extends Activity {
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }*/
-    //连接蓝牙设备的异步任务
+
+    /**
+     * 异步连接蓝牙
+     */
     class ConnectTask extends AsyncTask<String,String,String>
     {
         @Override
         protected String doInBackground(String... params) {
-            // TODO Auto-generated method stub
             BluetoothDevice device = mBluetoothAdapter.getRemoteDevice(params[0]);
             try {
-                btSocket = device.createRfcommSocketToServiceRecord(MY_UUID);
-                btSocket.connect();
-                Logger.e("error", "ON RESUME: BT connection established, data transfer link open.");
+                btSocket = device.createRfcommSocketToServiceRecord(MY_UUID);//等同于传入Ip
+                btSocket.connect();//连接
+                Logger.e( "连接没有建立");
             } catch (IOException e) {
                 try {
                     btSocket.close();
                     return "连接设备失败";
                 } catch (IOException e2) {
-                    Logger .e("error","ON RESUME: Unable to close socket during connection failure", e2);
+                    Logger .e("无法关闭socket,连接失败", e2);
                     return "连接关闭失败";
                 }
             }
@@ -201,22 +219,19 @@ public class BlueToolthActivity extends Activity {
                 outStream = btSocket.getOutputStream();
                 // inStream = btSocket.getInputStream();
             } catch (IOException e) {
-                Logger.e("error", "ON RESUME: Output stream creation failed.", e);
+                Logger.e("流创建失败", e);
                 return "Socket 流创建失败";
             }
-
-
             return "设备连接成功";
         }
         //这个方法是在主线程中运行的，所以可以更新界面
         @Override
         protected void onPostExecute(String result) {
-            // TODO Auto-generated method stub
             //连接成功则启动监听
             rThread=new ReceiveThread();
             rThread.start();
-            statusLabel.setText(result);
-            hideProgressDialog();
+            statusLabel.setText(result);//设置状态
+            hideProgressDialog();//隐藏对话框
             if("设备连接成功".equals(result)){
                 btnQuit.setClickable(true);
                 btnSend.setClickable(true);
@@ -240,12 +255,14 @@ public class BlueToolthActivity extends Activity {
             super.onPostExecute(result);
         }
     }
-    //发送数据到蓝牙设备的异步任务
+
+    /**
+     * 发送数据到蓝牙设备的异步任务
+     */
     class SendInfoTask extends AsyncTask<String,String,String>
     {
         @Override
         protected String doInBackground(String... arg0) {
-            // TODO Auto-generated method stub
             if(btSocket==null)
             {
                 return "还没有创建连接";
@@ -265,7 +282,6 @@ public class BlueToolthActivity extends Activity {
         }
         @Override
         protected void onPostExecute(String result) {
-            // TODO Auto-generated method stub
             super.onPostExecute(result);
             statusLabel.setText(result);
             //将发送框清空
@@ -280,9 +296,10 @@ public class BlueToolthActivity extends Activity {
         public void run() {
             while(btSocket!=null )
             {
-                //定义一个存储空间buff
+                //定义一个存储空间buff，定义长度为1024
                 byte[] buff=new byte[1024];
                 try {
+                    //从socket中获取数据
                     inStream = btSocket.getInputStream();
                    // System.out.println("waitting for instream");
                     inStream.read(buff); //读取数据存储在buff数组中
@@ -296,9 +313,16 @@ public class BlueToolthActivity extends Activity {
                 }
             }
         }
+
+        /**
+         * 格式化接收到的字节数组
+         * @param buff
+         * @param size
+         */
         private void processBuffer(byte[] buff,int size)
         {
             int length=0;
+            //计算buff的长度
             for(int i=0;i<size;i++)
             {
 //				if(buff[i]>'\0')
@@ -323,7 +347,7 @@ public class BlueToolthActivity extends Activity {
             }
 
             //ReceiveData=""++"C";
-			ReceiveData=ReceiveData+new String(newbuff);
+			ReceiveData=ReceiveData+new String(newbuff)+'\n';
           //  byte[] newbuff1 = newbuff.
 
             /*String temp = "";
@@ -331,6 +355,7 @@ public class BlueToolthActivity extends Activity {
             Logger.e("Data",temp);*/
 //			System.out.println("result :"+ReceiveData);
 //			Message msg=new Message();  //by ywq
+
             Message msg=Message.obtain();
            // msg.obj = temp;
             msg.what=1;
@@ -367,7 +392,6 @@ public class BlueToolthActivity extends Activity {
     }
     @Override
     protected void onDestroy() {
-        // TODO Auto-generated method stub
         super.onDestroy();
         try {
             if(rThread!=null)
@@ -387,10 +411,8 @@ public class BlueToolthActivity extends Activity {
             }*/
             this.finish();
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 

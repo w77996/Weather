@@ -10,7 +10,7 @@ import com.orhanobut.logger.Logger;
 import weather.wu.com.weather.R;
 
 /**
- * Created by Administrator on 2017/2/20.
+ * Created by 吴海辉 on 2017/2/20.
  */
 public class WebViewActivity extends Activity {
     WebView mWebView;

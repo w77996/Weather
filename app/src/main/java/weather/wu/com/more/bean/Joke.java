@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 /**
- * Created by Administrator on 2017/2/20.
+ * Created by 吴海辉 on 2017/2/20.
  */
 public class Joke {
 
