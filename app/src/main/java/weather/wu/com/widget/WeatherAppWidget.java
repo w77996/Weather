@@ -63,6 +63,9 @@ public class WeatherAppWidget extends AppWidgetProvider {
     @Override
     public void onDeleted(Context context, int[] appWidgetIds) {
         super.onDeleted(context, appWidgetIds);
+        if(intent!=null){
+            context.stopService(intent);
+        }
        // context.stopService(intent);
     }
 

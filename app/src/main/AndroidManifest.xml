@@ -13,7 +13,8 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
             android:name=".WeatherActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"></activity>
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            ></activity>
         <activity
             android:name="weather.wu.com.cityselect.CitySelectActivity"
             android:screenOrientation="portrait"

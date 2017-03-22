@@ -37,10 +37,10 @@ public class CitySelectActivity extends AppCompatActivity implements View.OnClic
     private ListView mListView;
     private ListView mResultListView;
     private SideLetterBar mLetterBar;
-    private EditText searchBox;
-    private ImageView clearBtn;
-    private ImageView backBtn;
-    private ViewGroup emptyView;
+    private EditText mSearchEditText;
+    private ImageView mClearImageView;
+    private ImageView mBackImageView;
+    private ViewGroup mEmptyView;
 
     private CityListAdapter mCityAdapter;
     private ResultListAdapter mResultAdapter;
@@ -128,8 +128,8 @@ public class CitySelectActivity extends AppCompatActivity implements View.OnClic
             }
         });
 
-        searchBox = (EditText) findViewById(R.id.et_search);
-        searchBox.addTextChangedListener(new TextWatcher() {
+        mSearchEditText = (EditText) findViewById(R.id.et_search);
+        mSearchEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
@@ -140,24 +140,24 @@ public class CitySelectActivity extends AppCompatActivity implements View.OnClic
             public void afterTextChanged(Editable s) {
                 String keyword = s.toString();
                 if (TextUtils.isEmpty(keyword)) {
-                    clearBtn.setVisibility(View.GONE);
-                    emptyView.setVisibility(View.GONE);
+                    mClearImageView.setVisibility(View.GONE);
+                    mEmptyView.setVisibility(View.GONE);
                     mResultListView.setVisibility(View.GONE);
                 } else {
-                    clearBtn.setVisibility(View.VISIBLE);
+                    mClearImageView.setVisibility(View.VISIBLE);
                     mResultListView.setVisibility(View.VISIBLE);
                     List<City> result = dbManager.searchCity(keyword);
                     if (result == null || result.size() == 0) {
-                        emptyView.setVisibility(View.VISIBLE);
+                        mEmptyView.setVisibility(View.VISIBLE);
                     } else {
-                        emptyView.setVisibility(View.GONE);
+                        mEmptyView.setVisibility(View.GONE);
                         mResultAdapter.changeData(result);
                     }
                 }
             }
         });
 
-        emptyView = (ViewGroup) findViewById(R.id.empty_view);
+        mEmptyView = (ViewGroup) findViewById(R.id.empty_view);
         mResultListView = (ListView) findViewById(R.id.listview_search_result);
         mResultListView.setAdapter(mResultAdapter);
         mResultListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -167,11 +167,11 @@ public class CitySelectActivity extends AppCompatActivity implements View.OnClic
             }
         });
 
-        clearBtn = (ImageView) findViewById(R.id.iv_search_clear);
-        backBtn = (ImageView) findViewById(R.id.back);
+        mClearImageView = (ImageView) findViewById(R.id.iv_search_clear);
+        mBackImageView = (ImageView) findViewById(R.id.back);
 
-        clearBtn.setOnClickListener(this);
-        backBtn.setOnClickListener(this);
+        mClearImageView.setOnClickListener(this);
+        mBackImageView.setOnClickListener(this);
     }
 
     @Override
@@ -192,9 +192,9 @@ public class CitySelectActivity extends AppCompatActivity implements View.OnClic
     public void onClick(View v) {
         int i = v.getId();
         if (i == R.id.iv_search_clear) {
-            searchBox.setText("");
-            clearBtn.setVisibility(View.GONE);
-            emptyView.setVisibility(View.GONE);
+            mSearchEditText.setText("");
+            mClearImageView.setVisibility(View.GONE);
+            mEmptyView.setVisibility(View.GONE);
             mResultListView.setVisibility(View.GONE);
         } else if (i == R.id.back) {
             finish();

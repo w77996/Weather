@@ -140,7 +140,6 @@ public class BlueToolthActivity extends Activity {
             progressDialog.setTitle(title);
             progressDialog.setMessage(message);
         }
-
         progressDialog.show();
 
     }
@@ -347,7 +346,7 @@ public class BlueToolthActivity extends Activity {
             }
 
             //ReceiveData=""++"C";
-			ReceiveData=ReceiveData+new String(newbuff)+'\n';
+			ReceiveData=ReceiveData+new String(newbuff);
           //  byte[] newbuff1 = newbuff.
 
             /*String temp = "";

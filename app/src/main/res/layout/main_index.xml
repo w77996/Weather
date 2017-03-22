@@ -7,7 +7,9 @@
     android:clickable="true"
     android:foreground="?android:attr/selectableItemBackground"
     android:background="@android:drawable/screen_background_light_transparent"
-    android:layout_margin="5dp"
+    android:layout_marginBottom="5dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
     card_view:cardCornerRadius="3dp"
     card_view:cardElevation="2dp">
     <LinearLayout

@@ -24,6 +24,6 @@ public class WeatherApplication extends LitePalApplication {
         BmobPush.startWork(this);*/
         JPushInterface.setDebugMode(true);
         JPushInterface.init(this);
-        AdManager.getInstance(getApplicationContext()).init("9392bd24660e693f","b55642a79da8ae7b", true, true);
+        AdManager.getInstance(getApplicationContext()).init("9392bd24660e693f","b55642a79da8ae7b", false, true);
     }
 }
