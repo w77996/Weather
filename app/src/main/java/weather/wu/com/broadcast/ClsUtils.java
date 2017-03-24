@@ -1,6 +1,6 @@
 package weather.wu.com.broadcast;
 
-/************************************蓝牙配对函数* **************/
+
 
 import java.lang.reflect.Method;  
 import java.lang.reflect.Field;  

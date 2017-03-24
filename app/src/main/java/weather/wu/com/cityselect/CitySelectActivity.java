@@ -120,7 +120,7 @@ public class CitySelectActivity extends AppCompatActivity implements View.OnClic
         TextView overlay = (TextView) findViewById(R.id.tv_letter_overlay);
         mLetterBar = (SideLetterBar) findViewById(R.id.side_letter_bar);
         mLetterBar.setOverlay(overlay);
-        mLetterBar.setOnLetterChangedListener(new SideLetterBar.OnLetterChangedListener() {
+        mLetterBar.setmOnLetterChangedListener(new SideLetterBar.OnLetterChangedListener() {
             @Override
             public void onLetterChanged(String letter) {
                 int position = mCityAdapter.getLetterPosition(letter);//获取到letter所在的位置
@@ -129,6 +129,7 @@ public class CitySelectActivity extends AppCompatActivity implements View.OnClic
         });
 
         mSearchEditText = (EditText) findViewById(R.id.et_search);
+        //文字框输入监听
         mSearchEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}

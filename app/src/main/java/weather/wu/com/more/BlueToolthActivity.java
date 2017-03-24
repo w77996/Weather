@@ -9,10 +9,8 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,8 +19,6 @@ import com.orhanobut.logger.Logger;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.util.Timer;
-import java.util.TimerTask;
 import java.util.UUID;
 
 import weather.wu.com.weather.R;
@@ -33,8 +29,8 @@ import weather.wu.com.weather.R;
 public class BlueToolthActivity extends Activity {
 
     //定义组件
-    TextView statusLabel;
-    Button btnConnect,btnSend,btnQuit;
+    TextView mStatusLabel;
+    Button mConnectBtn, mSendBtn, mQuitBtn;
     TextView txReceived;
     //device var
     private ProgressDialog progressDialog;
@@ -59,7 +55,7 @@ public class BlueToolthActivity extends Activity {
         InitBluetooth();
         handler=new MyHandler();
         //连接按钮
-        btnConnect.setOnClickListener(new View.OnClickListener() {
+        mConnectBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //判断蓝牙是否打开
@@ -73,7 +69,7 @@ public class BlueToolthActivity extends Activity {
                 new ConnectTask().execute(address);
             }
         });
-        btnQuit.setOnClickListener(new View.OnClickListener() {
+        mQuitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(btSocket!=null)
@@ -88,7 +84,7 @@ public class BlueToolthActivity extends Activity {
                        /* if(timer!=null){
                             timer.cancel();
                         }*/
-                        statusLabel.setText("当前连接已断开");
+                        mStatusLabel.setText("当前连接已断开");
 //						etReceived.setText("");
                     } catch (IOException e) {
 
@@ -101,7 +97,7 @@ public class BlueToolthActivity extends Activity {
             }
         });
 
-        btnSend.setOnClickListener(new View.OnClickListener() {
+        mSendBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -160,12 +156,12 @@ public class BlueToolthActivity extends Activity {
      */
     public void Init()
     {
-        statusLabel=(TextView)this.findViewById(R.id.textView1);
-        btnConnect=(Button)this.findViewById(R.id.blue_btn_conn);
-        btnSend=(Button)this.findViewById(R.id.blue_btn_send);
-        btnQuit=(Button)this.findViewById(R.id.blue_btn_disconn);
-        btnQuit.setClickable(false);
-        btnSend.setClickable(false);
+        mStatusLabel =(TextView)this.findViewById(R.id.textView1);
+        mConnectBtn =(Button)this.findViewById(R.id.blue_btn_conn);
+        mSendBtn =(Button)this.findViewById(R.id.blue_btn_send);
+        mQuitBtn =(Button)this.findViewById(R.id.blue_btn_disconn);
+        mQuitBtn.setClickable(false);
+        mSendBtn.setClickable(false);
       //  etSend=(EditText)this.findViewById(R.id.editText1);
         txReceived=(TextView)this.findViewById(R.id.blue_rec_temp);
     }
@@ -229,11 +225,11 @@ public class BlueToolthActivity extends Activity {
             //连接成功则启动监听
             rThread=new ReceiveThread();
             rThread.start();
-            statusLabel.setText(result);//设置状态
+            mStatusLabel.setText(result);//设置状态
             hideProgressDialog();//隐藏对话框
             if("设备连接成功".equals(result)){
-                btnQuit.setClickable(true);
-                btnSend.setClickable(true);
+                mQuitBtn.setClickable(true);
+                mSendBtn.setClickable(true);
             }
     /*        Message message = Message.obtain();
             message.what =2;
@@ -282,7 +278,7 @@ public class BlueToolthActivity extends Activity {
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
-            statusLabel.setText(result);
+            mStatusLabel.setText(result);
             //将发送框清空
             //  etSend.setText("");
         }

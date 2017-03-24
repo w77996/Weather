@@ -17,9 +17,9 @@ import weather.wu.com.weather.R;
 public class SideLetterBar extends View {
     private static final String[] letter = {"定位", "热门", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
     private int choose = -1;
-    private Paint paint = new Paint();
+    private Paint mPaint = new Paint();
     private boolean showBg = false;
-    private OnLetterChangedListener onLetterChangedListener;
+    private OnLetterChangedListener mOnLetterChangedListener;
     private TextView overlay;//出现字母框
 
     public SideLetterBar(Context context, AttributeSet attrs, int defStyle) {
@@ -54,17 +54,17 @@ public class SideLetterBar extends View {
         int width = getWidth();
         int singleHeight = height / letter.length;//单个字母的高度
         for (int i = 0; i < letter.length; i++) {
-            paint.setTextSize(getResources().getDimension(R.dimen.side_letter_bar_letter_size));
-            paint.setColor(getResources().getColor(R.color.cityselect_gray));
-            paint.setAntiAlias(true);
+            mPaint.setTextSize(getResources().getDimension(R.dimen.side_letter_bar_letter_size));
+            mPaint.setColor(getResources().getColor(R.color.cityselect_gray));
+            mPaint.setAntiAlias(true);//锯齿
             if (i == choose) {
-                paint.setColor(getResources().getColor(R.color.cityselect_gray_deep));
-//                paint.setFakeBoldText(true);  //加粗
+                mPaint.setColor(getResources().getColor(R.color.cityselect_gray_deep));
+//                mPaint.setFakeBoldText(true);  //加粗
             }
-            float xPos = width / 2 - paint.measureText(letter[i]) / 2;
+            float xPos = width / 2 - mPaint.measureText(letter[i]) / 2;
             float yPos = singleHeight * i + singleHeight;
-            canvas.drawText(letter[i], xPos, yPos, paint);
-            paint.reset();
+            canvas.drawText(letter[i], xPos, yPos, mPaint);
+            mPaint.reset();
         }
 
     }
@@ -79,7 +79,7 @@ public class SideLetterBar extends View {
         final int action = event.getAction();
         final float y = event.getY();//判断事件的点击
         final int oldChoose = choose;
-        final OnLetterChangedListener listener = onLetterChangedListener;
+        final OnLetterChangedListener listener = mOnLetterChangedListener;
         final int c = (int) (y / getHeight() * letter.length);//回去字母的在View中的位子
 
         switch (action) {
@@ -128,8 +128,8 @@ public class SideLetterBar extends View {
         return super.onTouchEvent(event);
     }
     //外部接口通过回调回去listener
-    public void setOnLetterChangedListener(OnLetterChangedListener onLetterChangedListener) {
-        this.onLetterChangedListener = onLetterChangedListener;
+    public void setmOnLetterChangedListener(OnLetterChangedListener mOnLetterChangedListener) {
+        this.mOnLetterChangedListener = mOnLetterChangedListener;
     }
 
     public interface OnLetterChangedListener {

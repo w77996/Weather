@@ -25,7 +25,7 @@ import weather.wu.com.weather.WeatherActivity;
 import weather.wu.com.weather.R;
 
 /**
- * Created by Administrator on 2017/1/17.
+ * Created by 吴海辉 on 2017/1/17.
  */
 public class SplashActivity extends Activity {
 

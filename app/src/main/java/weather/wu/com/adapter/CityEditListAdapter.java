@@ -18,7 +18,7 @@ import weather.wu.com.bean.CityEditBean;
 import weather.wu.com.weather.R;
 
 /**
- * Created by Administrator on 2017/1/13.
+ * Created by 吴海辉 on 2017/1/13.
  */
 public class CityEditListAdapter extends BaseAdapter {
 

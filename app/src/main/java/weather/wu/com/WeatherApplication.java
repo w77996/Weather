@@ -10,7 +10,7 @@ import cn.jpush.android.api.JPushInterface;
 
 
 /**
- * Created by Administrator on 2017/1/5.
+ * Created by 吴海辉 on 2017/1/5.
  */
 public class WeatherApplication extends LitePalApplication {
     @Override
@@ -24,6 +24,6 @@ public class WeatherApplication extends LitePalApplication {
         BmobPush.startWork(this);*/
         JPushInterface.setDebugMode(true);
         JPushInterface.init(this);
-        AdManager.getInstance(getApplicationContext()).init("9392bd24660e693f","b55642a79da8ae7b", false, true);
+        AdManager.getInstance(getApplicationContext()).init("9392bd24660e693f","b55642a79da8ae7b", true, true);
     }
 }
